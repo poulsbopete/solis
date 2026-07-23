@@ -8,7 +8,7 @@ Living buyer report for a used **Winnebago Solis** near Washington State.
 
 | Field | Value |
 | --- | --- |
-| Budget | ~$40,000 |
+| Budget | ~$60,000 |
 | Age | 5+ years (model year ≤ 2021) |
 | Radius | Prefer ≤ 500 miles of Washington |
 | Horizon | Price outlook to October 2026 |

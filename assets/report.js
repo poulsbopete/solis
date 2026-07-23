@@ -32,6 +32,7 @@ function render(report) {
 
   document.getElementById("statFloor").textContent = money(m.nwAgeEligibleFloor);
   document.getElementById("statGap").textContent = money(m.gapToBudget);
+  document.getElementById("statGapHint").textContent = `vs ${money(c.maxBudget)} target`;
   document.getElementById("statNational").textContent = money(m.nationalUsedFloor);
   document.getElementById("statCut").textContent = `${Math.round((expected?.changePct || 0) * 100)}%`;
 

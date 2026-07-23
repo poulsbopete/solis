@@ -5,7 +5,7 @@ Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search
 ## Buyer criteria
 
 - Model: Winnebago Solis (59P, 59PX, Pocket OK to note)
-- Target budget: about **$40,000** (track up to ~$55k as stretch / negotiation)
+- Target budget: about **$60,000** (track up to ~$70k as stretch / negotiation)
 - Age: **at least 5 years old** → model year **≤ 2021** as of mid/late 2026
 - Geography: prefer **≤ 500 miles of Washington State** (Seattle as anchor for distance)
 - Flying elsewhere is allowed for clear under-market deals — tag those `tier: "fly"`
@@ -61,5 +61,5 @@ End the run with:
 
 - count of primary / watchlist / fly candidates
 - best current deal (price, year, city)
-- whether any listing is within $10k of budget
+- whether any listing is at or within $10k of the $60k budget
 - GitHub Pages URL confirmation
