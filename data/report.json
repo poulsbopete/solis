@@ -2,7 +2,7 @@
   "generatedAt": "2026-07-23T04:03:34Z",
   "criteria": {
     "model": "Winnebago Solis",
-    "maxBudget": 40000,
+    "maxBudget": 60000,
     "maxAgeYears": 5,
     "maxModelYear": 2021,
     "anchor": "Washington State",
@@ -15,8 +15,8 @@
     "nationalUsedAverage": 91675,
     "nationalUsedHigh": 139900,
     "nwAgeEligibleFloor": 73800,
-    "gapToBudget": 33800,
-    "verdict": "No age-eligible Solis is currently near $40k. Verified Northwest 2021 asking prices now start at $73.8k in Medford and run to $89.9k in Fife. Reaching $40k by Oct 2026 would require an extreme distressed sale, not normal seasonal softness.",
+    "gapToBudget": 13800,
+    "verdict": "At $60k, the budget is $13.8k below the verified Northwest age-eligible floor. The new $73.8k Medford ask is the best regional starting point; its aggressive Oct projection is $64.9k. The Pottstown 2022 fly deal is already within $4k but misses the age rule.",
     "sources": [
       "RVs on Autotrader Solis aggregate (low/avg/high)",
       "Johnson RV Medford / Fife inventory",
@@ -47,10 +47,10 @@
         "id": "aggressive",
         "label": "Aggressive / motivated seller",
         "changePct": -0.12,
-        "rationale": "High-mileage rental fleet dumps or year-end clear-outs; still well above $40k."
+        "rationale": "High-mileage rental fleet dumps or year-end clear-outs; could push some 2022+ units near or under $60k."
       }
     ],
-    "budgetReachability": "Unlikely under normal market scenarios. The lowest verified age-eligible NW ask projects to about $64.9k even in the aggressive scenario. Watch private FSBO, auction, insurance salvage, and high-mileage rental listings for true sub-$55k outliers."
+    "budgetReachability": "Plausible by Oct for fly-to-buy or a motivated seller. The $63,994 Pottstown 2022 is already close but too new; the lowest age-eligible NW ask projects to $64.9k in the aggressive scenario."
   },
   "candidates": [
     {
@@ -248,7 +248,7 @@
       "status": "active",
       "ageEligible": false,
       "withinRadius": false,
-      "notes": "National low outlier after huge markdown. Not age-eligible and far — only if flying and inspecting carefully. Still about $24k over the $40k target.",
+      "notes": "National low outlier after a huge markdown. Not age-eligible and far, but only about $4k over the $60k target; the expected Oct projection dips below budget.",
       "projectedOct": {
         "mild": 62100,
         "expected": 59500,
@@ -260,11 +260,11 @@
   "alerts": [
     {
       "level": "warning",
-      "text": "Budget gap: the age-eligible NW floor ($73.8k) is $33.8k above the $40k target."
+      "text": "Budget gap: the age-eligible NW floor ($73.8k) is $13.8k above the $60k target."
     },
     {
       "level": "info",
-      "text": "Best near-term path: verify the $73.8k Medford 2021 59PX and negotiate toward the aggressive Oct projection (~$64.9k), or wait for distressed private/auction inventory."
+      "text": "Closest today: Pottstown 2022 59PX at $63,994 (fly, too new). Best age-eligible path: verify the $73.8k Medford 2021 and negotiate toward its aggressive Oct projection (~$64.9k)."
     },
     {
       "level": "info",
