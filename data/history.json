@@ -8,31 +8,62 @@
       "candidateCount": 6,
       "primaryCount": 2,
       "notes": "Initial baseline snapshot for Solis Watch."
+    },
+    {
+      "date": "2026-07-23",
+      "nationalFloor": 69599,
+      "nationalAverage": 91675,
+      "nwAgeEligibleFloor": 73800,
+      "candidateCount": 7,
+      "primaryCount": 4,
+      "notes": "Added two verified age-eligible listings, including a $73.8k Medford floor; removed the sold Tampa unit."
     }
   ],
   "priceSeries": [
     {
+      "id": "medford-2021-59px-25437r",
+      "points": [
+        { "date": "2026-07-23", "price": 73800 }
+      ]
+    },
+    {
       "id": "medford-2021-59px",
       "points": [
-        { "date": "2026-07-22", "price": 77800 }
+        { "date": "2026-07-22", "price": 77800 },
+        { "date": "2026-07-23", "price": 77800 }
       ]
     },
     {
       "id": "fife-2021-59p",
       "points": [
-        { "date": "2026-07-22", "price": 84000 }
+        { "date": "2026-07-22", "price": 84000 },
+        { "date": "2026-07-23", "price": 84000 }
+      ]
+    },
+    {
+      "id": "fife-2021-59px-25185b",
+      "points": [
+        { "date": "2026-07-23", "price": 89900 }
       ]
     },
     {
       "id": "yakima-2022-59p",
       "points": [
-        { "date": "2026-07-22", "price": 72500 }
+        { "date": "2026-07-22", "price": 72500 },
+        { "date": "2026-07-23", "price": 72500 }
       ]
     },
     {
       "id": "pottstown-2022-59px",
       "points": [
-        { "date": "2026-07-22", "price": 63994 }
+        { "date": "2026-07-22", "price": 63994 },
+        { "date": "2026-07-23", "price": 63994 }
+      ]
+    },
+    {
+      "id": "sandiego-2023-59p",
+      "points": [
+        { "date": "2026-07-23", "price": 79998 }
       ]
     }
   ]
