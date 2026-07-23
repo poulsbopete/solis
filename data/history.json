@@ -8,19 +8,33 @@
       "candidateCount": 6,
       "primaryCount": 2,
       "notes": "Initial baseline snapshot for Solis Watch."
+    },
+    {
+      "date": "2026-07-23",
+      "nationalFloor": 73000,
+      "nationalAverage": 85456,
+      "nwAgeEligibleFloor": 73800,
+      "candidateCount": 6,
+      "primaryCount": 3,
+      "watchlistCount": 1,
+      "flyCount": 2,
+      "soldCount": 1,
+      "notes": "Added Autotrader Medford stock 25437R at $73.8k pending phone verification; marked the missing Yakima listing sold/unavailable."
     }
   ],
   "priceSeries": [
     {
       "id": "medford-2021-59px",
       "points": [
-        { "date": "2026-07-22", "price": 77800 }
+        { "date": "2026-07-22", "price": 77800 },
+        { "date": "2026-07-23", "price": 77800 }
       ]
     },
     {
       "id": "fife-2021-59p",
       "points": [
-        { "date": "2026-07-22", "price": 84000 }
+        { "date": "2026-07-22", "price": 84000 },
+        { "date": "2026-07-23", "price": 84000 }
       ]
     },
     {
@@ -32,7 +46,26 @@
     {
       "id": "pottstown-2022-59px",
       "points": [
-        { "date": "2026-07-22", "price": 63994 }
+        { "date": "2026-07-22", "price": 63994 },
+        { "date": "2026-07-23", "price": 63994 }
+      ]
+    },
+    {
+      "id": "medford-2021-59px-25437r",
+      "points": [
+        { "date": "2026-07-23", "price": 73800 }
+      ]
+    },
+    {
+      "id": "tampa-2022-59px",
+      "points": [
+        { "date": "2026-07-23", "price": 69893 }
+      ]
+    },
+    {
+      "id": "sandiego-2023-59p",
+      "points": [
+        { "date": "2026-07-23", "price": 79998 }
       ]
     }
   ]

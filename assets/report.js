@@ -54,7 +54,9 @@ function render(report) {
     .map((a) => `<div class="alert ${a.level}">${a.text}</div>`)
     .join("");
 
-  const primary = report.candidates.filter((x) => x.tier === "primary");
+  const primary = report.candidates.filter(
+    (x) => x.tier === "primary" && x.status === "active"
+  );
   document.getElementById("cards").innerHTML = primary
     .map(
       (x) => `
@@ -87,7 +89,7 @@ function render(report) {
           <td>
             <div><span class="tier ${x.tier}">${x.tier}</span></div>
             <div><strong>${x.year} ${x.trim}</strong></div>
-            <div class="proj">${x.ageEligible ? "Age eligible" : "Watchlist / too new"}</div>
+            <div class="proj">${x.ageEligible ? "Age eligible" : "Watchlist / too new"} · ${x.status}</div>
           </td>
           <td>
             <div class="price">${money(x.price)}</div>
@@ -106,7 +108,7 @@ function render(report) {
             <div>${x.miles != null ? x.miles.toLocaleString() + " mi" : "miles TBD"}</div>
             <div class="proj">${x.seller}</div>
           </td>
-          <td><a href="${x.url}" target="_blank" rel="noopener">Listing</a></td>
+          <td><a href="${x.url}" target="_blank" rel="noopener">${x.status === "active" ? "Listing" : "Last listing"}</a></td>
         </tr>`;
     })
     .join("");
