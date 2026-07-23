@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Solis Watch — Used Winnebago Solis buyer report</title>
+    <meta
+      name="description"
+      content="Living report of used Winnebago Solis vans near Washington State, with Oct 2026 price projections."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <h1 class="brand">Solis Watch</h1>
+        <p class="lede">
+          Used Winnebago Solis candidates for a ~$40k buy, age 5+ years, preferably
+          within 500 miles of Washington — with projected asking prices into October 2026.
+        </p>
+        <div class="meta-row">
+          <span class="pill" id="budgetPill">Budget</span>
+          <span class="pill" id="agePill">Age</span>
+          <span class="pill" id="radiusPill">Radius</span>
+          <span class="pill" id="targetPill">Target</span>
+          <span class="pill">Updated <strong id="generatedAt">—</strong> PT</span>
+        </div>
+      </header>
+
+      <section class="grid-stats" aria-label="Market snapshot">
+        <div class="stat">
+          <div class="label">NW age-eligible floor</div>
+          <div class="value" id="statFloor">—</div>
+          <div class="hint">2020–2021 Solis near WA</div>
+        </div>
+        <div class="stat">
+          <div class="label">Gap to $40k</div>
+          <div class="value" id="statGap">—</div>
+          <div class="hint">vs current NW floor</div>
+        </div>
+        <div class="stat">
+          <div class="label">National used floor</div>
+          <div class="value" id="statNational">—</div>
+          <div class="hint">all used Solis years</div>
+        </div>
+        <div class="stat">
+          <div class="label">Base Oct cut</div>
+          <div class="value" id="statCut">—</div>
+          <div class="hint">expected scenario</div>
+        </div>
+      </section>
+
+      <div class="alerts" id="alerts"></div>
+
+      <section class="panel">
+        <h2>Market verdict</h2>
+        <p id="verdict"></p>
+        <p id="budgetReach"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Oct 2026 projection scenarios</h2>
+        <p>
+          Applied to each candidate’s current ask. These are planning estimates, not
+          appraisals — real drops depend on days-on-market, miles, and seller urgency.
+        </p>
+        <div class="proj-grid" id="scenarios" style="margin-top: 0.75rem"></div>
+      </section>
+
+      <div class="section-head">
+        <h2>Primary candidates</h2>
+        <p>Age-eligible (≤2021) and inside the WA 500-mile ring</p>
+      </div>
+      <div class="cards" id="cards"></div>
+
+      <div class="section-head">
+        <h2>Full tracker</h2>
+        <p>Primary + watchlist + fly-to-buy outliers</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Van</th>
+              <th>Ask / change</th>
+              <th>Oct projection</th>
+              <th>Location</th>
+              <th>Details</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+
+      <footer class="foot">
+        <p>
+          Sources: <span id="sources"></span>
+        </p>
+        <p>
+          Report data lives in <code>data/report.json</code> and is refreshed by the
+          Solis Watch Cursor cloud automation. History snapshots:
+          <code>data/history.json</code>.
+        </p>
+      </footer>
+    </main>
+    <script src="./assets/report.js"></script>
+  </body>
+</html>

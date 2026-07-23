@@ -1,0 +1,39 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-07-22",
+      "nationalFloor": 69599,
+      "nationalAverage": 91675,
+      "nwAgeEligibleFloor": 77800,
+      "candidateCount": 6,
+      "primaryCount": 2,
+      "notes": "Initial baseline snapshot for Solis Watch."
+    }
+  ],
+  "priceSeries": [
+    {
+      "id": "medford-2021-59px",
+      "points": [
+        { "date": "2026-07-22", "price": 77800 }
+      ]
+    },
+    {
+      "id": "fife-2021-59p",
+      "points": [
+        { "date": "2026-07-22", "price": 84000 }
+      ]
+    },
+    {
+      "id": "yakima-2022-59p",
+      "points": [
+        { "date": "2026-07-22", "price": 72500 }
+      ]
+    },
+    {
+      "id": "pottstown-2022-59px",
+      "points": [
+        { "date": "2026-07-22", "price": 63994 }
+      ]
+    }
+  ]
+}
