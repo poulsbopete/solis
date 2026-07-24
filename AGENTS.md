@@ -10,6 +10,7 @@ Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search
 - Geography: prefer **≤ 500 miles of Washington State** (Seattle as anchor for distance)
 - Flying elsewhere is allowed for clear under-market deals — tag those `tier: "fly"`
 - Planning horizon: project prices to **2026-10-01**
+- Financing plan: about **$20,000** down payment (keep `financing` section current)
 
 ## What to do each run
 
@@ -26,9 +27,16 @@ Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search
    - Set `previousPrice` / `priceChange` when an ask moves
    - Recompute `projectedOct` using scenarios in `projections.scenarios`
    - Re-rank: primary (age-eligible + in radius) first, then watchlist, then fly
+   - Refresh `financing.paymentScenarios` with $20k down, 120-month term, APRs 6.5 / 7.5 / 9 / 11:
+     - budget = $60k ask
+     - fly ≈ lowest national/fly ask near budget
+     - stretch = $70k
+     - nw_floor = current `marketSummary.nwAgeEligibleFloor`
+     - monthly payment = standard amortizing installment; round to nearest dollar
+   - Preserve lender guidance / next steps unless market advice clearly changes
 3. Append a daily snapshot to `data/history.json` (`snapshots` + per-candidate `priceSeries`)
 4. Keep `index.html` / assets working — only change them if the report schema needs UI support
-5. Commit and push to `main` so GitHub Pages updates:
+5. Commit and push **directly to `main`** so GitHub Pages updates (do **not** open a pull request):
    - Commit message style: `Update Solis Watch report (YYYY-MM-DD)`
    - Do not force-push
    - Do not commit secrets

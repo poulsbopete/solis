@@ -74,6 +74,76 @@
       </section>
 
       <div class="section-head">
+        <h2>Financing plan</h2>
+        <p>~$20k down · illustrative credit-union RV loan payments</p>
+      </div>
+      <section class="panel" id="financingPanel">
+        <p id="financingRec"></p>
+        <div class="grid-stats financing-stats" aria-label="Financing snapshot">
+          <div class="stat">
+            <div class="label">Down payment</div>
+            <div class="value" id="finDown">—</div>
+            <div class="hint">target cash down</div>
+          </div>
+          <div class="stat">
+            <div class="label">Extra cash</div>
+            <div class="value" id="finExtra">—</div>
+            <div class="hint">tax / title / insurance</div>
+          </div>
+          <div class="stat">
+            <div class="label">Term modeled</div>
+            <div class="value" id="finTerm">—</div>
+            <div class="hint">prefer ≤10 years</div>
+          </div>
+          <div class="stat">
+            <div class="label">Best-case payment</div>
+            <div class="value" id="finBestPay">—</div>
+            <div class="hint" id="finBestHint">at 6.5% APR</div>
+          </div>
+        </div>
+        <p class="panel-note" id="finDisclaimer"></p>
+      </section>
+
+      <div class="table-wrap" style="margin-bottom: 1rem">
+        <table>
+          <thead>
+            <tr>
+              <th>Purchase scenario</th>
+              <th>Loan after $20k</th>
+              <th>LTV</th>
+              <th>6.5% APR</th>
+              <th>7.5%</th>
+              <th>9%</th>
+              <th>11%</th>
+            </tr>
+          </thead>
+          <tbody id="financingPayments"></tbody>
+        </table>
+      </div>
+
+      <div class="table-wrap" style="margin-bottom: 1rem">
+        <table>
+          <thead>
+            <tr>
+              <th>Lender</th>
+              <th>Type</th>
+              <th>Rates</th>
+              <th>Terms</th>
+              <th>Gotchas</th>
+              <th>Fit</th>
+            </tr>
+          </thead>
+          <tbody id="financingLenders"></tbody>
+        </table>
+      </div>
+
+      <section class="panel">
+        <h2>Financing next steps</h2>
+        <ol class="steps" id="financingSteps"></ol>
+        <p class="panel-note" id="financingSources"></p>
+      </section>
+
+      <div class="section-head">
         <h2>Primary candidates</h2>
         <p>Age-eligible (≤2021) and inside the WA 500-mile ring</p>
       </div>

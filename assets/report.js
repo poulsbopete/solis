@@ -114,6 +114,75 @@ function render(report) {
 
   document.getElementById("tableBody").innerHTML = rows;
   document.getElementById("sources").textContent = m.sources.join(" · ");
+
+  renderFinancing(report.financing);
+}
+
+function renderFinancing(fin) {
+  if (!fin) {
+    document.getElementById("financingPanel").hidden = true;
+    return;
+  }
+
+  document.getElementById("financingRec").textContent = fin.recommendation || "";
+  document.getElementById("finDown").textContent = money(fin.downPaymentTarget);
+  const extra = fin.extraCashNeeded || {};
+  document.getElementById("finExtra").textContent =
+    typeof extra.low === "number" && typeof extra.high === "number"
+      ? `${money(extra.low)}–${money(extra.high)}`
+      : "—";
+  const term = fin.paymentAssumptions?.termMonths || 120;
+  document.getElementById("finTerm").textContent = `${Math.round(term / 12)} yrs`;
+
+  const budgetScenario =
+    (fin.paymentScenarios || []).find((s) => s.id === "budget") ||
+    (fin.paymentScenarios || [])[0];
+  document.getElementById("finBestPay").textContent = money(
+    budgetScenario?.monthly?.apr6_5
+  );
+  document.getElementById("finBestHint").textContent = budgetScenario
+    ? `${budgetScenario.label} · 6.5% APR`
+    : "at 6.5% APR";
+  document.getElementById("finDisclaimer").textContent =
+    fin.paymentAssumptions?.disclaimer ||
+    extra.notes ||
+    "Illustrative planning estimates only.";
+
+  document.getElementById("financingPayments").innerHTML = (fin.paymentScenarios || [])
+    .map(
+      (s) => `
+      <tr>
+        <td><strong>${s.label}</strong><div class="proj">${money(s.purchasePrice)} ask</div></td>
+        <td class="price">${money(s.loanAmount)}</td>
+        <td>${s.ltvPct}%</td>
+        <td class="price">${money(s.monthly?.apr6_5)}</td>
+        <td>${money(s.monthly?.apr7_5)}</td>
+        <td>${money(s.monthly?.apr9_0)}</td>
+        <td>${money(s.monthly?.apr11_0)}</td>
+      </tr>`
+    )
+    .join("");
+
+  document.getElementById("financingLenders").innerHTML = (fin.lenders || [])
+    .map(
+      (l) => `
+      <tr>
+        <td><strong>${l.name}</strong></td>
+        <td>${l.type}</td>
+        <td>${l.rates}</td>
+        <td>${l.terms}</td>
+        <td class="proj">${l.notes}</td>
+        <td>${l.fit}</td>
+      </tr>`
+    )
+    .join("");
+
+  document.getElementById("financingSteps").innerHTML = (fin.nextSteps || [])
+    .map((step) => `<li>${step}</li>`)
+    .join("");
+  document.getElementById("financingSources").textContent = (fin.sources || []).length
+    ? `Loan sources: ${fin.sources.join(" · ")}`
+    : "";
 }
 
 async function boot() {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T02:10:13Z",
+  "generatedAt": "2026-07-24T03:15:02Z",
   "criteria": {
     "model": "Winnebago Solis",
     "maxBudget": 60000,
@@ -8,7 +8,7 @@
     "anchor": "Washington State",
     "preferredRadiusMiles": 500,
     "targetDate": "2026-10-01",
-    "notes": "Solis production began with model year 2020, so age-eligible units are 2020–2021 only. 2022 units are tracked as near-miss watchlist."
+    "notes": "Solis production began with model year 2020, so age-eligible units are 2020\u20132021 only. 2022 units are tracked as near-miss watchlist."
   },
   "marketSummary": {
     "nationalUsedFloor": 73000,
@@ -16,7 +16,7 @@
     "nationalUsedHigh": 99900,
     "nwAgeEligibleFloor": 73800,
     "gapToBudget": 13800,
-    "verdict": "The lowest advertised NW age-eligible ask is now $73.8k, about $13.8k above budget, although that Autotrader-only Medford record needs mileage and availability confirmation. The lowest dealer-confirmed NW match remains $77.8k. National private 2021s at $70k–$71k show a more realistic fly-to-buy path, while two nearby/fly 2022s are already within $8k of budget.",
+    "verdict": "The lowest advertised NW age-eligible ask is now $73.8k, about $13.8k above budget, although that Autotrader-only Medford record needs mileage and availability confirmation. The lowest dealer-confirmed NW match remains $77.8k. National private 2021s at $70k\u2013$71k show a more realistic fly-to-buy path, while two nearby/fly 2022s are already within $8k of budget.",
     "sources": [
       "RVs on Autotrader Solis aggregate (low/avg/high)",
       "Johnson RV Medford / Fife inventory",
@@ -40,7 +40,7 @@
         "id": "expected",
         "label": "Expected (base case)",
         "changePct": -0.07,
-        "rationale": "End-of-season Class B softness plus typical 60–90 day price cuts on aged dealer stock."
+        "rationale": "End-of-season Class B softness plus typical 60\u201390 day price cuts on aged dealer stock."
       },
       {
         "id": "aggressive",
@@ -357,5 +357,151 @@
       "level": "info",
       "text": "The prior Tampa fly listing is explicitly sold. Vanlife Trader's Portland 2021 is also sold; RV Trader and Facebook Marketplace remain automation-blocked, so indexed RV Trader cards and Craigslist were used where direct access was unavailable."
     }
-  ]
+  ],
+  "financing": {
+    "asOf": "2026-07-24",
+    "downPaymentTarget": 20000,
+    "extraCashNeeded": {
+      "low": 6000,
+      "high": 10000,
+      "notes": "WA sales/use tax (~8\u201310%), title/license, Class B insurance binder, and pre-purchase inspection. Ask lenders whether tax/fees can roll into the loan."
+    },
+    "recommendation": "Get preapproved for a secured RV loan at BECU plus one other WA credit union before negotiating. $20k down is strong (~25\u201333% on a $60\u201378k van). Prefer \u226410-year terms if the payment fits; use dealer financing only as a comparison quote.",
+    "paymentAssumptions": {
+      "termMonths": 120,
+      "aprScenarios": [
+        6.5,
+        7.5,
+        9.0,
+        11.0
+      ],
+      "disclaimer": "Illustrative mid-2026 planning estimates using published credit-union \u201cas low as\u201d ranges. Not an offer or credit decision."
+    },
+    "paymentScenarios": [
+      {
+        "id": "budget",
+        "label": "Budget ask $60k",
+        "purchasePrice": 60000,
+        "downPayment": 20000,
+        "loanAmount": 40000,
+        "ltvPct": 67,
+        "termMonths": 120,
+        "monthly": {
+          "apr6_5": 454,
+          "apr7_5": 475,
+          "apr9_0": 507,
+          "apr11_0": 551
+        }
+      },
+      {
+        "id": "fly",
+        "label": "Fly deal ~$64k",
+        "purchasePrice": 64000,
+        "downPayment": 20000,
+        "loanAmount": 44000,
+        "ltvPct": 69,
+        "termMonths": 120,
+        "monthly": {
+          "apr6_5": 500,
+          "apr7_5": 522,
+          "apr9_0": 557,
+          "apr11_0": 606
+        }
+      },
+      {
+        "id": "stretch",
+        "label": "Stretch $70k",
+        "purchasePrice": 70000,
+        "downPayment": 20000,
+        "loanAmount": 50000,
+        "ltvPct": 71,
+        "termMonths": 120,
+        "monthly": {
+          "apr6_5": 568,
+          "apr7_5": 594,
+          "apr9_0": 633,
+          "apr11_0": 689
+        }
+      },
+      {
+        "id": "nw_floor",
+        "label": "NW age-eligible floor",
+        "purchasePrice": 73800,
+        "downPayment": 20000,
+        "loanAmount": 53800,
+        "ltvPct": 73,
+        "termMonths": 120,
+        "monthly": {
+          "apr6_5": 611,
+          "apr7_5": 639,
+          "apr9_0": 682,
+          "apr11_0": 741
+        }
+      }
+    ],
+    "lenders": [
+      {
+        "name": "BECU (WA)",
+        "type": "Secured RV",
+        "rates": "From ~6.99% APR",
+        "terms": "Up to 240 months",
+        "notes": "Often 10\u201320% down on longer terms; gas RVs typically \u226475k miles.",
+        "fit": "Best first call if you're in Washington"
+      },
+      {
+        "name": "Alliant Credit Union",
+        "type": "Secured RV",
+        "rates": "6.49\u20137.49% APR as low as",
+        "terms": "10\u201320 years",
+        "notes": "RV \u226415 years old and <75k miles; private-party max often $100k.",
+        "fit": "Strong fit for 2020\u20132021 Solis"
+      },
+      {
+        "name": "Fibre FCU / other WA CUs",
+        "type": "Secured RV",
+        "rates": "Often mid-6% to 8%+",
+        "terms": "Up to 144\u2013180 months",
+        "notes": "Membership and age/mileage caps vary \u2014 confirm before applying.",
+        "fit": "Shop 2\u20133 local credit unions"
+      },
+      {
+        "name": "Navy Federal (if eligible)",
+        "type": "Secured RV",
+        "rates": "From ~7.45% APR",
+        "terms": "Up to 180 months",
+        "notes": "Military affiliation required; $0 down possible for well-qualified borrowers.",
+        "fit": "Only if membership-eligible"
+      },
+      {
+        "name": "LightStream / unsecured",
+        "type": "Personal loan",
+        "rates": "Often ~7\u201312%+ APR",
+        "terms": "Up to ~12 years",
+        "notes": "No RV age/mileage lien rules; needs strong credit.",
+        "fit": "Backup if secured RV rules block the van"
+      },
+      {
+        "name": "Dealer / indirect",
+        "type": "Secured RV",
+        "rates": "Often highest",
+        "terms": "Flexible",
+        "notes": "Convenient closing, but compare against a credit-union preapproval.",
+        "fit": "Use as leverage, not the default"
+      }
+    ],
+    "nextSteps": [
+      "Get preapproved at BECU + one other WA credit union for a $40\u201360k RV loan",
+      "Ask each: max term, min down, max miles/age, and whether private-party purchases are OK",
+      "Keep $6\u201310k liquid beyond the $20k down for tax, title, insurance, and inspection",
+      "Negotiate with a preapproval letter in hand; aim high-$60ks on NW 2021 stock when possible",
+      "Compare any dealer rate only after you have a credit-union quote"
+    ],
+    "sources": [
+      "BECU consumer lending / RV financing disclosures",
+      "Alliant Credit Union RV loans",
+      "Fibre FCU adventure / RV loans",
+      "Navy Federal RV loans",
+      "LightStream / Truist unsecured RV loan pages"
+    ]
+  }
 }
