@@ -26,11 +26,15 @@ function render(report) {
 
   document.getElementById("generatedAt").textContent = fmtDate(report.generatedAt);
   document.getElementById("budgetPill").innerHTML = `Budget <strong>${money(c.maxBudget)}</strong>`;
-  document.getElementById("agePill").innerHTML = `Max year <strong>${c.maxModelYear}</strong> (5+ yrs)`;
+  const agePref = c.preferredMaxModelYear ?? c.maxModelYear;
+  document.getElementById("agePill").innerHTML = agePref
+    ? `Prefer ≤<strong>${agePref}</strong> · any year if good deal`
+    : `Any year <strong>if good deal</strong>`;
   document.getElementById("radiusPill").innerHTML = `Radius <strong>${c.preferredRadiusMiles} mi</strong> of WA`;
   document.getElementById("targetPill").innerHTML = `Target <strong>Oct 2026</strong>`;
 
-  document.getElementById("statFloor").textContent = money(m.nwAgeEligibleFloor);
+  const floor = m.nwDealFloor ?? m.nwAgeEligibleFloor;
+  document.getElementById("statFloor").textContent = money(floor);
   document.getElementById("statGap").textContent = money(m.gapToBudget);
   document.getElementById("statGapHint").textContent = `vs ${money(c.maxBudget)} target`;
   document.getElementById("statNational").textContent = money(m.nationalUsedFloor);
@@ -55,7 +59,7 @@ function render(report) {
     .map((a) => `<div class="alert ${a.level}">${a.text}</div>`)
     .join("");
 
-  const primary = report.candidates.filter((x) => x.tier === "primary");
+  const primary = report.candidates.filter((x) => x.tier === "primary").slice(0, 4);
   document.getElementById("cards").innerHTML = primary
     .map(
       (x) => `
@@ -88,7 +92,9 @@ function render(report) {
           <td>
             <div><span class="tier ${x.tier}">${x.tier}</span></div>
             <div><strong>${x.year} ${x.trim}</strong></div>
-            <div class="proj">${x.ageEligible ? "Age eligible" : "Watchlist / too new"}</div>
+            <div class="proj">${
+              x.preferredAge || x.ageEligible ? "Preferred age" : "Newer · listed for deal"
+            }</div>
           </td>
           <td>
             <div class="price">${money(x.price)}</div>

@@ -1,29 +1,33 @@
 {
-  "generatedAt": "2026-07-24T03:15:02Z",
+  "generatedAt": "2026-07-24T03:23:19Z",
   "criteria": {
     "model": "Winnebago Solis",
     "maxBudget": 60000,
     "maxAgeYears": 5,
-    "maxModelYear": 2021,
+    "maxModelYear": null,
     "anchor": "Washington State",
     "preferredRadiusMiles": 500,
     "targetDate": "2026-10-01",
-    "notes": "Solis production began with model year 2020, so age-eligible units are 2020\u20132021 only. 2022 units are tracked as near-miss watchlist."
+    "notes": "No hard age cutoff. Prefer older vans when comparable, but list any Solis that looks like a strong deal on price, miles, condition, and location. Soft preference remains for model year \u22642021 when ranking equals.",
+    "preferredMaxModelYear": 2021,
+    "ageRule": "soft_preference"
   },
   "marketSummary": {
     "nationalUsedFloor": 73000,
     "nationalUsedAverage": 84826,
     "nationalUsedHigh": 99900,
     "nwAgeEligibleFloor": 73800,
-    "gapToBudget": 13800,
-    "verdict": "The lowest advertised NW age-eligible ask is now $73.8k, about $13.8k above budget, although that Autotrader-only Medford record needs mileage and availability confirmation. The lowest dealer-confirmed NW match remains $77.8k. National private 2021s at $70k\u2013$71k show a more realistic fly-to-buy path, while two nearby/fly 2022s are already within $8k of budget.",
+    "gapToBudget": 8000,
+    "verdict": "Deal-first ranking: nearby 2022 private stock in Renton at $68k is the strongest local budget lead (~$8k over target). Pottstown\u2019s $63,994 2022 is the national low ask. Older 2021s still matter for preference, but newer vans are listed whenever the price looks right.",
     "sources": [
       "RVs on Autotrader Solis aggregate (low/avg/high)",
       "Johnson RV Medford / Fife inventory",
       "Winnebago RV Source / RVUSA aggregator",
       "Vanlife Trader private listings",
       "Seattle Craigslist private listings"
-    ]
+    ],
+    "nwDealFloor": 68000,
+    "nwPreferredAgeFloor": 73800
   },
   "projections": {
     "asOf": "2026-07-24",
@@ -49,37 +53,38 @@
         "rationale": "High-mileage rental fleet dumps or year-end clear-outs; could push some 2022+ units near or under $60k."
       }
     ],
-    "budgetReachability": "A $60k purchase is plausible by Oct for a high-mileage 2022 or a motivated fly-to-buy seller. Age-eligible national private listings are now as low as $70k, but confirmed NW 2021 dealer stock still needs roughly $18k of negotiation from its current floor. Track stretch asks around $70k."
+    "budgetReachability": "A $60k purchase is most plausible via a strong 2022 deal (Renton/Pottstown path) or further negotiation on NW 2021 dealer stock. Track any under-$70k Solis regardless of year."
   },
   "candidates": [
     {
-      "id": "medford-2021-59px-25437r",
+      "id": "renton-2022-59p",
       "rank": 1,
       "tier": "primary",
-      "year": 2021,
-      "trim": "59PX",
-      "price": 73800,
+      "year": 2022,
+      "trim": "59P",
+      "price": 68000,
       "previousPrice": null,
       "priceChange": null,
-      "miles": null,
-      "vin": "3C6LRVDG5ME530928",
-      "stock": "25437R",
-      "city": "Medford",
-      "state": "OR",
-      "seller": "Johnson RV Medford via Autotrader",
-      "sellerType": "dealer",
-      "distanceMiles": 430,
-      "url": "https://rvs.autotrader.com/rvs/2021/winnebago/solis/59px/300655018",
+      "miles": 43000,
+      "vin": null,
+      "stock": null,
+      "city": "Renton",
+      "state": "WA",
+      "seller": "Private seller",
+      "sellerType": "private",
+      "distanceMiles": 15,
+      "url": "https://www.craigslist.org/view/d/renton-winnebago-solis-59p/w9JqGCLnhVeNpdSdhnpuxc",
       "status": "active",
-      "ageEligible": true,
+      "ageEligible": false,
       "withinRadius": true,
-      "notes": "Lowest advertised NW age-eligible ask. Autotrader shows stock 25437R, but its 1,459,000-mile feed value is corrupt and the direct dealer detail page is unavailable; confirm trim, mileage, and availability before travel.",
+      "notes": "Best nearby budget lead: private 43k-mile 2022 in Renton at $68k (~$8k over target). Strong deal despite newer year \u2014 inspect privately and confirm title/history.",
       "projectedOct": {
-        "mild": 71600,
-        "expected": 68600,
-        "aggressive": 64900
+        "mild": 66000,
+        "expected": 63200,
+        "aggressive": 59800
       },
-      "score": 96
+      "score": 130,
+      "preferredAge": false
     },
     {
       "id": "medford-2021-59px",
@@ -108,7 +113,8 @@
         "expected": 72400,
         "aggressive": 68500
       },
-      "score": 94
+      "score": 120,
+      "preferredAge": true
     },
     {
       "id": "fife-2021-59p",
@@ -137,11 +143,42 @@
         "expected": 74500,
         "aggressive": 70500
       },
-      "score": 90
+      "score": 120,
+      "preferredAge": true
+    },
+    {
+      "id": "medford-2021-59px-25437r",
+      "rank": 4,
+      "tier": "primary",
+      "year": 2021,
+      "trim": "59PX",
+      "price": 73800,
+      "previousPrice": null,
+      "priceChange": null,
+      "miles": null,
+      "vin": "3C6LRVDG5ME530928",
+      "stock": "25437R",
+      "city": "Medford",
+      "state": "OR",
+      "seller": "Johnson RV Medford via Autotrader",
+      "sellerType": "dealer",
+      "distanceMiles": 430,
+      "url": "https://rvs.autotrader.com/rvs/2021/winnebago/solis/59px/300655018",
+      "status": "active",
+      "ageEligible": true,
+      "withinRadius": true,
+      "notes": "Lowest advertised NW 2021 ask. Autotrader shows stock 25437R, but its mileage feed looks corrupt and the direct dealer detail page may be unavailable; confirm trim, mileage, and availability before travel.",
+      "projectedOct": {
+        "mild": 71600,
+        "expected": 68600,
+        "aggressive": 64900
+      },
+      "score": 119,
+      "preferredAge": true
     },
     {
       "id": "fife-2021-59px-25185b",
-      "rank": 4,
+      "rank": 5,
       "tier": "primary",
       "year": 2021,
       "trim": "59PX",
@@ -166,36 +203,8 @@
         "expected": 83600,
         "aggressive": 79100
       },
-      "score": 82
-    },
-    {
-      "id": "renton-2022-59p",
-      "rank": 5,
-      "tier": "watchlist",
-      "year": 2022,
-      "trim": "59P",
-      "price": 68000,
-      "previousPrice": null,
-      "priceChange": null,
-      "miles": 43000,
-      "vin": null,
-      "stock": null,
-      "city": "Renton",
-      "state": "WA",
-      "seller": "Private seller",
-      "sellerType": "private",
-      "distanceMiles": 15,
-      "url": "https://www.craigslist.org/view/d/renton-winnebago-solis-59p/w9JqGCLnhVeNpdSdhnpuxc",
-      "status": "active",
-      "ageEligible": false,
-      "withinRadius": true,
-      "notes": "Best nearby budget lead: private 43k-mile listing is $8k over target, but model year 2022 misses the five-year rule. Verify title, VIN, and service history.",
-      "projectedOct": {
-        "mild": 66000,
-        "expected": 63200,
-        "aggressive": 59800
-      },
-      "score": 88
+      "score": 108,
+      "preferredAge": true
     },
     {
       "id": "yakima-2022-59p",
@@ -219,13 +228,14 @@
       "missingRuns": 1,
       "ageEligible": false,
       "withinRadius": true,
-      "notes": "First consecutive run without a verifiable live detail page. Retained for one more run under the two-missing-runs policy; it also misses the age rule.",
+      "notes": "Nearby $72.5k ask worth watching if the listing is still live. Detail page was hard to verify on a prior run \u2014 confirm availability before travel.",
       "projectedOct": {
         "mild": 70300,
         "expected": 67400,
         "aggressive": 63800
       },
-      "score": 60
+      "score": 114,
+      "preferredAge": false
     },
     {
       "id": "wind-lake-2021-59px",
@@ -254,11 +264,42 @@
         "expected": 65100,
         "aggressive": 61600
       },
-      "score": 86
+      "score": 122,
+      "preferredAge": true
+    },
+    {
+      "id": "pottstown-2022-59px",
+      "rank": 8,
+      "tier": "fly",
+      "year": 2022,
+      "trim": "59PX",
+      "price": 63994,
+      "previousPrice": 63994,
+      "priceChange": 0,
+      "miles": 93000,
+      "vin": "3C6MRVJG0ME541800",
+      "stock": "1CR800",
+      "city": "Pottstown",
+      "state": "PA",
+      "seller": "Optimum RV",
+      "sellerType": "dealer",
+      "distanceMiles": 2700,
+      "url": "https://www.winnebagorvsource.com/2022-winnebago-class-b-solis-59px-pottstown-pennsylvania-5146441",
+      "status": "active",
+      "ageEligible": false,
+      "withinRadius": false,
+      "notes": "Lowest current ask and only ~$4k over budget. High mileage and far away \u2014 inspect carefully for commercial/rental wear. Strong fly-to-buy deal candidate.",
+      "projectedOct": {
+        "mild": 62100,
+        "expected": 59500,
+        "aggressive": 56300
+      },
+      "score": 116,
+      "preferredAge": false
     },
     {
       "id": "forestville-2021-59p",
-      "rank": 8,
+      "rank": 9,
       "tier": "fly",
       "year": 2021,
       "trim": "59P",
@@ -283,11 +324,12 @@
         "expected": 66000,
         "aggressive": 62500
       },
-      "score": 82
+      "score": 108,
+      "preferredAge": true
     },
     {
       "id": "golden-2021-59p",
-      "rank": 9,
+      "rank": 10,
       "tier": "fly",
       "year": 2021,
       "trim": "59P",
@@ -312,50 +354,22 @@
         "expected": 70700,
         "aggressive": 66900
       },
-      "score": 78
-    },
-    {
-      "id": "pottstown-2022-59px",
-      "rank": 10,
-      "tier": "fly",
-      "year": 2022,
-      "trim": "59PX",
-      "price": 63994,
-      "previousPrice": 63994,
-      "priceChange": 0,
-      "miles": 93000,
-      "vin": "3C6MRVJG0ME541800",
-      "stock": "1CR800",
-      "city": "Pottstown",
-      "state": "PA",
-      "seller": "Optimum RV",
-      "sellerType": "dealer",
-      "distanceMiles": 2700,
-      "url": "https://www.winnebagorvsource.com/2022-winnebago-class-b-solis-59px-pottstown-pennsylvania-5146441",
-      "status": "active",
-      "ageEligible": false,
-      "withinRadius": false,
-      "notes": "Lowest current ask and only $3,994 over budget, but it is too new, very high mileage, and far away. Inspect carefully for commercial or rental wear; ask is unchanged.",
-      "projectedOct": {
-        "mild": 62100,
-        "expected": 59500,
-        "aggressive": 56300
-      },
-      "score": 76
+      "score": 98,
+      "preferredAge": true
     }
   ],
   "alerts": [
     {
+      "level": "info",
+      "text": "Age is a soft preference only \u2014 good deals are listed at any model year."
+    },
+    {
+      "level": "info",
+      "text": "Best nearby deal right now: Renton 2022 59P at $68,000 (~$8k over budget). National low ask: Pottstown 2022 59PX at $63,994."
+    },
+    {
       "level": "warning",
-      "text": "Budget gap: the advertised NW age-eligible floor is $73.8k ($13.8k over target), but the lowest fully dealer-verified NW unit remains $77.8k."
-    },
-    {
-      "level": "info",
-      "text": "Within $10k today: Pottstown 2022 59PX at $63,994, Renton 2022 59P at $68,000, and age-eligible Wind Lake 2021 59PX at exactly $70,000."
-    },
-    {
-      "level": "info",
-      "text": "The prior Tampa fly listing is explicitly sold. Vanlife Trader's Portland 2021 is also sold; RV Trader and Facebook Marketplace remain automation-blocked, so indexed RV Trader cards and Craigslist were used where direct access was unavailable."
+      "text": "NW deal floor is about 68,000 vs $60k target (gap ~$8,000)."
     }
   ],
   "financing": {
@@ -425,17 +439,17 @@
       },
       {
         "id": "nw_floor",
-        "label": "NW age-eligible floor",
-        "purchasePrice": 73800,
+        "label": "NW deal floor",
+        "purchasePrice": 68000,
         "downPayment": 20000,
-        "loanAmount": 53800,
-        "ltvPct": 73,
+        "loanAmount": 48000,
+        "ltvPct": 71,
         "termMonths": 120,
         "monthly": {
-          "apr6_5": 611,
-          "apr7_5": 639,
-          "apr9_0": 682,
-          "apr11_0": 741
+          "apr6_5": 545,
+          "apr7_5": 570,
+          "apr9_0": 608,
+          "apr11_0": 661
         }
       }
     ],

@@ -6,7 +6,7 @@ Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search
 
 - Model: Winnebago Solis (59P, 59PX, Pocket OK to note)
 - Target budget: about **$60,000** (track up to ~$70k as stretch / negotiation)
-- Age: **at least 5 years old** → model year **≤ 2021** as of mid/late 2026
+- Age: **soft preference only** for model year ≤ 2021 — there is **no “too new” cutoff**. If it looks like a good deal on price/miles/condition, **list it**
 - Geography: prefer **≤ 500 miles of Washington State** (Seattle as anchor for distance)
 - Flying elsewhere is allowed for clear under-market deals — tag those `tier: "fly"`
 - Planning horizon: project prices to **2026-10-01**
@@ -26,12 +26,13 @@ Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search
    - Upsert candidates (stable `id`s when same VIN/stock/URL)
    - Set `previousPrice` / `priceChange` when an ask moves
    - Recompute `projectedOct` using scenarios in `projections.scenarios`
-   - Re-rank: primary (age-eligible + in radius) first, then watchlist, then fly
+   - Re-rank **deal-first**: primary = in-radius strong deals (any year), watchlist = uncertain/availability risk, fly = out-of-radius bargains. Soft +score for ≤2021 only when otherwise equal — never exclude for being newer
+   - Set `marketSummary.nwDealFloor` to the lowest active in-radius ask (any year) and refresh `gapToBudget`
    - Refresh `financing.paymentScenarios` with $20k down, 120-month term, APRs 6.5 / 7.5 / 9 / 11:
      - budget = $60k ask
      - fly ≈ lowest national/fly ask near budget
      - stretch = $70k
-     - nw_floor = current `marketSummary.nwAgeEligibleFloor`
+     - nw_floor = current `marketSummary.nwDealFloor`
      - monthly payment = standard amortizing installment; round to nearest dollar
    - Preserve lender guidance / next steps unless market advice clearly changes
 3. Append a daily snapshot to `data/history.json` (`snapshots` + per-candidate `priceSeries`)
@@ -55,11 +56,14 @@ Round to nearest $100. Refresh `gapToBudget` vs NW age-eligible floor.
 
 Score higher when:
 
-- year ≤ 2021
+- lower price / closer to the $60k budget
 - distance ≤ 500
-- lower price / larger recent markdown
+- larger recent markdown
 - lower miles / private seller
 - clear listing URL still live
+- year ≤ 2021 **only as a small tie-breaker** — never drop a strong newer deal
+
+Do **not** label candidates “too new.” Use notes like “newer year, listed for deal value.”
 
 Mark sold/missing listings `status: "sold"` or remove after two consecutive missing runs.
 
