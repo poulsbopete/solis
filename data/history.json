@@ -8,31 +8,83 @@
       "candidateCount": 6,
       "primaryCount": 2,
       "notes": "Initial baseline snapshot for Solis Watch."
+    },
+    {
+      "date": "2026-07-24",
+      "nationalFloor": 73000,
+      "nationalAverage": 84826,
+      "nwAgeEligibleFloor": 73800,
+      "candidateCount": 10,
+      "activeCount": 9,
+      "primaryCount": 4,
+      "watchlistCount": 2,
+      "flyCount": 4,
+      "notes": "Added two distinct Medford records, verified Fife stock details and price cut, added Renton private and three age-eligible fly leads, and removed the sold Tampa listing. Yakima is at one missing run."
     }
   ],
   "priceSeries": [
     {
       "id": "medford-2021-59px",
       "points": [
-        { "date": "2026-07-22", "price": 77800 }
+        { "date": "2026-07-22", "price": 77800 },
+        { "date": "2026-07-24", "price": 77800 }
       ]
     },
     {
       "id": "fife-2021-59p",
       "points": [
-        { "date": "2026-07-22", "price": 84000 }
+        { "date": "2026-07-22", "price": 84000 },
+        { "date": "2026-07-24", "price": 80100 }
       ]
     },
     {
       "id": "yakima-2022-59p",
       "points": [
-        { "date": "2026-07-22", "price": 72500 }
+        { "date": "2026-07-22", "price": 72500 },
+        { "date": "2026-07-24", "price": 72500, "status": "unverified" }
       ]
     },
     {
       "id": "pottstown-2022-59px",
       "points": [
-        { "date": "2026-07-22", "price": 63994 }
+        { "date": "2026-07-22", "price": 63994 },
+        { "date": "2026-07-24", "price": 63994 }
+      ]
+    },
+    {
+      "id": "medford-2021-59px-25437r",
+      "points": [
+        { "date": "2026-07-24", "price": 73800 }
+      ]
+    },
+    {
+      "id": "fife-2021-59px-25185b",
+      "points": [
+        { "date": "2026-07-24", "price": 89900 }
+      ]
+    },
+    {
+      "id": "renton-2022-59p",
+      "points": [
+        { "date": "2026-07-24", "price": 68000 }
+      ]
+    },
+    {
+      "id": "wind-lake-2021-59px",
+      "points": [
+        { "date": "2026-07-24", "price": 70000 }
+      ]
+    },
+    {
+      "id": "forestville-2021-59p",
+      "points": [
+        { "date": "2026-07-24", "price": 70998 }
+      ]
+    },
+    {
+      "id": "golden-2021-59p",
+      "points": [
+        { "date": "2026-07-24", "price": 76000 }
       ]
     }
   ]
