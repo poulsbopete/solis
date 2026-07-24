@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T04:02:00Z",
+  "generatedAt": "2026-07-24T00:14:44Z",
   "criteria": {
     "model": "Winnebago Solis",
     "maxBudget": 60000,
@@ -11,21 +11,22 @@
     "notes": "Solis production began with model year 2020, so age-eligible units are 2020–2021 only. 2022 units are tracked as near-miss watchlist."
   },
   "marketSummary": {
-    "nationalUsedFloor": 69599,
-    "nationalUsedAverage": 91675,
-    "nationalUsedHigh": 139900,
-    "nwAgeEligibleFloor": 77800,
-    "gapToBudget": 17800,
-    "verdict": "At $60k, the budget is still below today's NW age-eligible floor (~$78k), but the gap is negotiable. National used floor is already ~$70k; the Pottstown fly deal (~$64k) and Tampa (~$70k) are within striking distance. A NW 2021 at $60–$65k by Oct would need a motivated seller or private FSBO.",
+    "nationalUsedFloor": 63994,
+    "nationalUsedAverage": 85456,
+    "nationalUsedHigh": 99900,
+    "nwAgeEligibleFloor": 73800,
+    "gapToBudget": 13800,
+    "verdict": "The verified NW age-eligible floor fell to $73.8k, now $13.8k above budget. Pottstown remains the national low at $63,994 but is a high-mileage 2022. RV Trader also shows provisional 2021 fly deals at $69,450–$70,000, while a local private 2022 in Renton is $68,000.",
     "sources": [
-      "RVs on Autotrader Solis aggregate (low/avg/high)",
+      "RVs on Autotrader used Solis aggregate and listing pages",
+      "RV Trader indexed aggregate (detail pages blocked)",
       "Johnson RV Medford / Fife inventory",
       "Winnebago RV Source / RVUSA aggregator",
-      "Vanlife Trader private listings"
+      "Vanlife Trader and Seattle Craigslist private listings"
     ]
   },
   "projections": {
-    "asOf": "2026-07-22",
+    "asOf": "2026-07-24",
     "target": "2026-10-01",
     "monthsAhead": 2.3,
     "scenarios": [
@@ -45,15 +46,44 @@
         "id": "aggressive",
         "label": "Aggressive / motivated seller",
         "changePct": -0.12,
-        "rationale": "High-mileage rental fleet dumps or year-end clear-outs; could push some 2022+ units near or under $60k."
+        "rationale": "High-mileage fleet sales, motivated private sellers, or year-end clear-outs."
       }
     ],
-    "budgetReachability": "Plausible for fly-to-buy or high-mileage 2022+ by Oct; age-eligible NW 2021s still need ~$15–20k of further discounting or a private seller. Track stretch asks up to ~$70k."
+    "budgetReachability": "Several fly or too-new options are already within $10k of budget. The best verified NW age-eligible ask still needs a $13.8k negotiation; its aggressive October projection is about $64.9k."
   },
   "candidates": [
     {
-      "id": "medford-2021-59px",
+      "id": "medford-2021-59px-25437r",
       "rank": 1,
+      "tier": "primary",
+      "year": 2021,
+      "trim": "59PX",
+      "price": 73800,
+      "previousPrice": null,
+      "priceChange": null,
+      "miles": null,
+      "vin": "3C6LRVDG5ME530928",
+      "stock": "25437R",
+      "city": "Medford",
+      "state": "OR",
+      "seller": "Johnson RV Medford",
+      "sellerType": "dealer",
+      "distanceMiles": 430,
+      "url": "https://rvs.autotrader.com/rvs/2021/winnebago/solis/59px/300655018",
+      "status": "active",
+      "ageEligible": true,
+      "withinRadius": true,
+      "notes": "Lowest current age-eligible NW ask. Autotrader listing is live, but Johnson's direct page is unavailable and its mileage feed is corrupt; verify price, odometer, and VIN before travel.",
+      "projectedOct": {
+        "mild": 71600,
+        "expected": 68600,
+        "aggressive": 64900
+      },
+      "score": 96
+    },
+    {
+      "id": "medford-2021-59px",
+      "rank": 2,
       "tier": "primary",
       "year": 2021,
       "trim": "59PX",
@@ -72,46 +102,75 @@
       "status": "active",
       "ageEligible": true,
       "withinRadius": true,
-      "notes": "Best current age-eligible NW match: already discounted $11.2k from retail. Pop-top 59PX, low miles.",
+      "notes": "Verified direct dealer listing with a $11.2k discount from retail. Lower-risk listing data than the cheaper Medford unit.",
       "projectedOct": {
         "mild": 75500,
-        "expected": 72300,
-        "aggressive": 68400
+        "expected": 72400,
+        "aggressive": 68500
       },
-      "score": 92
+      "score": 93
     },
     {
       "id": "fife-2021-59p",
-      "rank": 2,
+      "rank": 3,
       "tier": "primary",
       "year": 2021,
       "trim": "59P",
-      "price": 84000,
-      "previousPrice": null,
-      "priceChange": null,
-      "miles": null,
-      "vin": null,
-      "stock": null,
+      "price": 80100,
+      "previousPrice": 84000,
+      "priceChange": -3900,
+      "miles": 20997,
+      "vin": "3C6LRVDG1ME523264",
+      "stock": "26556R",
       "city": "Fife",
       "state": "WA",
       "seller": "Johnson RV Fife",
       "sellerType": "dealer",
       "distanceMiles": 30,
-      "url": "https://www.winnebagorvsource.com/used-winnebago-solis-rvs-for-sale?condition=2&model_id=7522",
+      "url": "https://johnsonrv.com/inventory/Used-2021-Winnebago-Solis-59P-3C6LRVDG1ME523264",
       "status": "active",
       "ageEligible": true,
       "withinRadius": true,
-      "notes": "Closest geography (Tacoma/Fife). Confirm miles/VIN on lot; price ~$6k above Medford 59PX.",
+      "notes": "Closest age-eligible option. Sale price includes the $4.1k dealer discount and $200 WA documentation fee; ask is down $3.9k from the prior tracked price.",
       "projectedOct": {
-        "mild": 81500,
-        "expected": 78100,
-        "aggressive": 73900
+        "mild": 77700,
+        "expected": 74500,
+        "aggressive": 70500
       },
-      "score": 88
+      "score": 90
+    },
+    {
+      "id": "renton-2022-59p",
+      "rank": 4,
+      "tier": "watchlist",
+      "year": 2022,
+      "trim": "59P",
+      "price": 68000,
+      "previousPrice": null,
+      "priceChange": null,
+      "miles": 43000,
+      "vin": null,
+      "stock": null,
+      "city": "Renton",
+      "state": "WA",
+      "seller": "Private seller",
+      "sellerType": "private",
+      "distanceMiles": 13,
+      "url": "https://seattle.craigslist.org/see/rvs/d/renton-winnebago-solis-59p/7944560693.html",
+      "status": "active",
+      "ageEligible": false,
+      "withinRadius": true,
+      "notes": "Strong local private ask with a clean title, but model year 2022 misses the 5-year rule. Posted July 1; inspect service records and verify VIN.",
+      "projectedOct": {
+        "mild": 66000,
+        "expected": 63200,
+        "aggressive": 59800
+      },
+      "score": 86
     },
     {
       "id": "yakima-2022-59p",
-      "rank": 3,
+      "rank": 5,
       "tier": "watchlist",
       "year": 2022,
       "trim": "59P",
@@ -120,124 +179,153 @@
       "priceChange": null,
       "miles": null,
       "vin": null,
-      "stock": null,
+      "stock": "C67175061",
       "city": "Yakima",
       "state": "WA",
       "seller": "National Vehicle",
       "sellerType": "broker",
       "distanceMiles": 140,
       "url": "https://www.winnebagorvsource.com/2022-winnebago-class-b-solis-59p-yakima-washington-4600738",
-      "status": "active",
+      "status": "missing",
       "ageEligible": false,
       "withinRadius": true,
-      "notes": "Strong price but only ~4 years old by Oct 2026 — misses the 5-year rule. Keep watching if age flexibility increases.",
+      "notes": "First missing run: an indexed result remains, but the prior $72,500 ask could not be reconfirmed. Remove after a second consecutive missing run.",
       "projectedOct": {
         "mild": 70300,
         "expected": 67400,
         "aggressive": 63800
       },
+      "score": 60
+    },
+    {
+      "id": "las-vegas-2021-59px-417364",
+      "rank": 6,
+      "tier": "fly",
+      "year": 2021,
+      "trim": "59PX",
+      "price": 69450,
+      "previousPrice": null,
+      "priceChange": null,
+      "miles": 60000,
+      "vin": null,
+      "stock": "417364",
+      "city": "Las Vegas",
+      "state": "NV",
+      "seller": "POP Sells",
+      "sellerType": "broker",
+      "distanceMiles": 1120,
+      "url": "https://www.rvtrader.com/listing/2021-Winnebago-Solis+59PX-5032749826",
+      "status": "active",
+      "ageEligible": true,
+      "withinRadius": false,
+      "notes": "Age-eligible and within $10k of budget. Current RV Trader aggregate card is visible, but detail access is blocked; confirm availability and condition before booking travel.",
+      "projectedOct": {
+        "mild": 67400,
+        "expected": 64600,
+        "aggressive": 61100
+      },
+      "score": 82
+    },
+    {
+      "id": "wind-lake-2021-59px",
+      "rank": 7,
+      "tier": "fly",
+      "year": 2021,
+      "trim": "59PX",
+      "price": 70000,
+      "previousPrice": null,
+      "priceChange": null,
+      "miles": 25000,
+      "vin": null,
+      "stock": null,
+      "city": "Wind Lake",
+      "state": "WI",
+      "seller": "Private seller",
+      "sellerType": "private",
+      "distanceMiles": 1950,
+      "url": "https://www.rvtrader.com/listing/2021-Winnebago-SOLIS+59PX-5035999090",
+      "status": "active",
+      "ageEligible": true,
+      "withinRadius": false,
+      "notes": "Low-mile private age-eligible ask exactly $10k over budget. RV Trader detail access is blocked, so treat as provisional and verify title, VIN, and availability.",
+      "projectedOct": {
+        "mild": 67900,
+        "expected": 65100,
+        "aggressive": 61600
+      },
       "score": 80
     },
     {
+      "id": "rockford-2021-59px-10975a",
+      "rank": 8,
+      "tier": "fly",
+      "year": 2021,
+      "trim": "59PX",
+      "price": 74900,
+      "previousPrice": 76900,
+      "priceChange": -2000,
+      "miles": 52511,
+      "vin": null,
+      "stock": "10975A",
+      "city": "Rockford",
+      "state": "IL",
+      "seller": "Winnebago Motor Homes",
+      "sellerType": "dealer",
+      "distanceMiles": 2000,
+      "url": "https://www.winnebagomotorhomes.com/2021-winnebago-solis-59px-used-class-b-rockford-il-61101-i4537733",
+      "status": "active",
+      "ageEligible": true,
+      "withinRadius": false,
+      "notes": "Verified dealer fly option discounted $2k from its $76,900 list price. Age-eligible, but over the stretch range and higher mileage.",
+      "projectedOct": {
+        "mild": 72700,
+        "expected": 69700,
+        "aggressive": 65900
+      },
+      "score": 72
+    },
+    {
       "id": "pottstown-2022-59px",
-      "rank": 4,
+      "rank": 9,
       "tier": "fly",
       "year": 2022,
       "trim": "59PX",
       "price": 63994,
       "previousPrice": 126665,
       "priceChange": -62671,
-      "miles": null,
-      "vin": null,
-      "stock": null,
+      "miles": 93000,
+      "vin": "3C6MRVJG0ME541800",
+      "stock": "1CR800",
       "city": "Pottstown",
       "state": "PA",
       "seller": "Optimum RV",
       "sellerType": "dealer",
       "distanceMiles": 2700,
-      "url": "https://www.winnebagorvsource.com/used-winnebago-solis-rvs-for-sale?condition=2&model_id=7522",
+      "url": "https://www.rvusa.com/2022-winnebago-solis-59px-class-b-5146441",
       "status": "active",
       "ageEligible": false,
       "withinRadius": false,
-      "notes": "National low outlier after huge markdown. Not age-eligible and far — only if flying + inspecting carefully. ~$4k over $60k; Oct expected projection dips under budget.",
+      "notes": "Lowest verified ask and only $3,994 over budget, but it is too new, far away, and has 93k miles. Require a thorough independent inspection.",
       "projectedOct": {
         "mild": 62100,
         "expected": 59500,
         "aggressive": 56300
       },
-      "score": 70
-    },
-    {
-      "id": "tampa-2022-59px",
-      "rank": 5,
-      "tier": "fly",
-      "year": 2022,
-      "trim": "59PX",
-      "price": 69893,
-      "previousPrice": 79993,
-      "priceChange": -10100,
-      "miles": null,
-      "vin": null,
-      "stock": "347681",
-      "city": "Tampa",
-      "state": "FL",
-      "seller": "General RV",
-      "sellerType": "dealer",
-      "distanceMiles": 2800,
-      "url": "https://generalrv.com/rvs-for-sale/used-2022-winnebago-solis-59px-347681",
-      "status": "active",
-      "ageEligible": false,
-      "withinRadius": false,
-      "notes": "Near national floor (~$10k over budget). Fly-to-buy only; verify rental history / wear. Oct aggressive case can land near $60k.",
-      "projectedOct": {
-        "mild": 67800,
-        "expected": 65000,
-        "aggressive": 61500
-      },
-      "score": 68
-    },
-    {
-      "id": "sandiego-2023-59p",
-      "rank": 6,
-      "tier": "watchlist",
-      "year": 2023,
-      "trim": "59P",
-      "price": 79998,
-      "previousPrice": null,
-      "priceChange": null,
-      "miles": null,
-      "vin": null,
-      "stock": null,
-      "city": "San Diego",
-      "state": "CA",
-      "seller": "La Mesa | RecVan",
-      "sellerType": "dealer",
-      "distanceMiles": 1200,
-      "url": "https://www.winnebagorvsource.com/used-winnebago-solis-rvs-for-sale?condition=2&model_id=7522",
-      "status": "active",
-      "ageEligible": false,
-      "withinRadius": false,
-      "notes": "Too new for age filter; useful as West Coast price comparator.",
-      "projectedOct": {
-        "mild": 77600,
-        "expected": 74400,
-        "aggressive": 70400
-      },
-      "score": 45
+      "score": 69
     }
   ],
   "alerts": [
     {
       "level": "warning",
-      "text": "Budget gap: age-eligible NW floor (~$77.8k) is about $18k above the $60k target."
+      "text": "Budget gap: the verified age-eligible NW floor is $73,800, or $13,800 above the $60k target."
     },
     {
       "level": "info",
-      "text": "Closest to budget today: Pottstown 2022 59PX at $63,994 (fly). Best NW path: negotiate Medford 2021 59PX toward the high-$60ks / low-$70ks by Oct."
+      "text": "Within $10k today: Pottstown 2022 at $63,994, Renton 2022 at $68,000, and provisional RV Trader 2021s at $69,450 and $70,000."
     },
     {
       "level": "info",
-      "text": "Also monitor Facebook Marketplace, Craigslist (Seattle/Portland/Boise), and Vanlife Trader for FSBO 2020–2021 Solis units — private sales often undercut dealers by $5–15k."
+      "text": "Fife dropped to $80,100. Tampa stock 347681 is sold; Yakima is on its first missing run. Facebook Marketplace remains login-blocked, and Vanlife Trader's Portland 2021 is sold."
     }
   ]
 }
