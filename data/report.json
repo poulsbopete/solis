@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T03:23:19Z",
+  "generatedAt": "2026-07-25T00:07:30Z",
   "criteria": {
     "model": "Winnebago Solis",
     "maxBudget": 60000,
@@ -18,7 +18,7 @@
     "nationalUsedHigh": 99900,
     "nwAgeEligibleFloor": 73800,
     "gapToBudget": 8000,
-    "verdict": "Deal-first ranking: nearby 2022 private stock in Renton at $68k is the strongest local budget lead (~$8k over target). Pottstown\u2019s $63,994 2022 is the national low ask. Older 2021s still matter for preference, but newer vans are listed whenever the price looks right.",
+    "verdict": "Deal-first ranking: the active private 2022 in Renton at $68k remains the strongest local budget lead (~$8k over target). Pottstown\u2019s $63,994 2022 remains the national low ask, while a verified Smyrna 2021 at $69,900 adds an age-preferred fly option.",
     "sources": [
       "RVs on Autotrader Solis aggregate (low/avg/high)",
       "Johnson RV Medford / Fife inventory",
@@ -30,9 +30,9 @@
     "nwPreferredAgeFloor": 73800
   },
   "projections": {
-    "asOf": "2026-07-24",
+    "asOf": "2026-07-25",
     "target": "2026-10-01",
-    "monthsAhead": 2.3,
+    "monthsAhead": 2.2,
     "scenarios": [
       {
         "id": "mild",
@@ -53,7 +53,7 @@
         "rationale": "High-mileage rental fleet dumps or year-end clear-outs; could push some 2022+ units near or under $60k."
       }
     ],
-    "budgetReachability": "A $60k purchase is most plausible via a strong 2022 deal (Renton/Pottstown path) or further negotiation on NW 2021 dealer stock. Track any under-$70k Solis regardless of year."
+    "budgetReachability": "A $60k purchase is most plausible via negotiation on the Renton private van, the high-mileage Pottstown fly deal, or seasonal softening. Smyrna adds a verified 2021 fly option just under $70k."
   },
   "candidates": [
     {
@@ -63,8 +63,8 @@
       "year": 2022,
       "trim": "59P",
       "price": 68000,
-      "previousPrice": null,
-      "priceChange": null,
+      "previousPrice": 68000,
+      "priceChange": 0,
       "miles": 43000,
       "vin": null,
       "stock": null,
@@ -77,7 +77,7 @@
       "status": "active",
       "ageEligible": false,
       "withinRadius": true,
-      "notes": "Best nearby budget lead: private 43k-mile 2022 in Renton at $68k (~$8k over target). Strong deal despite newer year \u2014 inspect privately and confirm title/history.",
+      "notes": "Best nearby budget lead, verified live and unchanged: private 43k-mile 2022 in Renton at $68k (~$8k over target). Strong deal despite newer year \u2014 inspect privately and confirm title/history.",
       "projectedOct": {
         "mild": 66000,
         "expected": 63200,
@@ -123,8 +123,8 @@
       "year": 2021,
       "trim": "59P",
       "price": 80100,
-      "previousPrice": 84000,
-      "priceChange": -3900,
+      "previousPrice": 80100,
+      "priceChange": 0,
       "miles": 20997,
       "vin": "3C6LRVDG1ME523264",
       "stock": "26556R",
@@ -137,24 +137,24 @@
       "status": "active",
       "ageEligible": true,
       "withinRadius": true,
-      "notes": "Closest verified candidate. Direct page now supplies VIN, stock, and 20,997 miles; the $80,100 ask includes Johnson's $200 WA documentation fee and is $3,900 below the prior tracked price.",
+      "notes": "Closest verified 2021 candidate. Direct page remains live at $80,100 including Johnson's $200 WA documentation fee, unchanged today after the previously tracked $3,900 cut.",
       "projectedOct": {
         "mild": 77700,
         "expected": 74500,
         "aggressive": 70500
       },
-      "score": 120,
+      "score": 119,
       "preferredAge": true
     },
     {
       "id": "medford-2021-59px-25437r",
       "rank": 4,
-      "tier": "primary",
+      "tier": "watchlist",
       "year": 2021,
       "trim": "59PX",
       "price": 73800,
-      "previousPrice": null,
-      "priceChange": null,
+      "previousPrice": 73800,
+      "priceChange": 0,
       "miles": null,
       "vin": "3C6LRVDG5ME530928",
       "stock": "25437R",
@@ -167,7 +167,7 @@
       "status": "active",
       "ageEligible": true,
       "withinRadius": true,
-      "notes": "Lowest advertised NW 2021 ask. Autotrader shows stock 25437R, but its mileage feed looks corrupt and the direct dealer detail page may be unavailable; confirm trim, mileage, and availability before travel.",
+      "notes": "Lowest advertised NW 2021 ask, unchanged on Autotrader. Mileage remains corrupt and the unit is absent from Johnson's searchable inventory, so confirm availability before travel.",
       "projectedOct": {
         "mild": 71600,
         "expected": 68600,
@@ -179,12 +179,12 @@
     {
       "id": "fife-2021-59px-25185b",
       "rank": 5,
-      "tier": "primary",
+      "tier": "watchlist",
       "year": 2021,
       "trim": "59PX",
       "price": 89900,
-      "previousPrice": null,
-      "priceChange": null,
+      "previousPrice": 89900,
+      "priceChange": 0,
       "miles": null,
       "vin": "3C6MRVJG2ME511231",
       "stock": "25185B",
@@ -197,55 +197,24 @@
       "status": "active",
       "ageEligible": true,
       "withinRadius": true,
-      "notes": "Additional age-eligible Fife inventory with stable VIN and stock identity. Price is well above the target and mileage was not exposed in the current feed.",
+      "notes": "Autotrader listing is unchanged, but it remains absent from Johnson's searchable inventory. Price is well above target; verify availability and the syndicated 21,453-mile figure before considering.",
       "projectedOct": {
         "mild": 87200,
         "expected": 83600,
         "aggressive": 79100
       },
-      "score": 108,
+      "score": 98,
       "preferredAge": true
     },
     {
-      "id": "yakima-2022-59p",
-      "rank": 6,
-      "tier": "watchlist",
-      "year": 2022,
-      "trim": "59P",
-      "price": 72500,
-      "previousPrice": 72500,
-      "priceChange": 0,
-      "miles": null,
-      "vin": null,
-      "stock": "C67175061",
-      "city": "Yakima",
-      "state": "WA",
-      "seller": "National Vehicle",
-      "sellerType": "broker",
-      "distanceMiles": 140,
-      "url": "https://www.winnebagorvsource.com/2022-winnebago-class-b-solis-59p-yakima-washington-4600738",
-      "status": "unverified",
-      "missingRuns": 1,
-      "ageEligible": false,
-      "withinRadius": true,
-      "notes": "Nearby $72.5k ask worth watching if the listing is still live. Detail page was hard to verify on a prior run \u2014 confirm availability before travel.",
-      "projectedOct": {
-        "mild": 70300,
-        "expected": 67400,
-        "aggressive": 63800
-      },
-      "score": 114,
-      "preferredAge": false
-    },
-    {
       "id": "wind-lake-2021-59px",
-      "rank": 7,
+      "rank": 6,
       "tier": "fly",
       "year": 2021,
       "trim": "59PX",
       "price": 70000,
-      "previousPrice": null,
-      "priceChange": null,
+      "previousPrice": 70000,
+      "priceChange": 0,
       "miles": 25000,
       "vin": null,
       "stock": null,
@@ -258,13 +227,43 @@
       "status": "active",
       "ageEligible": true,
       "withinRadius": false,
-      "notes": "Best age-eligible fly lead and exactly $10k over budget: private hard-top 59PX with 25k miles. RV Trader detail access is blocked, so corroborate by phone before booking travel.",
+      "notes": "Best age-eligible private fly lead and exactly $10k over budget: current RV Trader indexing remains unchanged at 25k miles. Direct access is blocked, so corroborate by phone before travel.",
       "projectedOct": {
         "mild": 67900,
         "expected": 65100,
         "aggressive": 61600
       },
       "score": 122,
+      "preferredAge": true
+    },
+    {
+      "id": "smyrna-2021-59px-6149b",
+      "rank": 7,
+      "tier": "fly",
+      "year": 2021,
+      "trim": "59PX",
+      "price": 69900,
+      "previousPrice": null,
+      "priceChange": null,
+      "miles": null,
+      "vin": "3C6MRVJGXME546051",
+      "stock": "6149B",
+      "city": "Smyrna",
+      "state": "DE",
+      "seller": "Parkview RV Center",
+      "sellerType": "dealer",
+      "distanceMiles": 2850,
+      "url": "https://www.parkviewrv.com/product/used-2021-winnebago-solis-59px-3711796-13",
+      "status": "active",
+      "ageEligible": true,
+      "withinRadius": false,
+      "notes": "Newly verified age-preferred fly lead at $69,900 after a $10k advertised dealer discount. Direct page is live with VIN and stock, but mileage is not disclosed; obtain history and odometer before travel.",
+      "projectedOct": {
+        "mild": 67800,
+        "expected": 65000,
+        "aggressive": 61500
+      },
+      "score": 117,
       "preferredAge": true
     },
     {
@@ -304,8 +303,8 @@
       "year": 2021,
       "trim": "59P",
       "price": 70998,
-      "previousPrice": null,
-      "priceChange": null,
+      "previousPrice": 70998,
+      "priceChange": 0,
       "miles": 55000,
       "vin": null,
       "stock": null,
@@ -318,7 +317,7 @@
       "status": "active",
       "ageEligible": true,
       "withinRadius": false,
-      "notes": "Closest age-eligible private fly lead, with 55k miles and advertised upgrades. It is about $11k over target; RV Trader detail access is blocked, so verify directly.",
+      "notes": "Age-eligible private fly lead, unchanged in current RV Trader indexing at 55k miles. It is about $11k over target; direct access is blocked, so verify with the seller.",
       "projectedOct": {
         "mild": 68900,
         "expected": 66000,
@@ -334,8 +333,8 @@
       "year": 2021,
       "trim": "59P",
       "price": 76000,
-      "previousPrice": null,
-      "priceChange": null,
+      "previousPrice": 76000,
+      "priceChange": 0,
       "miles": 36143,
       "vin": "3C6TRVDG1LE127723",
       "stock": "1749",
@@ -348,7 +347,7 @@
       "status": "active",
       "ageEligible": true,
       "withinRadius": false,
-      "notes": "Newly listed, fully detailed private consignment with no dealer fees, service records, and a clear title. Underlying chassis VIN is 2020, but the coach is advertised as model year 2021.",
+      "notes": "Fully detailed private consignment remains active and unchanged, with no dealer fees claimed, service records, and a clear title. Underlying chassis VIN is 2020, but the coach is advertised as model year 2021.",
       "projectedOct": {
         "mild": 73700,
         "expected": 70700,
@@ -365,7 +364,7 @@
     },
     {
       "level": "info",
-      "text": "Best nearby deal right now: Renton 2022 59P at $68,000 (~$8k over budget). National low ask: Pottstown 2022 59PX at $63,994."
+      "text": "Best nearby deal: Renton 2022 59P at $68,000 (~$8k over budget). National low ask: Pottstown 2022 59PX at $63,994; verified age-preferred fly option: Smyrna 2021 59PX at $69,900."
     },
     {
       "level": "warning",
@@ -373,7 +372,7 @@
     }
   ],
   "financing": {
-    "asOf": "2026-07-24",
+    "asOf": "2026-07-25",
     "downPaymentTarget": 20000,
     "extraCashNeeded": {
       "low": 6000,
