@@ -191,27 +191,10 @@ function renderFinancing(fin) {
     : "";
 }
 
-async function loadFromElastic() {
-  const cfg = window.SOLIS_ELASTIC;
-  if (!cfg?.endpoint || !cfg?.apiKey) return null;
-  const index = cfg.index || "solis-watch";
-  const id = cfg.reportId || "report-current";
-  const url = `${cfg.endpoint.replace(/\/$/, "")}/${index}/_doc/${id}`;
-  const res = await fetch(url, {
-    cache: "no-store",
-    headers: {
-      Authorization: `ApiKey ${cfg.apiKey}`,
-      Accept: "application/json",
-    },
-  });
-  if (!res.ok) {
-    throw new Error(`Elasticsearch HTTP ${res.status}`);
-  }
-  const doc = await res.json();
-  if (!doc?.found || !doc?._source?.payload) {
-    throw new Error("report-current missing payload");
-  }
-  return { report: doc._source.payload, source: "elastic" };
+async function loadFromPagesCache() {
+  const res = await fetch("./data/report-live.json", { cache: "no-store" });
+  if (!res.ok) return null;
+  return { report: await res.json(), source: "elastic-cache" };
 }
 
 async function loadFromJsonFallback() {
@@ -221,14 +204,7 @@ async function loadFromJsonFallback() {
 }
 
 async function boot() {
-  let loaded;
-  let elasticError = null;
-  try {
-    loaded = await loadFromElastic();
-  } catch (err) {
-    elasticError = err;
-    loaded = null;
-  }
+  let loaded = await loadFromPagesCache();
   if (!loaded) {
     loaded = await loadFromJsonFallback();
   }
@@ -236,11 +212,9 @@ async function boot() {
   const src = document.getElementById("dataSource");
   if (src) {
     src.textContent =
-      loaded.source === "elastic"
-        ? "Data source: Elasticsearch (live)"
-        : `Data source: static JSON fallback${
-            elasticError ? ` · Elastic error: ${elasticError.message}` : ""
-          }`;
+      loaded.source === "elastic-cache"
+        ? "Data source: Elasticsearch (Pages cache)"
+        : "Data source: static JSON fallback";
   }
 }
 

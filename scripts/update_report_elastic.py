@@ -18,6 +18,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = "solis-watch"
+PAGES_CACHE = ROOT / "data" / "report-live.json"
 
 
 def load_dotenv(path: Path, override: bool = False) -> None:
@@ -111,10 +112,22 @@ def upsert_history_point(history: dict, report: dict) -> None:
     )
 
 
+def write_pages_cache(report: dict, out_path: Path = PAGES_CACHE) -> Path:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(report, indent=2) + "\n")
+    return out_path
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--report", type=Path, default=ROOT / "data" / "report.json")
     parser.add_argument("--history", type=Path, default=ROOT / "data" / "history.json")
+    parser.add_argument(
+        "--pages-cache",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Write data/report-live.json for GitHub Pages (default: on)",
+    )
     args = parser.parse_args()
     load_env()
     if "ELASTICSEARCH_URL" not in os.environ:
@@ -124,6 +137,9 @@ def main() -> None:
     upsert_report(report)
     upsert_history_point(history, report)
     es_request("POST", f"/{INDEX}/_refresh")
+    pages_cache = None
+    if args.pages_cache:
+        pages_cache = str(write_pages_cache(report).relative_to(ROOT))
     print(
         json.dumps(
             {
@@ -131,6 +147,7 @@ def main() -> None:
                 "generatedAt": report.get("generatedAt"),
                 "candidateCount": len(report.get("candidates", [])),
                 "index": INDEX,
+                "pagesCache": pages_cache,
             }
         )
     )

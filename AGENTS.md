@@ -2,8 +2,9 @@
 
 Keep the buyer report current for a used **Winnebago Solis** search.
 
-**Source of truth is Elasticsearch**, not git. The GitHub Pages site reads
-`solis-watch/_doc/report-current` at load time.
+**Source of truth is Elasticsearch.** GitHub Pages cannot call Elastic Serverless
+directly from the browser (no CORS). After each upsert, sync `data/report-live.json`
+(same-origin cache) and push it so the site updates.
 
 ## Buyer criteria
 
@@ -27,9 +28,9 @@ Credentials (in `.env`, never commit):
 
 - `ELASTICSEARCH_URL` — Serverless ES endpoint (e.g. `https://<project>.es.<region>.aws.elastic.cloud`)
 - `ELASTICSEARCH_API_KEY` — write-capable key for automation (`python3 scripts/update_report_elastic.py`)
-- `ELASTICSEARCH_READ_API_KEY` — read-only key for GitHub Pages (create in Kibana → API Keys, then `python3 scripts/write_pages_config.py`)
+- `ELASTICSEARCH_READ_API_KEY` — optional read key for `scripts/sync_pages_cache.py`
 
-Serverless note: you cannot derive scoped read/write keys from an existing API key. Create the Pages read key in Kibana while logged in as your user.
+Serverless note: you cannot derive scoped read/write keys from an existing API key. Browser CORS is not configurable on Serverless, so Pages loads `data/report-live.json` instead of calling ES directly.
 
 ## What to do each run
 
@@ -56,10 +57,11 @@ Serverless note: you cannot derive scoped read/write keys from an existing API k
    - Preserve lender guidance / next steps unless market advice clearly changes
 3. Optionally write the assembled JSON to `data/report.json` / append `data/history.json` **locally in the workspace for the upload scripts** — but do **not** commit or push those data files.
 4. Upsert Elasticsearch:
-   - Preferred: `python3 scripts/update_report_elastic.py` (uses `ELASTICSEARCH_URL` + `ELASTICSEARCH_API_KEY` from `.env`)
-   - Or PUT `solis-watch/_doc/report-current` and `solis-watch/_doc/history-YYYY-MM-DD` directly
-5. Verify https://poulsbopete.github.io/solis/ shows the new `generatedAt` and “Data source: Elasticsearch (live)”
-6. **Do not open a pull request. Do not commit report data to git.** Only commit/push if UI/scripts/AGENTS need a code change.
+   - Preferred: `python3 scripts/update_report_elastic.py` (also writes `data/report-live.json`)
+   - Or PUT `solis-watch/_doc/report-current` and `history-YYYY-MM-DD`, then `python3 scripts/sync_pages_cache.py`
+5. Commit and push **only** `data/report-live.json` to `main` (Pages cache — not `data/report.json` / `history.json`)
+6. Verify https://poulsbopete.github.io/solis/ shows the new `generatedAt` and “Data source: Elasticsearch (Pages cache)”
+7. **Do not open a pull request** for routine report updates. Only commit/push if UI/scripts/AGENTS need a code change, plus the Pages cache file each run.
 
 ## Projection rules
 
@@ -93,5 +95,5 @@ End the run with:
 - count of primary / watchlist / fly candidates
 - best current deal (price, year, city)
 - whether any listing is at or within $10k of the $60k budget
-- confirmation that Elasticsearch `report-current` was updated
-- GitHub Pages URL confirmation (live date moved without a git commit)
+- confirmation that Elasticsearch `report-current` was updated and `data/report-live.json` was pushed
+- GitHub Pages URL confirmation (Updated timestamp matches latest cache)
