@@ -1,0 +1,7 @@
+.env
+.elastic-credentials
+*.pyc
+__pycache__/
+.DS_Store
+.elasticsearch/
+tmp/

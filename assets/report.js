@@ -191,11 +191,57 @@ function renderFinancing(fin) {
     : "";
 }
 
-async function boot() {
+async function loadFromElastic() {
+  const cfg = window.SOLIS_ELASTIC;
+  if (!cfg?.endpoint || !cfg?.apiKey) return null;
+  const index = cfg.index || "solis-watch";
+  const id = cfg.reportId || "report-current";
+  const url = `${cfg.endpoint.replace(/\/$/, "")}/${index}/_doc/${id}`;
+  const res = await fetch(url, {
+    cache: "no-store",
+    headers: {
+      Authorization: `ApiKey ${cfg.apiKey}`,
+      Accept: "application/json",
+    },
+  });
+  if (!res.ok) {
+    throw new Error(`Elasticsearch HTTP ${res.status}`);
+  }
+  const doc = await res.json();
+  if (!doc?.found || !doc?._source?.payload) {
+    throw new Error("report-current missing payload");
+  }
+  return { report: doc._source.payload, source: "elastic" };
+}
+
+async function loadFromJsonFallback() {
   const res = await fetch("./data/report.json", { cache: "no-store" });
-  if (!res.ok) throw new Error("Failed to load report.json");
-  const report = await res.json();
-  render(report);
+  if (!res.ok) throw new Error(`report.json HTTP ${res.status}`);
+  return { report: await res.json(), source: "json" };
+}
+
+async function boot() {
+  let loaded;
+  let elasticError = null;
+  try {
+    loaded = await loadFromElastic();
+  } catch (err) {
+    elasticError = err;
+    loaded = null;
+  }
+  if (!loaded) {
+    loaded = await loadFromJsonFallback();
+  }
+  render(loaded.report);
+  const src = document.getElementById("dataSource");
+  if (src) {
+    src.textContent =
+      loaded.source === "elastic"
+        ? "Data source: Elasticsearch (live)"
+        : `Data source: static JSON fallback${
+            elasticError ? ` · Elastic error: ${elasticError.message}` : ""
+          }`;
+  }
 }
 
 boot().catch((err) => {
