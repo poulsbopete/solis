@@ -48,9 +48,10 @@ python3 -m http.server 8080
 
 1. Copy `.env.example` → `.env` and set `EC_API_KEY` (from https://cloud.elastic.co/account/keys) for a durable personal project, **or** point `ELASTICSEARCH_URL` at an existing personal cluster.
 2. For a new Serverless project: `python3 scripts/bootstrap_elastic_cloud.py`
-3. Create scoped keys: `python3 scripts/create_api_keys.py --public-endpoint "$ELASTICSEARCH_URL"`
-4. Seed: `python3 scripts/seed_elastic.py`
-5. Commit `assets/elastic-config.js` (read-only key only). Never commit `.env` / `.elastic-credentials`.
+3. Create a **read-only** API key in [Kibana → API keys](https://ai-assistants-ffcafb.kb.us-east-1.aws.elastic.cloud/app/management/security/api_keys) scoped to `solis-watch` read, add to `.env` as `ELASTICSEARCH_READ_API_KEY`
+4. `python3 scripts/write_pages_config.py` then commit `assets/elastic-config.js`
+5. Seed (or re-seed): `python3 scripts/seed_elastic.py`
+6. Never commit `.env` / `.elastic-credentials`
 
 ## Automation
 

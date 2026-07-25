@@ -1,7 +1,8 @@
 // Public read config for GitHub Pages. Read-only API key scoped to solis-watch.
+// Run: python3 scripts/write_pages_config.py after setting ELASTICSEARCH_READ_API_KEY in .env
 window.SOLIS_ELASTIC = {
-  endpoint: "https://queries-gen-thereafter-palace.trycloudflare.com",
+  endpoint: "https://ai-assistants-ffcafb.es.us-east-1.aws.elastic.cloud",
   index: "solis-watch",
   reportId: "report-current",
-  apiKey: "UWRpLW1wOEI5c3RmWUt6T0Z4QXM6ZnRfTmQ1aVhROTJ3RFJGRnYyMXFmQQ=="
+  apiKey: ""
 };

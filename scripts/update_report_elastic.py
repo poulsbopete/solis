@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = "solis-watch"
 
 
-def load_dotenv(path: Path) -> None:
+def load_dotenv(path: Path, override: bool = False) -> None:
     if not path.exists():
         return
     for line in path.read_text().splitlines():
@@ -28,7 +28,15 @@ def load_dotenv(path: Path) -> None:
         if not line or line.startswith("#") or "=" not in line:
             continue
         key, value = line.split("=", 1)
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        if override or key not in os.environ:
+            os.environ[key] = value
+
+
+def load_env() -> None:
+    load_dotenv(ROOT / ".elastic-credentials")
+    load_dotenv(ROOT / ".env", override=True)
 
 
 def es_request(method: str, path: str, body: dict | None = None) -> dict:
@@ -108,7 +116,7 @@ def main() -> None:
     parser.add_argument("--report", type=Path, default=ROOT / "data" / "report.json")
     parser.add_argument("--history", type=Path, default=ROOT / "data" / "history.json")
     args = parser.parse_args()
-    load_dotenv(ROOT / ".env")
+    load_env()
     if "ELASTICSEARCH_URL" not in os.environ:
         raise SystemExit("ELASTICSEARCH_URL is required")
     report = json.loads(args.report.read_text())

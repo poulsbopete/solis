@@ -17,16 +17,19 @@ Keep the buyer report current for a used **Winnebago Solis** search.
 
 ## Elasticsearch layout
 
-- Index: `solis-watch`
+- Index: `solis-watch` on your Elastic Serverless project (`ELASTICSEARCH_URL` in `.env`)
 - Current report doc id: `report-current`  
   Body shape: `{ "doc_type": "report", "updated_at": "<ISO>", "payload": { ...same as data/report.json... } }`
 - Daily history doc id: `history-YYYY-MM-DD`  
   Body shape: `{ "doc_type": "history_point", "date": "YYYY-MM-DD", "updated_at": "<ISO>", "payload": { ...snapshot... } }`
 
-Credentials:
+Credentials (in `.env`, never commit):
 
-- Read `ELASTICSEARCH_URL` + write key from `.env` or `.elastic-credentials` (never commit write keys)
-- Public Pages read key lives in `assets/elastic-config.js` (read-only, index-scoped)
+- `ELASTICSEARCH_URL` — Serverless ES endpoint (e.g. `https://<project>.es.<region>.aws.elastic.cloud`)
+- `ELASTICSEARCH_API_KEY` — write-capable key for automation (`python3 scripts/update_report_elastic.py`)
+- `ELASTICSEARCH_READ_API_KEY` — read-only key for GitHub Pages (create in Kibana → API Keys, then `python3 scripts/write_pages_config.py`)
+
+Serverless note: you cannot derive scoped read/write keys from an existing API key. Create the Pages read key in Kibana while logged in as your user.
 
 ## What to do each run
 
@@ -53,8 +56,8 @@ Credentials:
    - Preserve lender guidance / next steps unless market advice clearly changes
 3. Optionally write the assembled JSON to `data/report.json` / append `data/history.json` **locally in the workspace for the upload scripts** — but do **not** commit or push those data files.
 4. Upsert Elasticsearch:
-   - Preferred: `python3 scripts/update_report_elastic.py`
-   - Or PUT `solis-watch/_doc/report-current` and `solis-watch/_doc/history-YYYY-MM-DD` directly with the write API key
+   - Preferred: `python3 scripts/update_report_elastic.py` (uses `ELASTICSEARCH_URL` + `ELASTICSEARCH_API_KEY` from `.env`)
+   - Or PUT `solis-watch/_doc/report-current` and `solis-watch/_doc/history-YYYY-MM-DD` directly
 5. Verify https://poulsbopete.github.io/solis/ shows the new `generatedAt` and “Data source: Elasticsearch (live)”
 6. **Do not open a pull request. Do not commit report data to git.** Only commit/push if UI/scripts/AGENTS need a code change.
 

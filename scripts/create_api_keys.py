@@ -38,10 +38,8 @@ def load_dotenv(path: Path) -> None:
 
 def auth_header() -> str:
     api_key = os.environ.get("ELASTICSEARCH_API_KEY")
-    if api_key and os.environ.get("ELASTICSEARCH_USERNAME") is None:
-        # Only use API key if username/password not provided for admin bootstrap
-        if os.environ.get("USE_API_KEY_FOR_ADMIN") == "1":
-            return f"ApiKey {api_key}"
+    if api_key and os.environ.get("USE_API_KEY_FOR_ADMIN") == "1":
+        return f"ApiKey {api_key}"
     user = os.environ.get("ELASTICSEARCH_USERNAME")
     password = os.environ.get("ELASTICSEARCH_PASSWORD")
     if user and password:
@@ -129,6 +127,14 @@ def write_pages_config(endpoint: str, read_encoded: str) -> None:
     print(f"Wrote {config_path}")
 
 
+def is_serverless() -> bool:
+    try:
+        info = es_request("GET", "/")
+        return info.get("version", {}).get("build_flavor") == "serverless"
+    except SystemExit:
+        return ".elastic.cloud" in os.environ.get("ELASTICSEARCH_URL", "")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -136,13 +142,29 @@ def main() -> None:
         help="Public HTTPS endpoint for Pages (defaults to ELASTICSEARCH_URL)",
     )
     args = parser.parse_args()
-    load_dotenv(ROOT / ".env")
-    # Prefer credentials file if present
-    load_dotenv(ROOT / ".elastic-credentials")
+    load_env()
     if "ELASTICSEARCH_URL" not in os.environ:
         raise SystemExit("ELASTICSEARCH_URL is required")
     endpoint = os.environ["ELASTICSEARCH_URL"].rstrip("/")
     public_endpoint = (args.public_endpoint or endpoint).rstrip("/")
+
+    if is_serverless() and os.environ.get("ELASTICSEARCH_USERNAME") is None:
+        read_key = os.environ.get("ELASTICSEARCH_READ_API_KEY")
+        if not read_key:
+            kb = endpoint.replace(".es.", ".kb.", 1)
+            raise SystemExit(
+                "Elastic Serverless + API key auth cannot mint scoped child keys.\n"
+                f"Create a read-only API key in Kibana:\n"
+                f"  {kb}/app/management/security/api_keys\n"
+                "Role descriptor JSON:\n"
+                '  {"solis_reader":{"cluster":["monitor"],"indices":[{"names":["solis-watch"],'
+                '"privileges":["read","view_index_metadata"]}]}}\n'
+                "Add the encoded key to .env as ELASTICSEARCH_READ_API_KEY, then run:\n"
+                "  python3 scripts/write_pages_config.py"
+            )
+        write_pages_config(public_endpoint, read_key)
+        print("Wrote Pages config using ELASTICSEARCH_READ_API_KEY from .env")
+        return
 
     write_key = create_key(
         "solis-watch-write",
