@@ -20,6 +20,19 @@
       "watchlistCount": 2,
       "flyCount": 4,
       "notes": "Added two distinct Medford records, verified Fife stock details and price cut, added Renton private and three age-eligible fly leads, and removed the sold Tampa listing. Yakima is at one missing run."
+    },
+    {
+      "date": "2026-07-25",
+      "nationalFloor": 73000,
+      "nationalAverage": 84826,
+      "nwAgeEligibleFloor": 73800,
+      "nwDealFloor": 68000,
+      "candidateCount": 10,
+      "activeCount": 10,
+      "primaryCount": 3,
+      "watchlistCount": 2,
+      "flyCount": 5,
+      "notes": "All verified NW asks were unchanged. Removed Yakima after its second consecutive missing run, added the verified Smyrna 2021 59PX at $69,900, and moved two uncertain syndicated Johnson listings to the watchlist."
     }
   ],
   "priceSeries": [
@@ -27,64 +40,80 @@
       "id": "medford-2021-59px",
       "points": [
         { "date": "2026-07-22", "price": 77800 },
-        { "date": "2026-07-24", "price": 77800 }
+        { "date": "2026-07-24", "price": 77800 },
+        { "date": "2026-07-25", "price": 77800 }
       ]
     },
     {
       "id": "fife-2021-59p",
       "points": [
         { "date": "2026-07-22", "price": 84000 },
-        { "date": "2026-07-24", "price": 80100 }
+        { "date": "2026-07-24", "price": 80100 },
+        { "date": "2026-07-25", "price": 80100 }
       ]
     },
     {
       "id": "yakima-2022-59p",
       "points": [
         { "date": "2026-07-22", "price": 72500 },
-        { "date": "2026-07-24", "price": 72500, "status": "unverified" }
+        { "date": "2026-07-24", "price": 72500, "status": "unverified" },
+        { "date": "2026-07-25", "price": 72500, "status": "removed_after_second_missing_run" }
       ]
     },
     {
       "id": "pottstown-2022-59px",
       "points": [
         { "date": "2026-07-22", "price": 63994 },
-        { "date": "2026-07-24", "price": 63994 }
+        { "date": "2026-07-24", "price": 63994 },
+        { "date": "2026-07-25", "price": 63994 }
       ]
     },
     {
       "id": "medford-2021-59px-25437r",
       "points": [
-        { "date": "2026-07-24", "price": 73800 }
+        { "date": "2026-07-24", "price": 73800 },
+        { "date": "2026-07-25", "price": 73800, "status": "unverified" }
       ]
     },
     {
       "id": "fife-2021-59px-25185b",
       "points": [
-        { "date": "2026-07-24", "price": 89900 }
+        { "date": "2026-07-24", "price": 89900 },
+        { "date": "2026-07-25", "price": 89900, "status": "unverified" }
       ]
     },
     {
       "id": "renton-2022-59p",
       "points": [
-        { "date": "2026-07-24", "price": 68000 }
+        { "date": "2026-07-24", "price": 68000 },
+        { "date": "2026-07-25", "price": 68000 }
       ]
     },
     {
       "id": "wind-lake-2021-59px",
       "points": [
-        { "date": "2026-07-24", "price": 70000 }
+        { "date": "2026-07-24", "price": 70000 },
+        { "date": "2026-07-25", "price": 70000 }
       ]
     },
     {
       "id": "forestville-2021-59p",
       "points": [
-        { "date": "2026-07-24", "price": 70998 }
+        { "date": "2026-07-24", "price": 70998 },
+        { "date": "2026-07-25", "price": 70998 }
       ]
     },
     {
       "id": "golden-2021-59p",
       "points": [
-        { "date": "2026-07-24", "price": 76000 }
+        { "date": "2026-07-24", "price": 76000 },
+        { "date": "2026-07-25", "price": 76000 }
+      ]
+    },
+    {
+      "id": "smyrna-2021-59px-6149b",
+      "points": [
+        { "date": "2026-07-25", "price": 69900 }
       ]
     }
   ]
