@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./assets/elastic-config.js"></script>
   </head>
   <body>
     <main class="wrap">
@@ -32,6 +33,7 @@
           <span class="pill" id="targetPill">Target</span>
           <span class="pill">Updated <strong id="generatedAt">—</strong> PT</span>
         </div>
+        <p class="panel-note" id="dataSource" style="margin: 0.25rem 0 0">Loading data source…</p>
       </header>
 
       <section class="grid-stats" aria-label="Market snapshot">
@@ -175,9 +177,10 @@
           Sources: <span id="sources"></span>
         </p>
         <p>
-          Report data lives in <code>data/report.json</code> and is refreshed by the
-          Solis Watch Cursor cloud automation. History snapshots:
-          <code>data/history.json</code>.
+          Live report data is stored in Elasticsearch (<code>solis-watch</code> /
+          <code>report-current</code>) and refreshed by the Solis Watch Cursor cloud
+          automation without git commits. Static <code>data/report.json</code> is only a
+          fallback if Elastic is unreachable.
         </p>
       </footer>
     </main>

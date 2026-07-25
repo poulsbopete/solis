@@ -1,6 +1,9 @@
 # Solis Watch — agent instructions
 
-Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search.
+Keep the buyer report current for a used **Winnebago Solis** search.
+
+**Source of truth is Elasticsearch**, not git. The GitHub Pages site reads
+`solis-watch/_doc/report-current` at load time.
 
 ## Buyer criteria
 
@@ -12,6 +15,19 @@ Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search
 - Planning horizon: project prices to **2026-10-01**
 - Financing plan: about **$20,000** down payment (keep `financing` section current)
 
+## Elasticsearch layout
+
+- Index: `solis-watch`
+- Current report doc id: `report-current`  
+  Body shape: `{ "doc_type": "report", "updated_at": "<ISO>", "payload": { ...same as data/report.json... } }`
+- Daily history doc id: `history-YYYY-MM-DD`  
+  Body shape: `{ "doc_type": "history_point", "date": "YYYY-MM-DD", "updated_at": "<ISO>", "payload": { ...snapshot... } }`
+
+Credentials:
+
+- Read `ELASTICSEARCH_URL` + write key from `.env` or `.elastic-credentials` (never commit write keys)
+- Public Pages read key lives in `assets/elastic-config.js` (read-only, index-scoped)
+
 ## What to do each run
 
 1. Search current listings on:
@@ -20,7 +36,7 @@ Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search
    - Winnebago RV Source / RVUSA aggregators
    - Vanlife Trader
    - Optional: Facebook Marketplace / Craigslist Seattle + Portland (summarize if scrapable)
-2. Update `data/report.json`:
+2. Build the updated report object (same schema as `data/report.json`):
    - Refresh `generatedAt` (ISO UTC)
    - Update `marketSummary` floors/averages when available
    - Upsert candidates (stable `id`s when same VIN/stock/URL)
@@ -35,12 +51,12 @@ Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search
      - nw_floor = current `marketSummary.nwDealFloor`
      - monthly payment = standard amortizing installment; round to nearest dollar
    - Preserve lender guidance / next steps unless market advice clearly changes
-3. Append a daily snapshot to `data/history.json` (`snapshots` + per-candidate `priceSeries`)
-4. Keep `index.html` / assets working — only change them if the report schema needs UI support
-5. Commit and push **directly to `main`** so GitHub Pages updates (do **not** open a pull request):
-   - Commit message style: `Update Solis Watch report (YYYY-MM-DD)`
-   - Do not force-push
-   - Do not commit secrets
+3. Optionally write the assembled JSON to `data/report.json` / append `data/history.json` **locally in the workspace for the upload scripts** — but do **not** commit or push those data files.
+4. Upsert Elasticsearch:
+   - Preferred: `python3 scripts/update_report_elastic.py`
+   - Or PUT `solis-watch/_doc/report-current` and `solis-watch/_doc/history-YYYY-MM-DD` directly with the write API key
+5. Verify https://poulsbopete.github.io/solis/ shows the new `generatedAt` and “Data source: Elasticsearch (live)”
+6. **Do not open a pull request. Do not commit report data to git.** Only commit/push if UI/scripts/AGENTS need a code change.
 
 ## Projection rules
 
@@ -50,7 +66,7 @@ For each candidate price `P`:
 - expected = round(P * 0.93)
 - aggressive = round(P * 0.88)
 
-Round to nearest $100. Refresh `gapToBudget` vs NW age-eligible floor.
+Round to nearest $100. Refresh `gapToBudget` vs NW deal floor.
 
 ## Ranking heuristics
 
@@ -74,4 +90,5 @@ End the run with:
 - count of primary / watchlist / fly candidates
 - best current deal (price, year, city)
 - whether any listing is at or within $10k of the $60k budget
-- GitHub Pages URL confirmation
+- confirmation that Elasticsearch `report-current` was updated
+- GitHub Pages URL confirmation (live date moved without a git commit)
