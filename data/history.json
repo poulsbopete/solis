@@ -33,87 +33,237 @@
       "watchlistCount": 2,
       "flyCount": 5,
       "notes": "All verified NW asks were unchanged. Removed Yakima after its second consecutive missing run, added the verified Smyrna 2021 59PX at $69,900, and moved two uncertain syndicated Johnson listings to the watchlist."
+    },
+    {
+      "date": "2026-07-27",
+      "nationalFloor": 69599,
+      "nationalAverage": 91675,
+      "nwAgeEligibleFloor": 73800,
+      "nwDealFloor": 68000,
+      "candidateCount": 12,
+      "activeCount": 12,
+      "primaryCount": 3,
+      "watchlistCount": 4,
+      "flyCount": 5,
+      "notes": "Verified Johnson and Renton unchanged. Added Seattle private 2021 and Kent Indie Campers 2022 watchlist entries. Autotrader national floor ticked to $69,599."
     }
   ],
   "priceSeries": [
     {
       "id": "medford-2021-59px",
       "points": [
-        { "date": "2026-07-22", "price": 77800 },
-        { "date": "2026-07-24", "price": 77800 },
-        { "date": "2026-07-25", "price": 77800 }
+        {
+          "date": "2026-07-22",
+          "price": 77800
+        },
+        {
+          "date": "2026-07-24",
+          "price": 77800
+        },
+        {
+          "date": "2026-07-25",
+          "price": 77800
+        },
+        {
+          "date": "2026-07-27",
+          "price": 77800
+        }
       ]
     },
     {
       "id": "fife-2021-59p",
       "points": [
-        { "date": "2026-07-22", "price": 84000 },
-        { "date": "2026-07-24", "price": 80100 },
-        { "date": "2026-07-25", "price": 80100 }
+        {
+          "date": "2026-07-22",
+          "price": 84000
+        },
+        {
+          "date": "2026-07-24",
+          "price": 80100
+        },
+        {
+          "date": "2026-07-25",
+          "price": 80100
+        },
+        {
+          "date": "2026-07-27",
+          "price": 80100
+        }
       ]
     },
     {
       "id": "yakima-2022-59p",
       "points": [
-        { "date": "2026-07-22", "price": 72500 },
-        { "date": "2026-07-24", "price": 72500, "status": "unverified" },
-        { "date": "2026-07-25", "price": 72500, "status": "removed_after_second_missing_run" }
+        {
+          "date": "2026-07-22",
+          "price": 72500
+        },
+        {
+          "date": "2026-07-24",
+          "price": 72500,
+          "status": "unverified"
+        },
+        {
+          "date": "2026-07-25",
+          "price": 72500,
+          "status": "removed_after_second_missing_run"
+        }
       ]
     },
     {
       "id": "pottstown-2022-59px",
       "points": [
-        { "date": "2026-07-22", "price": 63994 },
-        { "date": "2026-07-24", "price": 63994 },
-        { "date": "2026-07-25", "price": 63994 }
+        {
+          "date": "2026-07-22",
+          "price": 63994
+        },
+        {
+          "date": "2026-07-24",
+          "price": 63994
+        },
+        {
+          "date": "2026-07-25",
+          "price": 63994
+        },
+        {
+          "date": "2026-07-27",
+          "price": 63994
+        }
       ]
     },
     {
       "id": "medford-2021-59px-25437r",
       "points": [
-        { "date": "2026-07-24", "price": 73800 },
-        { "date": "2026-07-25", "price": 73800, "status": "unverified" }
+        {
+          "date": "2026-07-24",
+          "price": 73800
+        },
+        {
+          "date": "2026-07-25",
+          "price": 73800,
+          "status": "unverified"
+        },
+        {
+          "date": "2026-07-27",
+          "price": 73800
+        }
       ]
     },
     {
       "id": "fife-2021-59px-25185b",
       "points": [
-        { "date": "2026-07-24", "price": 89900 },
-        { "date": "2026-07-25", "price": 89900, "status": "unverified" }
+        {
+          "date": "2026-07-24",
+          "price": 89900
+        },
+        {
+          "date": "2026-07-25",
+          "price": 89900,
+          "status": "unverified"
+        },
+        {
+          "date": "2026-07-27",
+          "price": 89900
+        }
       ]
     },
     {
       "id": "renton-2022-59p",
       "points": [
-        { "date": "2026-07-24", "price": 68000 },
-        { "date": "2026-07-25", "price": 68000 }
+        {
+          "date": "2026-07-24",
+          "price": 68000
+        },
+        {
+          "date": "2026-07-25",
+          "price": 68000
+        },
+        {
+          "date": "2026-07-27",
+          "price": 68000
+        }
       ]
     },
     {
       "id": "wind-lake-2021-59px",
       "points": [
-        { "date": "2026-07-24", "price": 70000 },
-        { "date": "2026-07-25", "price": 70000 }
+        {
+          "date": "2026-07-24",
+          "price": 70000
+        },
+        {
+          "date": "2026-07-25",
+          "price": 70000
+        },
+        {
+          "date": "2026-07-27",
+          "price": 70000
+        }
       ]
     },
     {
       "id": "forestville-2021-59p",
       "points": [
-        { "date": "2026-07-24", "price": 70998 },
-        { "date": "2026-07-25", "price": 70998 }
+        {
+          "date": "2026-07-24",
+          "price": 70998
+        },
+        {
+          "date": "2026-07-25",
+          "price": 70998
+        },
+        {
+          "date": "2026-07-27",
+          "price": 70998
+        }
       ]
     },
     {
       "id": "golden-2021-59p",
       "points": [
-        { "date": "2026-07-24", "price": 76000 },
-        { "date": "2026-07-25", "price": 76000 }
+        {
+          "date": "2026-07-24",
+          "price": 76000
+        },
+        {
+          "date": "2026-07-25",
+          "price": 76000
+        },
+        {
+          "date": "2026-07-27",
+          "price": 76000
+        }
       ]
     },
     {
       "id": "smyrna-2021-59px-6149b",
       "points": [
-        { "date": "2026-07-25", "price": 69900 }
+        {
+          "date": "2026-07-25",
+          "price": 69900
+        },
+        {
+          "date": "2026-07-27",
+          "price": 69900
+        }
+      ]
+    },
+    {
+      "id": "seattle-2021-59p-private",
+      "points": [
+        {
+          "date": "2026-07-27",
+          "price": 82000
+        }
+      ]
+    },
+    {
+      "id": "kent-2022-59px-indie",
+      "points": [
+        {
+          "date": "2026-07-27",
+          "price": 77899
+        }
       ]
     }
   ]
