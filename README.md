@@ -53,4 +53,11 @@ python3 -m http.server 8080
 
 ## Automation
 
-A Cursor cloud automation refreshes listings on a schedule, updates Elasticsearch, and does **not** open PRs or commit JSON. Run status is visible in the Cursor mobile app under Automations.
+A Cursor cloud automation refreshes listings on a schedule, updates Elasticsearch, and pushes `data/report-live.json` to `main`.
+
+**Required:** attach a [Cursor Cloud Environment](https://cursor.com/dashboard/cloud-agents) to the automation with Runtime Secrets:
+
+- `ELASTICSEARCH_URL`
+- `ELASTICSEARCH_API_KEY` (write key)
+
+See `AGENTS.md` → “Cursor Cloud automation setup” and run `python3 scripts/check_elastic_credentials.py` to verify.

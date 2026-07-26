@@ -97,3 +97,31 @@ End the run with:
 - whether any listing is at or within $10k of the $60k budget
 - confirmation that Elasticsearch `report-current` was updated and `data/report-live.json` was pushed
 - GitHub Pages URL confirmation (Updated timestamp matches latest cache)
+
+## Cursor Cloud automation setup
+
+The nightly **Solis Watch** automation runs in an isolated pod. It does **not**
+inherit your laptop `.env` — credentials must be injected via a **Cursor Cloud
+Environment**.
+
+### One-time setup
+
+1. Open [Cloud Agents → Environments](https://cursor.com/dashboard/cloud-agents)
+2. Create or edit an environment scoped to `poulsbopete/solis`
+3. **Secrets** tab → add these as **Runtime Secrets** (not committed to git):
+   - `ELASTICSEARCH_URL` — e.g. `https://<project>.es.us-east-1.aws.elastic.cloud`
+   - `ELASTICSEARCH_API_KEY` — write-capable key for index `solis-watch`
+4. Attach that environment to the [Solis Watch automation](https://cursor.com/automations/71ccc5b9-864a-11f1-a7d1-d6b4613131ce)
+5. Verify: start a test run; first step should pass `python3 scripts/check_elastic_credentials.py`
+
+Create the write key in [Kibana → API Keys](https://ai-assistants-ffcafb.kb.us-east-1.aws.elastic.cloud/app/management/security/api_keys) with privileges on `solis-watch`: `write`, `create`, `index`, `read`, `view_index_metadata`.
+
+### Each run (after credentials exist)
+
+1. Research listings and build the report locally in the workspace
+2. `python3 scripts/check_elastic_credentials.py` — fail fast if secrets missing
+3. `python3 scripts/update_report_elastic.py` — upsert ES + write `data/report-live.json`
+4. Commit and push **only** `data/report-live.json` to `main`
+5. Confirm https://poulsbopete.github.io/solis/ shows the new `generatedAt`
+
+If credentials are missing, **do not** commit a stale cache — research-only output is correct.

@@ -131,7 +131,12 @@ def main() -> None:
     args = parser.parse_args()
     load_env()
     if "ELASTICSEARCH_URL" not in os.environ:
-        raise SystemExit("ELASTICSEARCH_URL is required")
+        raise SystemExit(
+            "ELASTICSEARCH_URL is required.\n"
+            "Cursor Cloud: add ELASTICSEARCH_URL and ELASTICSEARCH_API_KEY as Runtime Secrets\n"
+            "on the Solis environment (https://cursor.com/dashboard/cloud-agents), then re-run.\n"
+            "Local: copy .env.example to .env and fill in credentials."
+        )
     report = json.loads(args.report.read_text())
     history = json.loads(args.history.read_text()) if args.history.exists() else {}
     upsert_report(report)

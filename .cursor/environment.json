@@ -1,0 +1,3 @@
+{
+  "install": "python3 scripts/check_elastic_credentials.py"
+}
