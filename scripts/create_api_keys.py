@@ -8,7 +8,9 @@ Requires admin-capable credentials:
 
 Writes:
   .elastic-credentials   (write key + endpoint — gitignored)
-  assets/elastic-config.js  (public endpoint + read-only key for GitHub Pages)
+  .env                   (when keys are minted locally)
+
+Never write API keys into tracked files. Pages loads data/report-live.json.
 """
 
 from __future__ import annotations
@@ -108,25 +110,6 @@ def write_credentials(endpoint: str, write_encoded: str, read_encoded: str) -> N
     print(f"Wrote {cred_path} (gitignored)")
 
 
-def write_pages_config(endpoint: str, read_encoded: str) -> None:
-    config_path = ROOT / "assets" / "elastic-config.js"
-    config_path.write_text(
-        "\n".join(
-            [
-                "// Public read config for GitHub Pages. Read-only API key scoped to solis-watch.",
-                "window.SOLIS_ELASTIC = {",
-                f'  endpoint: "{endpoint.rstrip("/")}",',
-                '  index: "solis-watch",',
-                '  reportId: "report-current",',
-                f'  apiKey: "{read_encoded}"',
-                "};",
-                "",
-            ]
-        )
-    )
-    print(f"Wrote {config_path}")
-
-
 def is_serverless() -> bool:
     try:
         info = es_request("GET", "/")
@@ -159,11 +142,11 @@ def main() -> None:
                 "Role descriptor JSON:\n"
                 '  {"solis_reader":{"cluster":["monitor"],"indices":[{"names":["solis-watch"],'
                 '"privileges":["read","view_index_metadata"]}]}}\n'
-                "Add the encoded key to .env as ELASTICSEARCH_READ_API_KEY, then run:\n"
-                "  python3 scripts/write_pages_config.py"
+                "Add the encoded key to .env as ELASTICSEARCH_READ_API_KEY for sync_pages_cache.py.\n"
+                "Never commit API keys to git."
             )
-        write_pages_config(public_endpoint, read_key)
-        print("Wrote Pages config using ELASTICSEARCH_READ_API_KEY from .env")
+        write_credentials(endpoint, os.environ.get("ELASTICSEARCH_API_KEY", ""), read_key)
+        print("Read key loaded from .env. Pages uses data/report-live.json — no git commit needed.")
         return
 
     write_key = create_key(
@@ -180,7 +163,6 @@ def main() -> None:
     )
     read_key = create_key("solis-watch-read", ["read", "view_index_metadata"])
     write_credentials(endpoint, write_key["encoded"], read_key["encoded"])
-    write_pages_config(public_endpoint, read_key["encoded"])
     # Also refresh .env for local scripts
     env_path = ROOT / ".env"
     existing = env_path.read_text() if env_path.exists() else ""

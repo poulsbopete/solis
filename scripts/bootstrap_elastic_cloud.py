@@ -71,7 +71,7 @@ def main() -> None:
         "  1. eval $(python3 .../manage-project.py load-credentials --name solis-watch --include-admin)\n"
         "  2. python3 scripts/create_api_keys.py --public-endpoint \"$ELASTICSEARCH_URL\"\n"
         "  3. python3 scripts/seed_elastic.py\n"
-        "  4. Commit assets/elastic-config.js (read-only key) and push UI changes.\n"
+        "  4. python3 scripts/update_report_elastic.py && commit data/report-live.json\n"
     )
 
 

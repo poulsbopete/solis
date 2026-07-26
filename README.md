@@ -19,18 +19,17 @@ Living buyer report for a used **Winnebago Solis** near Washington State.
 
 - GitHub Pages hosts the static UI only
 - Cursor cloud automation refreshes listings and **upserts Elasticsearch** (`report-current`)
-- The page loads live data from Elastic; `data/report.json` is a fallback only
+- The page loads `data/report-live.json` (same-origin cache synced after each upsert)
 
 ```text
-Cursor automation → Elasticsearch (solis-watch)
-GitHub Pages      → reads report-current with a read-only API key
+Cursor automation → Elasticsearch (solis-watch) → data/report-live.json → GitHub Pages
 ```
 
 ## Repo layout
 
 - `index.html` / `assets/` — GitHub Pages UI
-- `assets/elastic-config.js` — public endpoint + **read-only** API key
-- `data/*.json` — seed / offline fallback (not the live source of truth)
+- `data/report-live.json` — Pages cache (committed after each automation run)
+- `data/*.json` — seed / offline fallback
 - `scripts/seed_elastic.py` — create index + seed from JSON
 - `scripts/update_report_elastic.py` — automation upsert helper
 - `scripts/create_api_keys.py` — create scoped read/write keys
@@ -48,10 +47,9 @@ python3 -m http.server 8080
 
 1. Copy `.env.example` → `.env` and set `EC_API_KEY` (from https://cloud.elastic.co/account/keys) for a durable personal project, **or** point `ELASTICSEARCH_URL` at an existing personal cluster.
 2. For a new Serverless project: `python3 scripts/bootstrap_elastic_cloud.py`
-3. Create a **read-only** API key in [Kibana → API keys](https://ai-assistants-ffcafb.kb.us-east-1.aws.elastic.cloud/app/management/security/api_keys) scoped to `solis-watch` read, add to `.env` as `ELASTICSEARCH_READ_API_KEY`
-4. `python3 scripts/write_pages_config.py` then commit `assets/elastic-config.js`
-5. Seed (or re-seed): `python3 scripts/seed_elastic.py`
-6. Never commit `.env` / `.elastic-credentials`
+3. Add `ELASTICSEARCH_URL` and `ELASTICSEARCH_API_KEY` (write) to `.env`
+4. Seed (or re-seed): `python3 scripts/seed_elastic.py`
+5. Never commit `.env`, `.elastic-credentials`, or any API key
 
 ## Automation
 
