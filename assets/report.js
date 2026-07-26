@@ -191,31 +191,10 @@ function renderFinancing(fin) {
     : "";
 }
 
-async function loadFromPagesCache() {
-  const res = await fetch("./data/report-live.json", { cache: "no-store" });
-  if (!res.ok) return null;
-  return { report: await res.json(), source: "elastic-cache" };
-}
-
-async function loadFromJsonFallback() {
+async function boot() {
   const res = await fetch("./data/report.json", { cache: "no-store" });
   if (!res.ok) throw new Error(`report.json HTTP ${res.status}`);
-  return { report: await res.json(), source: "json" };
-}
-
-async function boot() {
-  let loaded = await loadFromPagesCache();
-  if (!loaded) {
-    loaded = await loadFromJsonFallback();
-  }
-  render(loaded.report);
-  const src = document.getElementById("dataSource");
-  if (src) {
-    src.textContent =
-      loaded.source === "elastic-cache"
-        ? "Data source: Elasticsearch (Pages cache)"
-        : "Data source: static JSON fallback";
-  }
+  render(await res.json());
 }
 
 boot().catch((err) => {

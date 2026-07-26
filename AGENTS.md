@@ -1,10 +1,8 @@
 # Solis Watch — agent instructions
 
-Keep the buyer report current for a used **Winnebago Solis** search.
+Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search.
 
-**Source of truth is Elasticsearch.** GitHub Pages cannot call Elastic Serverless
-directly from the browser (no CORS). After each upsert, sync `data/report-live.json`
-(same-origin cache) and push it so the site updates.
+**Source of truth:** `data/report.json` in git. Push to `main` and GitHub Pages updates.
 
 ## Buyer criteria
 
@@ -16,22 +14,6 @@ directly from the browser (no CORS). After each upsert, sync `data/report-live.j
 - Planning horizon: project prices to **2026-10-01**
 - Financing plan: about **$20,000** down payment (keep `financing` section current)
 
-## Elasticsearch layout
-
-- Index: `solis-watch` on your Elastic Serverless project (`ELASTICSEARCH_URL` in `.env`)
-- Current report doc id: `report-current`  
-  Body shape: `{ "doc_type": "report", "updated_at": "<ISO>", "payload": { ...same as data/report.json... } }`
-- Daily history doc id: `history-YYYY-MM-DD`  
-  Body shape: `{ "doc_type": "history_point", "date": "YYYY-MM-DD", "updated_at": "<ISO>", "payload": { ...snapshot... } }`
-
-Credentials (in `.env`, never commit):
-
-- `ELASTICSEARCH_URL` — Serverless ES endpoint (e.g. `https://<project>.es.<region>.aws.elastic.cloud`)
-- `ELASTICSEARCH_API_KEY` — write-capable key for automation (`python3 scripts/update_report_elastic.py`)
-- `ELASTICSEARCH_READ_API_KEY` — optional read key for `scripts/sync_pages_cache.py`
-
-Serverless note: you cannot derive scoped read/write keys from an existing API key. Browser CORS is not configurable on Serverless, so Pages loads `data/report-live.json` instead of calling ES directly.
-
 ## What to do each run
 
 1. Search current listings on:
@@ -40,7 +22,7 @@ Serverless note: you cannot derive scoped read/write keys from an existing API k
    - Winnebago RV Source / RVUSA aggregators
    - Vanlife Trader
    - Optional: Facebook Marketplace / Craigslist Seattle + Portland (summarize if scrapable)
-2. Build the updated report object (same schema as `data/report.json`):
+2. Update `data/report.json`:
    - Refresh `generatedAt` (ISO UTC)
    - Update `marketSummary` floors/averages when available
    - Upsert candidates (stable `id`s when same VIN/stock/URL)
@@ -55,13 +37,11 @@ Serverless note: you cannot derive scoped read/write keys from an existing API k
      - nw_floor = current `marketSummary.nwDealFloor`
      - monthly payment = standard amortizing installment; round to nearest dollar
    - Preserve lender guidance / next steps unless market advice clearly changes
-3. Optionally write the assembled JSON to `data/report.json` / append `data/history.json` **locally in the workspace for the upload scripts** — but do **not** commit or push those data files.
-4. Upsert Elasticsearch:
-   - Preferred: `python3 scripts/update_report_elastic.py` (also writes `data/report-live.json`)
-   - Or PUT `solis-watch/_doc/report-current` and `history-YYYY-MM-DD`, then `python3 scripts/sync_pages_cache.py`
-5. Commit and push **only** `data/report-live.json` to `main` (Pages cache — not `data/report.json` / `history.json`)
-6. Verify https://poulsbopete.github.io/solis/ shows the new `generatedAt` and “Data source: Elasticsearch (Pages cache)”
-7. **Do not open a pull request** for routine report updates. Only commit/push if UI/scripts/AGENTS need a code change, plus the Pages cache file each run.
+3. Append a daily snapshot to `data/history.json` (`snapshots` + per-candidate `priceSeries`)
+4. Commit and push **directly to `main`** (no pull request):
+   - Commit message: `Update Solis Watch report (YYYY-MM-DD)`
+   - Do not force-push
+   - Do not commit secrets (`.env` stays gitignored)
 
 ## Projection rules
 
@@ -95,33 +75,4 @@ End the run with:
 - count of primary / watchlist / fly candidates
 - best current deal (price, year, city)
 - whether any listing is at or within $10k of the $60k budget
-- confirmation that Elasticsearch `report-current` was updated and `data/report-live.json` was pushed
-- GitHub Pages URL confirmation (Updated timestamp matches latest cache)
-
-## Cursor Cloud automation setup
-
-The nightly **Solis Watch** automation runs in an isolated pod. It does **not**
-inherit your laptop `.env` — credentials must be injected via a **Cursor Cloud
-Environment**.
-
-### One-time setup
-
-1. Open [Cloud Agents → Environments](https://cursor.com/dashboard/cloud-agents)
-2. Create or edit an environment scoped to `poulsbopete/solis`
-3. **Secrets** tab → add these as **Runtime Secrets** (not committed to git):
-   - `ELASTICSEARCH_URL` — e.g. `https://<project>.es.us-east-1.aws.elastic.cloud`
-   - `ELASTICSEARCH_API_KEY` — write-capable key for index `solis-watch`
-4. Attach that environment to the [Solis Watch automation](https://cursor.com/automations/71ccc5b9-864a-11f1-a7d1-d6b4613131ce)
-5. Verify: start a test run; first step should pass `python3 scripts/check_elastic_credentials.py`
-
-Create the write key in [Kibana → API Keys](https://ai-assistants-ffcafb.kb.us-east-1.aws.elastic.cloud/app/management/security/api_keys) with privileges on `solis-watch`: `write`, `create`, `index`, `read`, `view_index_metadata`.
-
-### Each run (after credentials exist)
-
-1. Research listings and build the report locally in the workspace
-2. `python3 scripts/check_elastic_credentials.py` — fail fast if secrets missing
-3. `python3 scripts/update_report_elastic.py` — upsert ES + write `data/report-live.json`
-4. Commit and push **only** `data/report-live.json` to `main`
-5. Confirm https://poulsbopete.github.io/solis/ shows the new `generatedAt`
-
-If credentials are missing, **do not** commit a stale cache — research-only output is correct.
+- GitHub Pages URL confirmation (Updated timestamp matches `generatedAt`)

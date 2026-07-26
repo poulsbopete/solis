@@ -1,8 +1,6 @@
 .env
 .elastic-credentials
-assets/elastic-config.js
 *.pyc
 __pycache__/
 .DS_Store
-.elasticsearch/
 tmp/
