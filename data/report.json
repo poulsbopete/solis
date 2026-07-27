@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T16:55:00Z",
+  "generatedAt": "2026-07-27T17:40:00Z",
   "criteria": {
     "model": "Winnebago Solis",
     "maxBudget": 60000,
@@ -18,7 +18,7 @@
     "nationalUsedHigh": 139900,
     "nwAgeEligibleFloor": 73800,
     "gapToBudget": 8000,
-    "verdict": "Deal-first ranking: Renton private 2022 at $68k remains the strongest local budget lead (~$8k over target). New Jul 27 adds include a 14.7k-mile Seattle 2021 private ($82k) and Kent Indie Campers 2022 59PX ($77,899). Smyrna verified $69,900 and Pottstown $63,994 remain top fly options.",
+    "verdict": "Medford 2021 Solis 59PX ($77,800) reported sold Jul 27. Lead pivot: 2022 Thor Sequence 20K at Johnson RV Fife ($79,900, 22k mi) — same ProMaster Class B, stronger electrical, 30 mi away. Best remaining Solis: Renton private 2022 59P at $68k; Fife 2021 59P at $80,100.",
     "sources": [
       "RVs on Autotrader Solis aggregate (low/avg/high)",
       "Johnson RV Medford / Fife inventory",
@@ -103,10 +103,10 @@
       "sellerType": "dealer",
       "distanceMiles": 430,
       "url": "https://johnsonrv.com/inventory/Used-2021-Winnebago-Solis-59PX-3C6MRVJG3ME504756",
-      "status": "active",
+      "status": "sold",
       "ageEligible": true,
       "withinRadius": true,
-      "notes": "Best fully verified NW match: Johnson direct page live Jul 27 at $77,800 with 28,620 miles and $11.2k advertised discount.",
+      "notes": "Reported sold Jul 27 (user confirmed). Johnson page may still show listing briefly — was $77,800 / 28,620 mi / stock 25254G.",
       "preferredAge": true,
       "projectedOct": {
         "mild": 75500,
@@ -417,6 +417,36 @@
       "rank": 12
     }
   ],
+  "alternatives": [
+    {
+      "id": "fife-2022-sequence-20k",
+      "status": "lead",
+      "make": "Thor Motor Coach",
+      "model": "Sequence",
+      "year": 2022,
+      "trim": "20K",
+      "price": 79900,
+      "miles": 22207,
+      "vin": "3C6MRVUG8ME583403",
+      "stock": "26114GC",
+      "city": "Fife",
+      "state": "WA",
+      "seller": "Johnson RV Fife",
+      "sellerType": "dealer",
+      "distanceMiles": 30,
+      "url": "https://johnsonrv.com/inventory/Used-2022-Thor_Motor_Coach-Sequence-20K-3C6MRVUG8ME583403",
+      "chassis": "Ram ProMaster 3500",
+      "lengthFt": 21,
+      "becuEligible": true,
+      "notes": "Active lead Jul 27: $79,900 / 22,207 mi. Class B on same ProMaster platform as Solis; 190W solar, 2×100Ah lithium, 3000W inverter, Truma heat, power awning, wet bath. Sleeps 2 (+ sofa/roof bunk) vs Solis pop-top 4. Johnson Fife — not on CUDL feed but dealer is enrolled.",
+      "projectedOct": {
+        "mild": 77500,
+        "expected": 74300,
+        "aggressive": 70300
+      },
+      "vsSolis": "More turnkey electrical and climate vs typical Solis; less pop-top sleeping and no Winnebago badge/resale niche."
+    }
+  ],
   "alerts": [
     {
       "level": "info",
@@ -436,6 +466,10 @@
     },
     {
       "level": "info",
+      "text": "Medford 2021 Solis 59PX reported sold. Lead alternative: 2022 Thor Sequence 20K at Johnson RV Fife — $79,900, 22,207 mi, BECU-eligible."
+    },
+    {
+      "level": "info",
       "text": "BECU CUDL AutoSmart (Jul 27): zero Winnebago Solis in network nationwide. Johnson RV Fife/Medford are enrolled but show 0 synced inventory — finance off-listing, not via AutoSmart search."
     }
   ],
@@ -449,7 +483,7 @@
       "high": 10000,
       "notes": "WA sales/use tax (~8\u201310%), title/license, Class B insurance binder, and pre-purchase inspection. Ask BECU whether tax/fees can roll into the loan."
     },
-    "recommendation": "BECU is the lead lender: preapprove for a secured RV loan with $0 down under $100k, \u226410 model years, and \u226475k miles. Shop candidates directly (private party or dealer) \u2014 AutoSmart/CUDL shows no Solis inventory. Prefer a \u226410-year term; use any saved cash for early payoff rather than down. Compare one backup WA credit union quote.",
+    "recommendation": "Lead purchase target is the 2022 Thor Sequence 20K at Johnson RV Fife ($79,900). BECU preapproval: $0 down under $100k, 2022 model, 22k miles — all within rules. Johnson is CUDL-enrolled but inventory is off AutoSmart; finance at the dealer with BECU direct/indirect. Prefer ≤10-year term; route savings to early payoff.",
     "paymentAssumptions": {
       "termMonths": 120,
       "aprScenarios": [
@@ -461,6 +495,21 @@
       "disclaimer": "Illustrative mid-2026 planning estimates using published credit-union \u201cas low as\u201d ranges. Not an offer or credit decision."
     },
     "paymentScenarios": [
+      {
+        "id": "sequence",
+        "label": "Thor Sequence lead $79.9k",
+        "purchasePrice": 79900,
+        "downPayment": 0,
+        "loanAmount": 79900,
+        "ltvPct": 100,
+        "termMonths": 120,
+        "monthly": {
+          "apr6_5": 907,
+          "apr7_5": 948,
+          "apr9_0": 1012,
+          "apr11_0": 1101
+        }
+      },
       {
         "id": "budget",
         "label": "Budget ask $60k",
@@ -573,11 +622,11 @@
       }
     ],
     "nextSteps": [
-      "Complete BECU RV preapproval ($0 down under $100k; confirm private-party and Johnson RV off-CUDL purchases qualify)",
-      "Filter candidates to BECU rules: 2016+ model year and \u226475k miles (excludes Pottstown 93k mi and Kent Indie if odometer confirms 100k+)",
-      "Keep $6\u201310k liquid for tax, title, insurance, and inspection \u2014 route additional savings to early principal payoff",
-      "Shop listings directly; do not expect to find a Solis on BECU AutoSmart/CUDL",
-      "Compare one backup WA credit union quote before closing"
+      "Schedule Johnson RV Fife visit / 3D tour for Thor Sequence stock 26114GC — confirm still available and negotiate OTD",
+      "Complete BECU RV preapproval for ~$80k + tax/fees (confirm dealer purchase qualifies off CUDL feed)",
+      "Pre-purchase inspection: roof seals, Truma/hydronics, lithium BMS, underhood generator alternator, awning",
+      "Compare OTD quote vs financing payment (~$907/mo at 6.5% full loan); plan early principal paydown",
+      "Keep backup Solis options warm: Renton private $68k, Fife 59P $80,100"
     ],
     "becuEligibility": {
       "maxModelYearsOld": 10,
