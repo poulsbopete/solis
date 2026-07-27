@@ -122,6 +122,7 @@ function render(report) {
   document.getElementById("sources").textContent = m.sources.join(" · ");
 
   renderFinancing(report.financing);
+  renderCudlNotes(report.financing?.cudlNotes);
 }
 
 function renderFinancing(fin) {
@@ -131,7 +132,21 @@ function renderFinancing(fin) {
   }
 
   document.getElementById("financingRec").textContent = fin.recommendation || "";
-  document.getElementById("finDown").textContent = money(fin.downPaymentTarget);
+  const down = fin.downPaymentTarget ?? 0;
+  document.getElementById("finDown").textContent = money(down);
+  const downHint = document.getElementById("finDownHint");
+  if (downHint) {
+    downHint.textContent =
+      fin.downPaymentPolicy?.includes("$100")
+        ? "BECU: none under $100k"
+        : down > 0
+          ? "target cash down"
+          : "full loan amount";
+  }
+  const loanHeader = document.getElementById("finLoanHeader");
+  if (loanHeader) {
+    loanHeader.textContent = down > 0 ? `Loan after ${money(down)}` : "Full loan amount";
+  }
   const extra = fin.extraCashNeeded || {};
   document.getElementById("finExtra").textContent =
     typeof extra.low === "number" && typeof extra.high === "number"
@@ -189,6 +204,34 @@ function renderFinancing(fin) {
   document.getElementById("financingSources").textContent = (fin.sources || []).length
     ? `Loan sources: ${fin.sources.join(" · ")}`
     : "";
+}
+
+function renderCudlNotes(cudl) {
+  const panel = document.getElementById("cudlPanel");
+  if (!panel || !cudl) {
+    if (panel) panel.hidden = true;
+    return;
+  }
+
+  panel.hidden = false;
+  document.getElementById("cudlSummary").textContent = cudl.summary || "";
+  document.getElementById("cudlFindings").innerHTML = (cudl.findings || [])
+    .map((item) => `<li>${item}</li>`)
+    .join("");
+  document.getElementById("cudlDealers").innerHTML = (cudl.nearbyDealers || [])
+    .map(
+      (d) => `
+      <tr>
+        <td><strong>${d.name}</strong></td>
+        <td>${d.distanceMiles} mi</td>
+        <td>${d.cudlInventory}</td>
+        <td class="proj">${d.note || ""}</td>
+      </tr>`
+    )
+    .join("");
+  document.getElementById("cudlImplication").textContent = cudl.implication || "";
+  const link = document.getElementById("cudlLink");
+  if (link && cudl.sourceUrl) link.href = cudl.sourceUrl;
 }
 
 async function boot() {

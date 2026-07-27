@@ -12,7 +12,7 @@ Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search
 - Geography: prefer **≤ 500 miles of Washington State** (Seattle as anchor for distance)
 - Flying elsewhere is allowed for clear under-market deals — tag those `tier: "fly"`
 - Planning horizon: project prices to **2026-10-01**
-- Financing plan: about **$20,000** down payment (keep `financing` section current)
+- Financing plan: **BECU lead lender** — $0 down under $100k, ≤10 model years, ≤75k miles; savings go to early payoff (keep `financing` section current). Track `financing.cudlNotes` when BECU AutoSmart/CUDL is searched.
 
 ## What to do each run
 
@@ -30,7 +30,7 @@ Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search
    - Recompute `projectedOct` using scenarios in `projections.scenarios`
    - Re-rank **deal-first**: primary = in-radius strong deals (any year), watchlist = uncertain/availability risk, fly = out-of-radius bargains. Soft +score for ≤2021 only when otherwise equal — never exclude for being newer
    - Set `marketSummary.nwDealFloor` to the lowest active in-radius ask (any year) and refresh `gapToBudget`
-   - Refresh `financing.paymentScenarios` with $20k down, 120-month term, APRs 6.5 / 7.5 / 9 / 11:
+   - Refresh `financing.paymentScenarios` with **$0 down** (BECU under $100k), 120-month term, APRs 6.5 / 7.5 / 9 / 11:
      - budget = $60k ask
      - fly ≈ lowest national/fly ask near budget
      - stretch = $70k

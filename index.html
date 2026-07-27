@@ -76,7 +76,7 @@
 
       <div class="section-head">
         <h2>Financing plan</h2>
-        <p>~$20k down · illustrative credit-union RV loan payments</p>
+        <p>BECU $0 down under $100k · full-loan payment estimates · early payoff preferred</p>
       </div>
       <section class="panel" id="financingPanel">
         <p id="financingRec"></p>
@@ -84,7 +84,7 @@
           <div class="stat">
             <div class="label">Down payment</div>
             <div class="value" id="finDown">—</div>
-            <div class="hint">target cash down</div>
+            <div class="hint" id="finDownHint">BECU under $100k</div>
           </div>
           <div class="stat">
             <div class="label">Extra cash</div>
@@ -110,7 +110,7 @@
           <thead>
             <tr>
               <th>Purchase scenario</th>
-              <th>Loan after $20k</th>
+              <th id="finLoanHeader">Loan amount</th>
               <th>LTV</th>
               <th>6.5% APR</th>
               <th>7.5%</th>
@@ -137,6 +137,27 @@
           <tbody id="financingLenders"></tbody>
         </table>
       </div>
+
+      <section class="panel" id="cudlPanel" hidden>
+        <h2>BECU AutoSmart / CUDL network</h2>
+        <p id="cudlSummary"></p>
+        <ul class="steps" id="cudlFindings"></ul>
+        <div class="table-wrap" style="margin-top: 0.75rem">
+          <table>
+            <thead>
+              <tr>
+                <th>Dealer</th>
+                <th>Distance</th>
+                <th>CUDL inventory</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody id="cudlDealers"></tbody>
+          </table>
+        </div>
+        <p class="panel-note" id="cudlImplication"></p>
+        <p class="panel-note"><a id="cudlLink" href="#" target="_blank" rel="noopener">Open BECU AutoSmart RV search (98370)</a></p>
+      </section>
 
       <section class="panel">
         <h2>Financing next steps</h2>
@@ -175,10 +196,8 @@
           Sources: <span id="sources"></span>
         </p>
         <p>
-          Live report data is stored in Elasticsearch (<code>solis-watch</code> /
-          <code>report-current</code>) and refreshed by the Solis Watch Cursor cloud
-          automation without git commits. Static <code>data/report.json</code> is only a
-          fallback if Elastic is unreachable.
+          Report data lives in <code>data/report.json</code> on GitHub Pages. Updates are
+          committed to <code>main</code> after each market research run.
         </p>
       </footer>
     </main>

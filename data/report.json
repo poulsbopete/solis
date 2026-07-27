@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T04:30:00Z",
+  "generatedAt": "2026-07-27T16:55:00Z",
   "criteria": {
     "model": "Winnebago Solis",
     "maxBudget": 60000,
@@ -433,17 +433,23 @@
     {
       "level": "warning",
       "text": "NW deal floor is about $68,000 vs $60k target (gap ~$8,000)."
+    },
+    {
+      "level": "info",
+      "text": "BECU CUDL AutoSmart (Jul 27): zero Winnebago Solis in network nationwide. Johnson RV Fife/Medford are enrolled but show 0 synced inventory — finance off-listing, not via AutoSmart search."
     }
   ],
   "financing": {
     "asOf": "2026-07-27",
-    "downPaymentTarget": 20000,
+    "downPaymentTarget": 0,
+    "downPaymentPolicy": "BECU confirmed Jul 27: no down payment required on purchases under $100,000. Cash savings go toward early principal payoff and closing costs, not upfront down.",
+    "earlyPayoffStrategy": "Model full-loan payments below; keep $6\u201310k liquid for tax, title, insurance, and inspection, then apply any extra savings as lump-sum principal payments.",
     "extraCashNeeded": {
       "low": 6000,
       "high": 10000,
-      "notes": "WA sales/use tax (~8\u201310%), title/license, Class B insurance binder, and pre-purchase inspection. Ask lenders whether tax/fees can roll into the loan."
+      "notes": "WA sales/use tax (~8\u201310%), title/license, Class B insurance binder, and pre-purchase inspection. Ask BECU whether tax/fees can roll into the loan."
     },
-    "recommendation": "Get preapproved for a secured RV loan at BECU plus one other WA credit union before negotiating. $20k down is strong (~25\u201333% on a $60\u201378k van). Prefer \u226410-year terms if the payment fits; use dealer financing only as a comparison quote.",
+    "recommendation": "BECU is the lead lender: preapprove for a secured RV loan with $0 down under $100k, \u226410 model years, and \u226475k miles. Shop candidates directly (private party or dealer) \u2014 AutoSmart/CUDL shows no Solis inventory. Prefer a \u226410-year term; use any saved cash for early payoff rather than down. Compare one backup WA credit union quote.",
     "paymentAssumptions": {
       "termMonths": 120,
       "aprScenarios": [
@@ -459,60 +465,60 @@
         "id": "budget",
         "label": "Budget ask $60k",
         "purchasePrice": 60000,
-        "downPayment": 20000,
-        "loanAmount": 40000,
-        "ltvPct": 67,
+        "downPayment": 0,
+        "loanAmount": 60000,
+        "ltvPct": 100,
         "termMonths": 120,
         "monthly": {
-          "apr6_5": 454,
-          "apr7_5": 475,
-          "apr9_0": 507,
-          "apr11_0": 551
+          "apr6_5": 681,
+          "apr7_5": 712,
+          "apr9_0": 760,
+          "apr11_0": 827
         }
       },
       {
         "id": "fly",
         "label": "Fly deal ~$64k",
         "purchasePrice": 64000,
-        "downPayment": 20000,
-        "loanAmount": 44000,
-        "ltvPct": 69,
+        "downPayment": 0,
+        "loanAmount": 64000,
+        "ltvPct": 100,
         "termMonths": 120,
         "monthly": {
-          "apr6_5": 500,
-          "apr7_5": 522,
-          "apr9_0": 557,
-          "apr11_0": 606
+          "apr6_5": 727,
+          "apr7_5": 760,
+          "apr9_0": 811,
+          "apr11_0": 882
         }
       },
       {
         "id": "stretch",
         "label": "Stretch $70k",
         "purchasePrice": 70000,
-        "downPayment": 20000,
-        "loanAmount": 50000,
-        "ltvPct": 71,
+        "downPayment": 0,
+        "loanAmount": 70000,
+        "ltvPct": 100,
         "termMonths": 120,
         "monthly": {
-          "apr6_5": 568,
-          "apr7_5": 594,
-          "apr9_0": 633,
-          "apr11_0": 689
+          "apr6_5": 795,
+          "apr7_5": 831,
+          "apr9_0": 887,
+          "apr11_0": 964
         }
       },
       {
         "id": "nw_floor",
         "label": "NW deal floor",
         "purchasePrice": 68000,
-        "downPayment": 20000,
-        "loanAmount": 48000,
-        "ltvPct": 71,
+        "downPayment": 0,
+        "loanAmount": 68000,
+        "ltvPct": 100,
         "termMonths": 120,
         "monthly": {
-          "apr6_5": 545,
-          "apr7_5": 570,
-          "apr9_0": 608,
-          "apr11_0": 661
+          "apr6_5": 772,
+          "apr7_5": 807,
+          "apr9_0": 861,
+          "apr11_0": 937
         }
       }
     ],
@@ -522,8 +528,8 @@
         "type": "Secured RV",
         "rates": "From ~6.99% APR",
         "terms": "Up to 240 months",
-        "notes": "Often 10\u201320% down on longer terms; gas RVs typically \u226475k miles.",
-        "fit": "Best first call if you're in Washington"
+        "notes": "Confirmed Jul 27: \u226410 model years, \u226475k miles, $0 down under $100k. AutoSmart/CUDL has zero Solis \u2014 use direct RV loan for private party or off-feed dealers (e.g. Johnson RV).",
+        "fit": "Primary lender \u2014 conversation in progress"
       },
       {
         "name": "Alliant Credit Union",
@@ -567,14 +573,57 @@
       }
     ],
     "nextSteps": [
-      "Get preapproved at BECU + one other WA credit union for a $40\u201360k RV loan",
-      "Ask each: max term, min down, max miles/age, and whether private-party purchases are OK",
-      "Keep $6\u201310k liquid beyond the $20k down for tax, title, insurance, and inspection",
-      "Negotiate with a preapproval letter in hand; aim high-$60ks on NW 2021 stock when possible",
-      "Compare any dealer rate only after you have a credit-union quote"
+      "Complete BECU RV preapproval ($0 down under $100k; confirm private-party and Johnson RV off-CUDL purchases qualify)",
+      "Filter candidates to BECU rules: 2016+ model year and \u226475k miles (excludes Pottstown 93k mi and Kent Indie if odometer confirms 100k+)",
+      "Keep $6\u201310k liquid for tax, title, insurance, and inspection \u2014 route additional savings to early principal payoff",
+      "Shop listings directly; do not expect to find a Solis on BECU AutoSmart/CUDL",
+      "Compare one backup WA credit union quote before closing"
     ],
+    "becuEligibility": {
+      "maxModelYearsOld": 10,
+      "maxMiles": 75000,
+      "downPaymentRequiredAbove": 100000,
+      "disqualifiedCandidates": [
+        "pottstown-2022-59px (93,000 mi)",
+        "kent-2022-59px-indie (verify odometer; ad copy cites up to 100,745 mi)"
+      ]
+    },
+    "cudlNotes": {
+      "asOf": "2026-07-27",
+      "sourceUrl": "https://becu.cudlautosmart.com/Dealer?ItemType=8&ZipCode=98370",
+      "summary": "Zero Winnebago Solis listings anywhere in the BECU AutoSmart / CUDL network (nationwide search, Jul 27). AutoSmart is a dealer inventory marketplace \u2014 separate from BECU's direct RV loan program.",
+      "findings": [
+        "Text search \"Solis\" returns ~1,850 false positives (e.g. Grand Design Solitude); zero listings with Solis in the title",
+        "Winnebago make filter nationwide (RV/trailer): 38 units \u2014 Forza, Via, Minnie Plus, Adventurer; no Solis Class B",
+        "Johnson RV Sales \u2013 Fife (37 mi): enrolled in CUDL but 0 synced inventory",
+        "Johnson RV Medford (374 mi): enrolled in CUDL but 0 synced inventory",
+        "Poulsbo RV (Everett/Kent/Sumner/Mt Vernon): 127\u2013149 units each with Winnebago stock, but no Solis"
+      ],
+      "nearbyDealers": [
+        {
+          "name": "Johnson RV Sales \u2013 Fife",
+          "distanceMiles": 37,
+          "cudlInventory": 0,
+          "note": "Same dealer as report Fife listing \u2014 buy off johnsonrv.com, not AutoSmart"
+        },
+        {
+          "name": "Johnson RV Medford",
+          "distanceMiles": 374,
+          "cudlInventory": 0,
+          "note": "Same dealer as report Medford listing"
+        },
+        {
+          "name": "Poulsbo RV \u2013 Everett",
+          "distanceMiles": 21,
+          "cudlInventory": 137,
+          "note": "Nearest CUDL partner with real stock; no Solis"
+        }
+      ],
+      "implication": "Finance through BECU's secured RV loan for private-party or dealer purchases found in this report. AutoSmart cannot be used to shop Solis inventory today."
+    },
     "sources": [
-      "BECU consumer lending / RV financing disclosures",
+      "BECU phone conversation Jul 27 (mileage/age/down-payment rules)",
+      "BECU AutoSmart / CUDL inventory API search Jul 27",
       "Alliant Credit Union RV loans",
       "Fibre FCU adventure / RV loans",
       "Navy Federal RV loans",
