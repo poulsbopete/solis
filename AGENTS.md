@@ -125,3 +125,13 @@ Create the write key in [Kibana → API Keys](https://ai-assistants-ffcafb.kb.us
 5. Confirm https://poulsbopete.github.io/solis/ shows the new `generatedAt`
 
 If credentials are missing, **do not** commit a stale cache — research-only output is correct.
+
+## Cursor Cloud specific instructions
+
+Durable, non-obvious notes for future cloud agents (the environment is already set up by the update script when you start).
+
+- **No dependencies to install.** This repo is a static GitHub Pages site (`index.html` + `assets/`) plus Python 3 **stdlib-only** scripts (`scripts/*.py` use `urllib`/`json` — no `pip install`, no `requirements.txt`, no Node/npm). There is **no test suite, no linter, and no build step**.
+- **Run the app (dev mode):** `python3 -m http.server 8080` from the repo root, then open `http://localhost:8080`. The page loads `data/report-live.json` and shows "Data source: Elasticsearch (Pages cache)"; if that file is missing it falls back to `data/report.json` and shows "Data source: static JSON fallback". No Elasticsearch connection is needed just to render the UI.
+- **Credentials:** `ELASTICSEARCH_URL`, `ELASTICSEARCH_API_KEY`, and `ELASTICSEARCH_READ_API_KEY` are injected as environment variables via the Cloud environment secrets (no local `.env` needed). Scripts read env first, then `.env` / `.elastic-credentials`.
+- **Gotcha — `sync_pages_cache.py --out`:** the `--out` path must be **inside the repo**. It prints `path.relative_to(ROOT)` at the end and will crash with a `ValueError` if you point `--out` outside `/workspace` (e.g. `/tmp/...`), even though the fetch/write itself succeeded. Use the default (`data/report-live.json`) or an in-repo path.
+- **Setup step:** `.cursor/environment.json` runs `python3 scripts/check_elastic_credentials.py` as its install command; it exits non-zero (by design) when ES secrets are absent, so keep those secrets configured on the Cloud environment.
