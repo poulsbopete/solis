@@ -45,3 +45,22 @@ git add data/report.json data/history.json
 git commit -m "Update Solis Watch report (YYYY-MM-DD)"
 git push origin main
 ```
+
+## Local hourly watcher (your laptop)
+
+Light check for **new driveable** Solis/Travato listings within 200 mi of Poulsbo (configurable). Ignores fly deals; alerts when something new appears.
+
+```bash
+# one-off check (verbose)
+python3 scripts/local_watch.py -v
+
+# install hourly schedule (macOS launchd)
+chmod +x scripts/install-local-watch.sh
+./scripts/install-local-watch.sh
+```
+
+**Sources scanned each run:** BECU CUDL network (local radius), priority CUDL dealers (Johnson, Poulsbo RV, Apache, etc.), live URLs from `data/report.json` within range, Craigslist RSS (Seattle/Portland/Spokane when not blocked).
+
+**State/logs (gitignored):** `.local/watch-state.json`, `.local/watch-log.jsonl`
+
+Edit `scripts/watch_config.json` to change `maxDriveMiles` (default 200), zip code, or disable sources.

@@ -1,0 +1,29 @@
+{
+  "zipCode": "98370",
+  "anchorCity": "Poulsbo, WA",
+  "maxDriveMiles": 200,
+  "models": ["Solis", "Travato"],
+  "makes": ["Winnebago"],
+  "notify": true,
+  "sources": {
+    "cudlNetwork": true,
+    "cudlPriorityDealers": true,
+    "reportSnapshot": true,
+    "craigslistRss": true
+  },
+  "craigslistSites": [
+    "seattle",
+    "portland",
+    "spokane"
+  ],
+  "priorityDealerNamePatterns": [
+    "johnson rv",
+    "poulsbo rv",
+    "apache camping",
+    "kitsap rv",
+    "rnr rv",
+    "indie campers"
+  ],
+  "stateFile": ".local/watch-state.json",
+  "logFile": ".local/watch-log.jsonl"
+}

@@ -24,6 +24,7 @@ Keep the GitHub Pages buyer report current for used **Winnebago Solis and Travat
    - Vanlife Trader
    - **BECU AutoSmart / CUDL RV dealers** within 200 mi of 98370 — refresh `data/cudl-dealers.json` via `scripts/fetch_cudl_dealers.py`; scan each dealer's CUDL feed and website for Solis/Travato
    - Optional: Facebook Marketplace / Craigslist Seattle + Portland (summarize if scrapable)
+   - **Local laptop watcher:** `scripts/local_watch.py` hourly via `scripts/install-local-watch.sh` — driveable radius only (see `scripts/watch_config.json`)
 2. Update `data/report.json`:
    - Refresh `generatedAt` (ISO UTC)
    - Update `marketSummary` floors/averages when available (`solisNationalUsedFloor`, `travatoNationalUsedFloor`, and combined `nationalUsedFloor`)
