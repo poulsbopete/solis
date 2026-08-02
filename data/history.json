@@ -45,7 +45,7 @@
       "primaryCount": 3,
       "watchlistCount": 4,
       "flyCount": 5,
-      "notes": "Verified Johnson and Renton unchanged. Added Seattle private 2021 and Kent Indie Campers 2022 watchlist entries. Autotrader national floor ticked to $69,599. Later: BECU financing terms ($0 down under $100k, ≤10 yrs/75k mi) and CUDL network search (zero Solis). Evening: Medford 59PX reported sold; Thor Sequence 20K at Fife added as lead alternative."
+      "notes": "Verified Johnson and Renton unchanged. Added Seattle private 2021 and Kent Indie Campers 2022 watchlist entries. Autotrader national floor ticked to $69,599. Later: BECU financing terms ($0 down under $100k, ≤10 yrs/75k mi) and CUDL network search (zero Solis). Evening: Medford 59PX reported sold."
     },
     {
       "date": "2026-08-02",
@@ -61,7 +61,7 @@
       "watchlistCount": 3,
       "flyCount": 5,
       "travatoCount": 1,
-      "notes": "Expanded scope to Winnebago Travato. Renton Craigslist 404 and Johnson Fife 59P sold. Added Liberty Lake 2021 Travato 59G. Johnson Thor Sequence/Tellaro/Scope verified live. Autotrader Solis floor ~$73k."
+      "notes": "Winnebago Solis and Travato only. Renton Craigslist 404 and Johnson Fife 59P sold. Added Liberty Lake 2021 Travato 59G. Autotrader Solis floor ~$73k."
     }
   ],
   "priceSeries": [
@@ -73,13 +73,6 @@
         {"date": "2026-07-25", "price": 77800},
         {"date": "2026-07-27", "price": 77800},
         {"date": "2026-07-27", "price": null, "status": "sold"}
-      ]
-    },
-    {
-      "id": "fife-2022-sequence-20k",
-      "points": [
-        {"date": "2026-07-27", "price": 79900},
-        {"date": "2026-08-02", "price": 79900}
       ]
     },
     {
@@ -190,12 +183,6 @@
       "id": "liberty-lake-2021-59g",
       "points": [
         {"date": "2026-08-02", "price": 84990}
-      ]
-    },
-    {
-      "id": "sandy-2023-tellaro-20k",
-      "points": [
-        {"date": "2026-08-02", "price": 77900}
       ]
     }
   ]

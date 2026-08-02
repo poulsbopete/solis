@@ -133,7 +133,6 @@ function render(report) {
 
   renderFinancing(report.financing);
   renderCudlNotes(report.financing?.cudlNotes);
-  renderAlternatives(report.alternatives);
 }
 
 function renderFinancing(fin) {
@@ -243,36 +242,6 @@ function renderCudlNotes(cudl) {
   document.getElementById("cudlImplication").textContent = cudl.implication || "";
   const link = document.getElementById("cudlLink");
   if (link && cudl.sourceUrl) link.href = cudl.sourceUrl;
-}
-
-function renderAlternatives(alts) {
-  const section = document.getElementById("alternativesSection");
-  if (!section) return;
-  const items = (alts || []).filter((a) => a.status === "lead" || a.status === "active");
-  if (!items.length) {
-    section.hidden = true;
-    return;
-  }
-  section.hidden = false;
-  document.getElementById("alternativesCards").innerHTML = items
-    .map(
-      (x) => `
-      <article class="card alt-card">
-        <div><span class="tier primary">${x.status === "lead" ? "lead" : "alt"}</span></div>
-        <h3>${x.year} ${x.make} ${x.model} ${x.trim}</h3>
-        <div class="sub">${x.city}, ${x.state} · ${x.distanceMiles} mi · ${x.seller}</div>
-        <div class="big-price">${money(x.price)}</div>
-        <div class="proj-grid">
-          <div class="proj-cell"><div class="k">Miles</div><div class="v">${x.miles?.toLocaleString() ?? "—"}</div></div>
-          <div class="proj-cell"><div class="k">Chassis</div><div class="v">${x.chassis || "—"}</div></div>
-          <div class="proj-cell"><div class="k">BECU</div><div class="v">${x.becuEligible ? "Eligible" : "Check"}</div></div>
-        </div>
-        <p class="sub">${x.notes}</p>
-        ${x.vsSolis ? `<p class="sub"><em>${x.vsSolis}</em></p>` : ""}
-        <div><a href="${x.url}" target="_blank" rel="noopener">Open listing</a></div>
-      </article>`
-    )
-    .join("");
 }
 
 async function boot() {

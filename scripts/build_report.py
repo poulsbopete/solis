@@ -88,7 +88,7 @@ report = {
         "nationalUsedHigh": 180607,
         "nwAgeEligibleFloor": 73800,
         "gapToBudget": 17899,
-        "verdict": "Aug 2 refresh: scope expanded to Travato. Renton Solis Craigslist gone (404). Johnson Fife Solis 59P appears sold. Lead ProMaster options at Johnson Fife: Thor Sequence 20K ($79,900) still live; Tellaro 20K Sandy ($77,900). Best Solis fly remains Smyrna 59PX at $69,900. Best NW Travato: Liberty Lake 2021 59G at $84,990.",
+        "verdict": "Aug 2 refresh: Winnebago Solis and Travato only. Renton Solis Craigslist gone (404). Johnson Fife Solis 59P appears sold. Best Solis fly: Smyrna 59PX at $69,900. Best NW Travato: Liberty Lake 2021 59G at $84,990. Verified in-radius floor: Kent Solis at $77,899.",
         "sources": [
             "RVs on Autotrader Solis & Travato aggregates",
             "Johnson RV Fife / Sandy / Medford inventory",
@@ -123,7 +123,7 @@ report = {
                 "rationale": "High-mileage rental fleet dumps or year-end clear-outs; could push some 2022+ units near or under $60k.",
             },
         ],
-        "budgetReachability": "A $60k Winnebago is still a stretch on Solis/Travato — best paths are Smyrna fly Solis ($69,900), negotiating the Sandy Tellaro or Fife Sequence toward $76–77k, or the high-mile Pottstown Solis fly ($63,994, BECU mileage risk).",
+        "budgetReachability": "A $60k Winnebago is still a stretch on Solis/Travato — best paths are Smyrna fly Solis ($69,900), negotiating Seattle private or Kent Indie toward the high $60ks, or the high-mile Pottstown Solis fly ($63,994, BECU mileage risk).",
     },
     "candidates": [],
     "alternatives": [],
@@ -169,7 +169,7 @@ candidates = [
         280,
         "https://www.rvingplanet.com/product/used-2021-winnebago-travato-59g-3701231-13",
         "active",
-        "Best verified NW Travato Aug 2: 2021 59G at $84,990 ($5k off MSRP), 30,421 mi, full-size rear bed + wet bath, 215W solar. ~$25k over budget but premium Winnebago vs Thor alternatives.",
+        "Best verified NW Travato Aug 2: 2021 59G at $84,990 ($5k off MSRP), 30,421 mi, full-size rear bed + wet bath, 215W solar. ~$25k over budget.",
         None,
         "3C6FRVJG4ME509814",
         "90694",
@@ -427,85 +427,11 @@ for x in candidates:
 
 report["candidates"] = candidates
 
-report["alternatives"] = [
-    {
-        "id": "fife-2022-sequence-20k",
-        "status": "lead",
-        "make": "Thor Motor Coach",
-        "model": "Sequence",
-        "year": 2022,
-        "trim": "20K",
-        "price": 79900,
-        "miles": 22207,
-        "vin": "3C6MRVUG8ME583403",
-        "stock": "26114GC",
-        "city": "Fife",
-        "state": "WA",
-        "seller": "Johnson RV Fife",
-        "sellerType": "dealer",
-        "distanceMiles": 30,
-        "url": "https://johnsonrv.com/inventory/Used-2022-Thor_Motor_Coach-Sequence-20K-3C6MRVUG8ME583403",
-        "chassis": "Ram ProMaster 3500",
-        "lengthFt": 21,
-        "becuEligible": True,
-        "notes": "Verified live Aug 2 at $79,900 / 22,207 mi. User lead — negotiate toward $76–77k. 3D tour available.",
-        "projectedOct": proj(79900),
-        "vsSolis": "Same platform as Solis/Travato; stronger lithium/3kW electrical than most Winnebago listings at this price.",
-    },
-    {
-        "id": "sandy-2023-tellaro-20k",
-        "status": "active",
-        "make": "Thor Motor Coach",
-        "model": "Tellaro",
-        "year": 2023,
-        "trim": "20K",
-        "price": 77900,
-        "miles": 27410,
-        "vin": "3C6MRVUG5NE129336",
-        "stock": "26200",
-        "city": "Sandy",
-        "state": "OR",
-        "seller": "Johnson RV Sandy",
-        "sellerType": "dealer",
-        "distanceMiles": 150,
-        "url": "https://johnsonrv.com/inventory/Used-2023-Thor_Motor_Coach-Tellaro-20K-3C6MRVUG5NE129336",
-        "chassis": "Ram ProMaster 3500",
-        "lengthFt": 21,
-        "becuEligible": True,
-        "notes": "Verified Aug 2: $77,900 with $5k discount, 27,410 mi. Ask Fife to match or transfer.",
-        "projectedOct": proj(77900),
-        "vsSolis": "Newer than Sequence, $2k less ask; more miles than Sequence.",
-    },
-    {
-        "id": "medford-2023-scope-18a",
-        "status": "active",
-        "make": "Thor Motor Coach",
-        "model": "Scope",
-        "year": 2023,
-        "trim": "18A",
-        "price": 78800,
-        "miles": 16666,
-        "vin": "3C6LRVBG4NE132212",
-        "stock": "25694",
-        "city": "Medford",
-        "state": "OR",
-        "seller": "Johnson RV Medford",
-        "sellerType": "dealer",
-        "distanceMiles": 430,
-        "url": "https://johnsonrv.com/inventory/Used-2023-Thor_Motor_Coach-Scope-18A-3C6LRVBG4NE132212",
-        "chassis": "Ram ProMaster 1500",
-        "lengthFt": 17,
-        "becuEligible": True,
-        "notes": "Compact 17' alternative at $78,800 / 16,666 mi. Weaker electrical (1kW inverter, generator) vs Sequence.",
-        "projectedOct": proj(78800),
-        "vsSolis": "Nimbler 17' van; less storage and sleeping vs Solis pop-top.",
-    },
-]
+report["alternatives"] = []
 
 report["alerts"] = [
     {"level": "info", "text": "Report now tracks Winnebago Solis and Travato on the same ProMaster Class B platform."},
     {"level": "info", "text": "Renton Solis Craigslist removed (404 Aug 2). Johnson Fife 2021 Solis 59P detail page gone — likely sold."},
-    {"level": "info", "text": "Lead ProMaster at Johnson: Sequence 20K Fife $79,900 (live). Tellaro 20K Sandy $77,900."},
     {"level": "info", "text": "Best Solis deal: Smyrna 2021 59PX fly at $69,900. Best NW Travato: Liberty Lake 2021 59G at $84,990."},
     {"level": "warning", "text": "NW verified in-radius floor ~$77,899 (Kent Solis) vs $60k target (gap ~$17,900). Best national Winnebago ask: Smyrna fly at $69,900."},
 ]
@@ -542,22 +468,22 @@ def pay_scenario(id_, label, price):
 
 report["financing"]["asOf"] = "2026-08-02"
 report["financing"]["paymentScenarios"] = [
-    pay_scenario("sequence", "Thor Sequence lead $79.9k", 79900),
+    pay_scenario("best_deal", "Best deal Smyrna $69.9k", 69900),
     pay_scenario("budget", "Budget ask $60k", 60000),
     pay_scenario("fly", "Fly deal ~$70k", 69900),
     pay_scenario("stretch", "Stretch $70k", 70000),
     pay_scenario("nw_floor", "NW deal floor", report["marketSummary"]["nwDealFloor"]),
 ]
 report["financing"]["recommendation"] = (
-    "Aug 2: comparing Winnebago (Smyrna Solis fly, Liberty Lake Travato) vs Johnson Thor leads (Sequence/Tellaro). "
-    "BECU: $0 down under $100k, ≤10 years, ≤75k miles. Sequence/Tellaro/Travato at Fife/Sandy/Liberty Lake all qualify on age/miles."
+    "Winnebago-only tracker. Lead candidates: Smyrna fly Solis ($69,900) and Liberty Lake Travato ($84,990). "
+    "BECU: $0 down under $100k, ≤10 years, ≤75k miles."
 )
 report["financing"]["nextSteps"] = [
-    "Negotiate Fife Sequence 26114GC toward $76–77k OTD before tax",
-    "Compare Sandy Tellaro 26200 ($77,900) — ask Fife to match or transfer",
-    "If staying Winnebago: call Parkview on Smyrna Solis 6149B ($69,900 fly) and RnR on Liberty Lake Travato",
-    "Complete BECU preapproval for ~$80k + tax/fees",
-    "Pre-purchase inspection before any Johnson or fly deal",
+    "Call Parkview RV on Smyrna Solis 6149B ($69,900 fly) — confirm availability and negotiate",
+    "Call RnR RV Center on Liberty Lake Travato 90694 ($84,990) if comparing Travato vs Solis",
+    "Verify Kent Indie Campers odometer and rental history before BECU application",
+    "Complete BECU preapproval for target purchase + tax/fees",
+    "Pre-purchase inspection before any fly or private-party deal",
 ]
 
 Path("data/report.json").write_text(json.dumps(report, indent=2) + "\n")
