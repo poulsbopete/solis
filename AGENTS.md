@@ -22,6 +22,7 @@ Keep the GitHub Pages buyer report current for used **Winnebago Solis and Travat
    - Johnson RV (Fife WA, Sandy OR, Medford OR)
    - Winnebago RV Source / RVUSA aggregators
    - Vanlife Trader
+   - **BECU AutoSmart / CUDL RV dealers** within 200 mi of 98370 — refresh `data/cudl-dealers.json` via `scripts/fetch_cudl_dealers.py`; scan each dealer's CUDL feed and website for Solis/Travato
    - Optional: Facebook Marketplace / Craigslist Seattle + Portland (summarize if scrapable)
 2. Update `data/report.json`:
    - Refresh `generatedAt` (ISO UTC)

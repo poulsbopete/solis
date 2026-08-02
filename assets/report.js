@@ -132,7 +132,6 @@ function render(report) {
   document.getElementById("sources").textContent = m.sources.join(" · ");
 
   renderFinancing(report.financing);
-  renderCudlNotes(report.financing?.cudlNotes);
   renderRunAnalysis(report.runAnalysis);
 }
 
@@ -259,7 +258,7 @@ function renderFinancing(fin) {
     : "";
 }
 
-function renderCudlNotes(cudl) {
+function renderCudlNotes(cudl, dealerData) {
   const section = document.getElementById("cudlSection");
   if (!section || !cudl) {
     if (section) section.hidden = true;
@@ -271,26 +270,71 @@ function renderCudlNotes(cudl) {
   document.getElementById("cudlFindings").innerHTML = (cudl.findings || [])
     .map((item) => `<li>${item}</li>`)
     .join("");
-  document.getElementById("cudlDealers").innerHTML = (cudl.nearbyDealers || [])
-    .map(
-      (d) => `
+
+  const dealers = dealerData?.dealers || cudl.nearbyDealers || [];
+  const hint = document.getElementById("cudlDealerHint");
+  if (hint && dealerData) {
+    hint.textContent = `${dealerData.dealerCount} dealers · ${dealerData.withSyncedInventory} with stock`;
+  }
+
+  const tbody = document.getElementById("cudlDealers");
+  const filterInput = document.getElementById("cudlDealerFilter");
+
+  const renderRows = (list) => {
+    tbody.innerHTML = list
+      .map(
+        (d) => `
       <tr>
-        <td><strong>${d.name}</strong></td>
+        <td>
+          <strong>${d.name}</strong>
+          ${d.isBecuPlus ? '<span class="badge-plus">BECU Plus</span>' : ""}
+          <div class="proj">${d.city || ""}${d.city && d.state ? ", " : ""}${d.state || ""}</div>
+        </td>
         <td>${d.distanceMiles} mi</td>
-        <td>${d.cudlInventory}</td>
+        <td>${d.cudlInventory ?? "—"}</td>
+        <td>${d.winnebagoCount ?? "—"}</td>
         <td class="proj">${d.note || ""}</td>
+        <td>${d.searchUrl ? `<a href="${d.searchUrl}" target="_blank" rel="noopener">CUDL</a>` : "—"}</td>
       </tr>`
-    )
-    .join("");
+      )
+      .join("");
+  };
+
+  renderRows(dealers);
+  if (filterInput) {
+    filterInput.oninput = () => {
+      const q = filterInput.value.trim().toLowerCase();
+      if (!q) {
+        renderRows(dealers);
+        return;
+      }
+      renderRows(
+        dealers.filter(
+          (d) =>
+            d.name?.toLowerCase().includes(q) ||
+            d.city?.toLowerCase().includes(q) ||
+            d.note?.toLowerCase().includes(q)
+        )
+      );
+    };
+  }
+
   document.getElementById("cudlImplication").textContent = cudl.implication || "";
   const link = document.getElementById("cudlLink");
   if (link && cudl.sourceUrl) link.href = cudl.sourceUrl;
 }
 
 async function boot() {
-  const res = await fetch("./data/report.json", { cache: "no-store" });
-  if (!res.ok) throw new Error(`report.json HTTP ${res.status}`);
-  render(await res.json());
+  const [reportRes, cudlRes] = await Promise.all([
+    fetch("./data/report.json", { cache: "no-store" }),
+    fetch("./data/cudl-dealers.json", { cache: "no-store" }).catch(() => null),
+  ]);
+  if (!reportRes.ok) throw new Error(`report.json HTTP ${reportRes.status}`);
+  const report = await reportRes.json();
+  let dealerData = null;
+  if (cudlRes?.ok) dealerData = await cudlRes.json();
+  render(report);
+  renderCudlNotes(report.financing?.cudlNotes, dealerData);
 }
 
 boot().catch((err) => {

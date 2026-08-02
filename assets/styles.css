@@ -281,6 +281,37 @@ a:hover {
   margin-top: 0;
 }
 
+.cudl-filter {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.cudl-filter input {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+}
+
+.badge-plus {
+  display: inline-block;
+  margin-left: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border-radius: 999px;
+  background: #dbe8f5;
+  color: var(--fly);
+  vertical-align: middle;
+}
+
 .panel p {
   margin: 0.4rem 0;
   color: var(--muted);

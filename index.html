@@ -192,26 +192,33 @@
           <details class="collapse collapse-nested" id="cudlSection" hidden>
             <summary class="collapse-summary">
               <span class="collapse-title">BECU AutoSmart / CUDL network</span>
+              <span class="collapse-hint" id="cudlDealerHint">RV dealers near 98370</span>
             </summary>
             <div class="collapse-body">
               <section class="panel panel-flush" id="cudlPanel">
                 <p id="cudlSummary"></p>
                 <ul class="steps" id="cudlFindings"></ul>
+                <label class="cudl-filter">
+                  Filter dealers
+                  <input type="search" id="cudlDealerFilter" placeholder="Name, city, or note…" autocomplete="off" />
+                </label>
                 <div class="table-wrap" style="margin-top: 0.75rem">
                   <table>
                     <thead>
                       <tr>
                         <th>Dealer</th>
-                        <th>Distance</th>
-                        <th>CUDL inventory</th>
+                        <th>Dist.</th>
+                        <th>CUDL stock</th>
+                        <th>Winnebago</th>
                         <th>Note</th>
+                        <th>Search</th>
                       </tr>
                     </thead>
                     <tbody id="cudlDealers"></tbody>
                   </table>
                 </div>
                 <p class="panel-note" id="cudlImplication"></p>
-                <p class="panel-note"><a id="cudlLink" href="#" target="_blank" rel="noopener">Open BECU AutoSmart RV search (98370)</a></p>
+                <p class="panel-note"><a id="cudlLink" href="#" target="_blank" rel="noopener">Open BECU AutoSmart RV dealer search (98370 · 200 mi)</a></p>
               </section>
             </div>
           </details>
@@ -304,6 +311,6 @@
         </p>
       </footer>
     </main>
-    <script src="./assets/report.js?v=20260802c"></script>
+    <script src="./assets/report.js?v=20260802d"></script>
   </body>
 </html>

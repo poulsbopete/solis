@@ -699,41 +699,23 @@
       ]
     },
     "cudlNotes": {
-      "asOf": "2026-07-27",
-      "sourceUrl": "https://becu.cudlautosmart.com/Dealer?ItemType=8&ZipCode=98370",
-      "summary": "Zero Winnebago Solis listings anywhere in the BECU AutoSmart / CUDL network (nationwide search, Jul 27). AutoSmart is a dealer inventory marketplace \u2014 separate from BECU's direct RV loan program.",
+      "asOf": "2026-08-02",
+      "sourceUrl": "https://becu.cudlautosmart.com/Dealer?ItemType=8&ZipCode=98370&Distance=200",
+      "dealerListPath": "data/cudl-dealers.json",
+      "summary": "Aug 2: 194 BECU AutoSmart RV/trailer dealers within 200 mi of 98370 (Poulsbo). 146 have synced CUDL inventory. Zero Winnebago Solis or Travato anywhere on AutoSmart nationwide — finance off-listing via BECU direct RV loan. Full dealer list loaded on site.",
       "findings": [
-        "Text search \"Solis\" returns ~1,850 false positives (e.g. Grand Design Solitude); zero listings with Solis in the title",
-        "Winnebago make filter nationwide (RV/trailer): 38 units \u2014 Forza, Via, Minnie Plus, Adventurer; no Solis Class B",
-        "Johnson RV Sales \u2013 Fife (37 mi): enrolled in CUDL but 0 synced inventory",
-        "Johnson RV Medford (374 mi): enrolled in CUDL but 0 synced inventory",
-        "Poulsbo RV (Everett/Kent/Sumner/Mt Vernon): 127\u2013149 units each with Winnebago stock, but no Solis"
+        "194 CUDL-enrolled RV/trailer dealers within 200 mi of 98370; 146 show synced inventory on AutoSmart",
+        "Winnebago make filter nationwide: 41 units — Forza, Via, Adventurer, Rialta; zero Solis or Travato Class B",
+        "Poulsbo RV (Everett/Kent/Sumner/Mt Vernon): largest synced Winnebago stock — still no Solis/Travato",
+        "Johnson RV Fife (37 mi): enrolled in CUDL, 0 synced inventory — shop johnsonrv.com directly",
+        "Apache Camping Center (Poulsbo/Everett/Tacoma): BECU Plus partners at 0–30 mi; browse their sites for Class B",
+        "Johnson RV Medford/Sandy: enrolled but inventory not on AutoSmart feed"
       ],
-      "nearbyDealers": [
-        {
-          "name": "Johnson RV Sales \u2013 Fife",
-          "distanceMiles": 37,
-          "cudlInventory": 0,
-          "note": "Same dealer as report Fife listing \u2014 buy off johnsonrv.com, not AutoSmart"
-        },
-        {
-          "name": "Johnson RV Medford",
-          "distanceMiles": 374,
-          "cudlInventory": 0,
-          "note": "Same dealer as report Medford listing"
-        },
-        {
-          "name": "Poulsbo RV \u2013 Everett",
-          "distanceMiles": 21,
-          "cudlInventory": 137,
-          "note": "Nearest CUDL partner with real stock; no Solis"
-        }
-      ],
-      "implication": "Finance through BECU's secured RV loan for private-party or dealer purchases found in this report. AutoSmart cannot be used to shop Solis inventory today."
+      "implication": "Use the CUDL dealer list below to shop BECU-enrolled RV dealers, then finance through BECU's secured RV loan even when inventory is off AutoSmart (e.g. Johnson RV, private party). AutoSmart search alone will not surface Solis/Travato today."
     },
     "sources": [
       "BECU phone conversation Jul 27 (mileage/age/down-payment rules)",
-      "BECU AutoSmart / CUDL inventory API search Jul 27",
+      "BECU AutoSmart / CUDL dealer network search Aug 2",
       "Alliant Credit Union RV loans",
       "Fibre FCU adventure / RV loans",
       "Navy Federal RV loans",
