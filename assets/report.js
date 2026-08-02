@@ -137,12 +137,12 @@ function render(report) {
 }
 
 function renderRunAnalysis(analysis) {
-  const panel = document.getElementById("runAnalysisPanel");
-  if (!panel || !analysis) {
-    if (panel) panel.hidden = true;
+  const section = document.getElementById("runAnalysisSection");
+  if (!section || !analysis) {
+    if (section) section.hidden = true;
     return;
   }
-  panel.hidden = false;
+  section.hidden = false;
   document.getElementById("runAnalysisSummary").textContent = analysis.summary || "";
   const dropped = analysis.droppedThisRun || [];
   const droppedEl = document.getElementById("runAnalysisDropped");
@@ -177,10 +177,12 @@ function renderRunAnalysis(analysis) {
 }
 
 function renderFinancing(fin) {
+  const section = document.getElementById("financingSection");
   if (!fin) {
-    document.getElementById("financingPanel").hidden = true;
+    if (section) section.hidden = true;
     return;
   }
+  if (section) section.hidden = false;
 
   document.getElementById("financingRec").textContent = fin.recommendation || "";
   const down = fin.downPaymentTarget ?? 0;
@@ -258,13 +260,13 @@ function renderFinancing(fin) {
 }
 
 function renderCudlNotes(cudl) {
-  const panel = document.getElementById("cudlPanel");
-  if (!panel || !cudl) {
-    if (panel) panel.hidden = true;
+  const section = document.getElementById("cudlSection");
+  if (!section || !cudl) {
+    if (section) section.hidden = true;
     return;
   }
 
-  panel.hidden = false;
+  section.hidden = false;
   document.getElementById("cudlSummary").textContent = cudl.summary || "";
   document.getElementById("cudlFindings").innerHTML = (cudl.findings || [])
     .map((item) => `<li>${item}</li>`)

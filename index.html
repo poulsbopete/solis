@@ -34,185 +34,265 @@
         </div>
       </header>
 
-      <section class="grid-stats" aria-label="Market snapshot">
-        <div class="stat">
-          <div class="label">NW deal floor</div>
-          <div class="value" id="statFloor">—</div>
-          <div class="hint">best nearby ask, any year</div>
+      <details class="collapse" open>
+        <summary class="collapse-summary">
+          <span class="collapse-title">Market snapshot</span>
+          <span class="collapse-hint">NW floor · gap · national · Oct cut</span>
+        </summary>
+        <div class="collapse-body">
+          <section class="grid-stats" aria-label="Market snapshot">
+            <div class="stat">
+              <div class="label">NW deal floor</div>
+              <div class="value" id="statFloor">—</div>
+              <div class="hint">best nearby ask, any year</div>
+            </div>
+            <div class="stat">
+              <div class="label">Gap to budget</div>
+              <div class="value" id="statGap">—</div>
+              <div class="hint" id="statGapHint">vs target</div>
+            </div>
+            <div class="stat">
+              <div class="label">National used floor</div>
+              <div class="value" id="statNational">—</div>
+              <div class="hint" id="statNationalHint">Solis & Travato combined</div>
+            </div>
+            <div class="stat">
+              <div class="label">Base Oct cut</div>
+              <div class="value" id="statCut">—</div>
+              <div class="hint">expected scenario</div>
+            </div>
+          </section>
         </div>
-        <div class="stat">
-          <div class="label">Gap to budget</div>
-          <div class="value" id="statGap">—</div>
-          <div class="hint" id="statGapHint">vs target</div>
+      </details>
+
+      <details class="collapse" open>
+        <summary class="collapse-summary">
+          <span class="collapse-title">Alerts</span>
+        </summary>
+        <div class="collapse-body">
+          <div class="alerts" id="alerts"></div>
         </div>
-        <div class="stat">
-          <div class="label">National used floor</div>
-          <div class="value" id="statNational">—</div>
-          <div class="hint" id="statNationalHint">Solis & Travato combined</div>
+      </details>
+
+      <details class="collapse" open>
+        <summary class="collapse-summary">
+          <span class="collapse-title">Market verdict</span>
+        </summary>
+        <div class="collapse-body">
+          <section class="panel panel-flush">
+            <p id="verdict"></p>
+            <p id="budgetReach"></p>
+          </section>
         </div>
-        <div class="stat">
-          <div class="label">Base Oct cut</div>
-          <div class="value" id="statCut">—</div>
-          <div class="hint">expected scenario</div>
+      </details>
+
+      <details class="collapse">
+        <summary class="collapse-summary">
+          <span class="collapse-title">Oct 2026 projection scenarios</span>
+          <span class="collapse-hint">mild · expected · aggressive</span>
+        </summary>
+        <div class="collapse-body">
+          <section class="panel panel-flush">
+            <p>
+              Applied to each candidate’s current ask. These are planning estimates, not
+              appraisals — real drops depend on days-on-market, miles, and seller urgency.
+            </p>
+            <div class="proj-grid" id="scenarios" style="margin-top: 0.75rem"></div>
+          </section>
         </div>
-      </section>
+      </details>
 
-      <div class="alerts" id="alerts"></div>
+      <details class="collapse" open id="financingSection">
+        <summary class="collapse-summary">
+          <span class="collapse-title">Financing plan</span>
+          <span class="collapse-hint">BECU $0 down · payment estimates</span>
+        </summary>
+        <div class="collapse-body collapse-stack">
+          <details class="collapse collapse-nested" open>
+            <summary class="collapse-summary">
+              <span class="collapse-title">Overview</span>
+            </summary>
+            <div class="collapse-body">
+              <section class="panel panel-flush" id="financingPanel">
+                <p id="financingRec"></p>
+                <div class="grid-stats financing-stats" aria-label="Financing snapshot">
+                  <div class="stat">
+                    <div class="label">Down payment</div>
+                    <div class="value" id="finDown">—</div>
+                    <div class="hint" id="finDownHint">BECU under $100k</div>
+                  </div>
+                  <div class="stat">
+                    <div class="label">Extra cash</div>
+                    <div class="value" id="finExtra">—</div>
+                    <div class="hint">tax / title / insurance</div>
+                  </div>
+                  <div class="stat">
+                    <div class="label">Term modeled</div>
+                    <div class="value" id="finTerm">—</div>
+                    <div class="hint">prefer ≤10 years</div>
+                  </div>
+                  <div class="stat">
+                    <div class="label">Best-case payment</div>
+                    <div class="value" id="finBestPay">—</div>
+                    <div class="hint" id="finBestHint">at 6.5% APR</div>
+                  </div>
+                </div>
+                <p class="panel-note" id="finDisclaimer"></p>
+              </section>
+            </div>
+          </details>
 
-      <section class="panel">
-        <h2>Market verdict</h2>
-        <p id="verdict"></p>
-        <p id="budgetReach"></p>
-      </section>
+          <details class="collapse collapse-nested" open>
+            <summary class="collapse-summary">
+              <span class="collapse-title">Payment scenarios</span>
+            </summary>
+            <div class="collapse-body">
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Purchase scenario</th>
+                      <th id="finLoanHeader">Loan amount</th>
+                      <th>LTV</th>
+                      <th>6.5% APR</th>
+                      <th>7.5%</th>
+                      <th>9%</th>
+                      <th>11%</th>
+                    </tr>
+                  </thead>
+                  <tbody id="financingPayments"></tbody>
+                </table>
+              </div>
+            </div>
+          </details>
 
-      <section class="panel">
-        <h2>Oct 2026 projection scenarios</h2>
-        <p>
-          Applied to each candidate’s current ask. These are planning estimates, not
-          appraisals — real drops depend on days-on-market, miles, and seller urgency.
-        </p>
-        <div class="proj-grid" id="scenarios" style="margin-top: 0.75rem"></div>
-      </section>
+          <details class="collapse collapse-nested">
+            <summary class="collapse-summary">
+              <span class="collapse-title">Lender comparison</span>
+            </summary>
+            <div class="collapse-body">
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Lender</th>
+                      <th>Type</th>
+                      <th>Rates</th>
+                      <th>Terms</th>
+                      <th>Gotchas</th>
+                      <th>Fit</th>
+                    </tr>
+                  </thead>
+                  <tbody id="financingLenders"></tbody>
+                </table>
+              </div>
+            </div>
+          </details>
 
-      <div class="section-head">
-        <h2>Financing plan</h2>
-        <p>BECU $0 down under $100k · full-loan payment estimates · early payoff preferred</p>
-      </div>
-      <section class="panel" id="financingPanel">
-        <p id="financingRec"></p>
-        <div class="grid-stats financing-stats" aria-label="Financing snapshot">
-          <div class="stat">
-            <div class="label">Down payment</div>
-            <div class="value" id="finDown">—</div>
-            <div class="hint" id="finDownHint">BECU under $100k</div>
+          <details class="collapse collapse-nested" id="cudlSection" hidden>
+            <summary class="collapse-summary">
+              <span class="collapse-title">BECU AutoSmart / CUDL network</span>
+            </summary>
+            <div class="collapse-body">
+              <section class="panel panel-flush" id="cudlPanel">
+                <p id="cudlSummary"></p>
+                <ul class="steps" id="cudlFindings"></ul>
+                <div class="table-wrap" style="margin-top: 0.75rem">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Dealer</th>
+                        <th>Distance</th>
+                        <th>CUDL inventory</th>
+                        <th>Note</th>
+                      </tr>
+                    </thead>
+                    <tbody id="cudlDealers"></tbody>
+                  </table>
+                </div>
+                <p class="panel-note" id="cudlImplication"></p>
+                <p class="panel-note"><a id="cudlLink" href="#" target="_blank" rel="noopener">Open BECU AutoSmart RV search (98370)</a></p>
+              </section>
+            </div>
+          </details>
+
+          <details class="collapse collapse-nested" open>
+            <summary class="collapse-summary">
+              <span class="collapse-title">Financing next steps</span>
+            </summary>
+            <div class="collapse-body">
+              <section class="panel panel-flush">
+                <ol class="steps" id="financingSteps"></ol>
+                <p class="panel-note" id="financingSources"></p>
+              </section>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <details class="collapse" id="runAnalysisSection" hidden>
+        <summary class="collapse-summary">
+          <span class="collapse-title">Run history</span>
+          <span class="collapse-hint">snapshots · removals</span>
+        </summary>
+        <div class="collapse-body">
+          <section class="panel panel-flush" id="runAnalysisPanel">
+            <p id="runAnalysisSummary"></p>
+            <h3 class="subhead">Dropped this run (not shown in tracker)</h3>
+            <ul class="steps" id="runAnalysisDropped"></ul>
+            <div class="table-wrap" style="margin-top: 0.75rem">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Run</th>
+                    <th>Active</th>
+                    <th>NW floor</th>
+                    <th>National floor</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody id="runAnalysisRuns"></tbody>
+              </table>
+            </div>
+            <h3 class="subhead">All removals (from price history)</h3>
+            <ul class="steps" id="runAnalysisRemoved"></ul>
+          </section>
+        </div>
+      </details>
+
+      <details class="collapse" open>
+        <summary class="collapse-summary">
+          <span class="collapse-title">Top candidates</span>
+          <span class="collapse-hint">best live deals by rank</span>
+        </summary>
+        <div class="collapse-body">
+          <div class="cards" id="cards"></div>
+        </div>
+      </details>
+
+      <details class="collapse" open>
+        <summary class="collapse-summary">
+          <span class="collapse-title">Full tracker</span>
+          <span class="collapse-hint">primary · watchlist · fly</span>
+        </summary>
+        <div class="collapse-body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Van</th>
+                  <th>Ask / change</th>
+                  <th>Oct projection</th>
+                  <th>Location</th>
+                  <th>Details</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
           </div>
-          <div class="stat">
-            <div class="label">Extra cash</div>
-            <div class="value" id="finExtra">—</div>
-            <div class="hint">tax / title / insurance</div>
-          </div>
-          <div class="stat">
-            <div class="label">Term modeled</div>
-            <div class="value" id="finTerm">—</div>
-            <div class="hint">prefer ≤10 years</div>
-          </div>
-          <div class="stat">
-            <div class="label">Best-case payment</div>
-            <div class="value" id="finBestPay">—</div>
-            <div class="hint" id="finBestHint">at 6.5% APR</div>
-          </div>
         </div>
-        <p class="panel-note" id="finDisclaimer"></p>
-      </section>
-
-      <div class="table-wrap" style="margin-bottom: 1rem">
-        <table>
-          <thead>
-            <tr>
-              <th>Purchase scenario</th>
-              <th id="finLoanHeader">Loan amount</th>
-              <th>LTV</th>
-              <th>6.5% APR</th>
-              <th>7.5%</th>
-              <th>9%</th>
-              <th>11%</th>
-            </tr>
-          </thead>
-          <tbody id="financingPayments"></tbody>
-        </table>
-      </div>
-
-      <div class="table-wrap" style="margin-bottom: 1rem">
-        <table>
-          <thead>
-            <tr>
-              <th>Lender</th>
-              <th>Type</th>
-              <th>Rates</th>
-              <th>Terms</th>
-              <th>Gotchas</th>
-              <th>Fit</th>
-            </tr>
-          </thead>
-          <tbody id="financingLenders"></tbody>
-        </table>
-      </div>
-
-      <section class="panel" id="cudlPanel" hidden>
-        <h2>BECU AutoSmart / CUDL network</h2>
-        <p id="cudlSummary"></p>
-        <ul class="steps" id="cudlFindings"></ul>
-        <div class="table-wrap" style="margin-top: 0.75rem">
-          <table>
-            <thead>
-              <tr>
-                <th>Dealer</th>
-                <th>Distance</th>
-                <th>CUDL inventory</th>
-                <th>Note</th>
-              </tr>
-            </thead>
-            <tbody id="cudlDealers"></tbody>
-          </table>
-        </div>
-        <p class="panel-note" id="cudlImplication"></p>
-        <p class="panel-note"><a id="cudlLink" href="#" target="_blank" rel="noopener">Open BECU AutoSmart RV search (98370)</a></p>
-      </section>
-
-      <section class="panel">
-        <h2>Financing next steps</h2>
-        <ol class="steps" id="financingSteps"></ol>
-        <p class="panel-note" id="financingSources"></p>
-      </section>
-
-      <section class="panel" id="runAnalysisPanel" hidden>
-        <h2>Run history</h2>
-        <p id="runAnalysisSummary"></p>
-        <h3 class="subhead">Dropped this run (not shown in tracker)</h3>
-        <ul class="steps" id="runAnalysisDropped"></ul>
-        <div class="table-wrap" style="margin-top: 0.75rem">
-          <table>
-            <thead>
-              <tr>
-                <th>Run</th>
-                <th>Active</th>
-                <th>NW floor</th>
-                <th>National floor</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody id="runAnalysisRuns"></tbody>
-          </table>
-        </div>
-        <h3 class="subhead">All removals (from price history)</h3>
-        <ul class="steps" id="runAnalysisRemoved"></ul>
-      </section>
-
-      <div class="section-head">
-        <h2>Top candidates</h2>
-        <p>Best live deals by rank — sold and missing listings are omitted</p>
-      </div>
-      <div class="cards" id="cards"></div>
-
-      <div class="section-head">
-        <h2>Full tracker</h2>
-        <p>Primary + watchlist + fly-to-buy outliers</p>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Van</th>
-              <th>Ask / change</th>
-              <th>Oct projection</th>
-              <th>Location</th>
-              <th>Details</th>
-              <th>Link</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody"></tbody>
-        </table>
-      </div>
+      </details>
 
       <footer class="foot">
         <p>
@@ -224,6 +304,6 @@
         </p>
       </footer>
     </main>
-    <script src="./assets/report.js?v=20260802b"></script>
+    <script src="./assets/report.js?v=20260802c"></script>
   </body>
 </html>

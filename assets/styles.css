@@ -139,11 +139,146 @@ a:hover {
   margin-bottom: 1rem;
 }
 
+.panel.panel-flush {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-bottom: 0;
+}
+
 .panel h2 {
   font-family: var(--font-display);
   font-size: 1.35rem;
   margin: 0 0 0.5rem;
   letter-spacing: -0.02em;
+}
+
+.panel .subhead {
+  margin: 1rem 0 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.collapse {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  margin-bottom: 0.85rem;
+  overflow: hidden;
+}
+
+.collapse-nested {
+  margin-bottom: 0.65rem;
+  border-color: #d5ddd8;
+  background: #f7faf8;
+}
+
+.collapse-nested:last-child {
+  margin-bottom: 0;
+}
+
+.collapse > summary,
+.collapse-nested > summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.collapse > summary::-webkit-details-marker,
+.collapse-nested > summary::-webkit-details-marker {
+  display: none;
+}
+
+.collapse-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1.15rem;
+  font-family: var(--font-display);
+  transition: background 0.15s ease;
+}
+
+.collapse-summary:hover {
+  background: #eef3ef;
+}
+
+.collapse-nested .collapse-summary {
+  padding: 0.75rem 1rem;
+  font-size: 0.98rem;
+}
+
+.collapse-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.collapse-nested .collapse-title {
+  font-size: 1.05rem;
+}
+
+.collapse-hint {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 400;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.collapse-summary::after {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.collapse[open] > .collapse-summary::after,
+.collapse-nested[open] > .collapse-summary::after {
+  transform: rotate(-135deg);
+  margin-top: 0.25rem;
+}
+
+.collapse-body {
+  padding: 0 1.15rem 1.15rem;
+  border-top: 1px solid var(--line);
+}
+
+.collapse-nested .collapse-body {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.collapse-stack {
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--line);
+}
+
+.collapse-stack > .collapse-nested:first-child {
+  margin-top: 0.65rem;
+}
+
+.collapse-body .grid-stats {
+  margin: 0;
+}
+
+.collapse-body .alerts {
+  margin-bottom: 0;
+}
+
+.collapse-body .table-wrap {
+  margin-bottom: 0;
+}
+
+.collapse-body .cards {
+  margin-top: 0;
 }
 
 .panel p {
