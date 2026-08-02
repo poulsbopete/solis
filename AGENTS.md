@@ -26,7 +26,7 @@ Keep the GitHub Pages buyer report current for used **Winnebago Solis and Travat
 2. Update `data/report.json`:
    - Refresh `generatedAt` (ISO UTC)
    - Update `marketSummary` floors/averages when available (`solisNationalUsedFloor`, `travatoNationalUsedFloor`, and combined `nationalUsedFloor`)
-   - Upsert candidates (stable `id`s when same VIN/stock/URL)
+   - **Active listings only** in `candidates` — omit sold/missing; track removals in `data/history.json` `priceSeries` and optional `runAnalysis`
    - Set `previousPrice` / `priceChange` when an ask moves
    - Recompute `projectedOct` using scenarios in `projections.scenarios`
    - Re-rank **deal-first**: primary = in-radius strong deals (any year), watchlist = uncertain/availability risk, fly = out-of-radius bargains. Soft +score for ≤2021 only when otherwise equal — never exclude for being newer
@@ -67,7 +67,7 @@ Score higher when:
 
 Do **not** label candidates “too new.” Use notes like “newer year, listed for deal value.”
 
-Mark sold/missing listings `status: "sold"` or remove after two consecutive missing runs.
+Mark sold/missing listings in history, then **drop from `candidates`** on the next run (do not display). Use two consecutive missing runs before removing unverified syndicated feeds.
 
 ## Output
 

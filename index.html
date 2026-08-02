@@ -165,9 +165,32 @@
         <p class="panel-note" id="financingSources"></p>
       </section>
 
+      <section class="panel" id="runAnalysisPanel" hidden>
+        <h2>Run history</h2>
+        <p id="runAnalysisSummary"></p>
+        <h3 class="subhead">Dropped this run (not shown in tracker)</h3>
+        <ul class="steps" id="runAnalysisDropped"></ul>
+        <div class="table-wrap" style="margin-top: 0.75rem">
+          <table>
+            <thead>
+              <tr>
+                <th>Run</th>
+                <th>Active</th>
+                <th>NW floor</th>
+                <th>National floor</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="runAnalysisRuns"></tbody>
+          </table>
+        </div>
+        <h3 class="subhead">All removals (from price history)</h3>
+        <ul class="steps" id="runAnalysisRemoved"></ul>
+      </section>
+
       <div class="section-head">
-        <h2>Primary candidates</h2>
-        <p>Best nearby deals — any model year if the price looks right</p>
+        <h2>Top candidates</h2>
+        <p>Best live deals by rank — sold and missing listings are omitted</p>
       </div>
       <div class="cards" id="cards"></div>
 
@@ -201,6 +224,6 @@
         </p>
       </footer>
     </main>
-    <script src="./assets/report.js"></script>
+    <script src="./assets/report.js?v=20260802b"></script>
   </body>
 </html>

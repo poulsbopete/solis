@@ -68,9 +68,9 @@ function render(report) {
     .map((a) => `<div class="alert ${a.level}">${a.text}</div>`)
     .join("");
 
-  const active = report.candidates.filter((x) => x.status !== "sold");
-  const primary = active.filter((x) => x.tier === "primary").slice(0, 4);
-  document.getElementById("cards").innerHTML = primary
+  const active = report.candidates.filter((x) => x.status === "active");
+  const top = active.slice().sort((a, b) => a.rank - b.rank).slice(0, 4);
+  document.getElementById("cards").innerHTML = top
     .map(
       (x) => `
       <article class="card">
@@ -133,6 +133,47 @@ function render(report) {
 
   renderFinancing(report.financing);
   renderCudlNotes(report.financing?.cudlNotes);
+  renderRunAnalysis(report.runAnalysis);
+}
+
+function renderRunAnalysis(analysis) {
+  const panel = document.getElementById("runAnalysisPanel");
+  if (!panel || !analysis) {
+    if (panel) panel.hidden = true;
+    return;
+  }
+  panel.hidden = false;
+  document.getElementById("runAnalysisSummary").textContent = analysis.summary || "";
+  const dropped = analysis.droppedThisRun || [];
+  const droppedEl = document.getElementById("runAnalysisDropped");
+  if (droppedEl) {
+    droppedEl.innerHTML = dropped.length
+      ? dropped
+          .map(
+            (x) =>
+              `<li><strong>${x.year} ${x.model} ${x.trim}</strong> (${x.city}) — ${money(x.price)} · ${x.notes}</li>`
+          )
+          .join("")
+      : "<li>No listings dropped on the latest run.</li>";
+  }
+  document.getElementById("runAnalysisRuns").innerHTML = (analysis.runs || [])
+    .map(
+      (r) => `
+      <tr>
+        <td><strong>${r.date}</strong></td>
+        <td>${r.activeCount ?? "—"}</td>
+        <td>${typeof r.nwDealFloor === "number" ? money(r.nwDealFloor) : "—"}</td>
+        <td>${typeof r.nationalFloor === "number" ? money(r.nationalFloor) : "—"}</td>
+        <td class="proj">${r.notes || ""}</td>
+      </tr>`
+    )
+    .join("");
+  document.getElementById("runAnalysisRemoved").innerHTML = (analysis.removed || [])
+    .map(
+      (x) =>
+        `<li><code>${x.id}</code> — ${x.removedOn || "?"} (${x.reason})${x.lastPrice ? ` · last ${money(x.lastPrice)}` : ""}</li>`
+    )
+    .join("");
 }
 
 function renderFinancing(fin) {

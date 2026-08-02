@@ -63,130 +63,6 @@
   },
   "candidates": [
     {
-      "id": "smyrna-2021-59px-6149b",
-      "model": "Solis",
-      "tier": "fly",
-      "rank": 5,
-      "year": 2021,
-      "trim": "59PX",
-      "price": 69900,
-      "previousPrice": 69900,
-      "priceChange": 0,
-      "miles": null,
-      "vin": "3C6MRVJGXME546051",
-      "stock": "6149B",
-      "city": "Smyrna",
-      "state": "DE",
-      "seller": "Parkview RV Center",
-      "sellerType": "dealer",
-      "distanceMiles": 2850,
-      "url": "https://www.parkviewrv.com/product/used-2021-winnebago-solis-59px-3711796-13",
-      "status": "active",
-      "ageEligible": true,
-      "withinRadius": false,
-      "notes": "Verified Aug 2 at $69,900 after $10k discount \u2014 best priced Solis in tracker, ~$10k over budget. Fly tier but strongest Winnebago Class B deal nationally.",
-      "preferredAge": true,
-      "projectedOct": {
-        "mild": 67800,
-        "expected": 65000,
-        "aggressive": 61500
-      },
-      "score": 145
-    },
-    {
-      "id": "liberty-lake-2021-59g",
-      "model": "Travato",
-      "tier": "primary",
-      "rank": 9,
-      "year": 2021,
-      "trim": "59G",
-      "price": 84990,
-      "previousPrice": null,
-      "priceChange": null,
-      "miles": 30421,
-      "vin": "3C6FRVJG4ME509814",
-      "stock": "90694",
-      "city": "Liberty Lake",
-      "state": "WA",
-      "seller": "RnR RV Center",
-      "sellerType": "dealer",
-      "distanceMiles": 280,
-      "url": "https://www.rvingplanet.com/product/used-2021-winnebago-travato-59g-3701231-13",
-      "status": "active",
-      "ageEligible": true,
-      "withinRadius": true,
-      "notes": "Best verified NW Travato Aug 2: 2021 59G at $84,990 ($5k off MSRP), 30,421 mi, full-size rear bed + wet bath, 215W solar. ~$25k over budget.",
-      "preferredAge": true,
-      "projectedOct": {
-        "mild": 82400,
-        "expected": 79000,
-        "aggressive": 74800
-      },
-      "score": 135
-    },
-    {
-      "id": "kent-2022-59px-indie",
-      "model": "Solis",
-      "tier": "primary",
-      "rank": 6,
-      "year": 2022,
-      "trim": "59PX",
-      "price": 77899,
-      "previousPrice": null,
-      "priceChange": null,
-      "miles": 62600,
-      "vin": "3C6MRVJG9NE103889",
-      "stock": null,
-      "city": "Kent",
-      "state": "WA",
-      "seller": "Indie Campers (ex-rental resale)",
-      "sellerType": "dealer",
-      "distanceMiles": 25,
-      "url": "https://www.craigslist.org/view/d/seattle-2022-winnebago-solis-59px-ram/nfZ8rNMXgcTqvcmdQGGTUG",
-      "status": "active",
-      "ageEligible": false,
-      "withinRadius": true,
-      "notes": "In-radius Solis still live Aug 2 at $77,899. Verify odometer (listing vs ad copy) and rental history; BECU may disqualify if true miles exceed 75k.",
-      "preferredAge": false,
-      "projectedOct": {
-        "mild": 75600,
-        "expected": 72400,
-        "aggressive": 68600
-      },
-      "score": 144
-    },
-    {
-      "id": "seattle-2021-59p-private",
-      "model": "Solis",
-      "tier": "watchlist",
-      "rank": 7,
-      "year": 2021,
-      "trim": "59P",
-      "price": 82000,
-      "previousPrice": null,
-      "priceChange": null,
-      "miles": 14700,
-      "vin": null,
-      "stock": null,
-      "city": "Seattle",
-      "state": "WA",
-      "seller": "Private seller",
-      "sellerType": "private",
-      "distanceMiles": 10,
-      "url": "https://www.craigslist.org/view/d/seattle-2021-winnebago-solis-59p/ihTMynGEFTxWSxi2q8d54a",
-      "status": "active",
-      "ageEligible": true,
-      "withinRadius": true,
-      "notes": "Craigslist live Aug 2: 14,700 mi, Victron/solar upgrades, no pets/smoke. Ultra-low miles but ~$22k over budget \u2014 negotiate if condition is priority.",
-      "preferredAge": true,
-      "projectedOct": {
-        "mild": 79500,
-        "expected": 76300,
-        "aggressive": 72200
-      },
-      "score": 144
-    },
-    {
       "id": "medford-2021-59px-25437r",
       "model": "Solis",
       "tier": "watchlist",
@@ -216,37 +92,6 @@
         "aggressive": 64900
       },
       "score": 157
-    },
-    {
-      "id": "fife-2021-59px-25185b",
-      "model": "Solis",
-      "tier": "watchlist",
-      "rank": 10,
-      "year": 2021,
-      "trim": "59PX",
-      "price": 89900,
-      "previousPrice": 89900,
-      "priceChange": 0,
-      "miles": null,
-      "vin": "3C6MRVJG2ME511231",
-      "stock": "25185B",
-      "city": "Fife",
-      "state": "WA",
-      "seller": "Johnson RV Fife via Autotrader",
-      "sellerType": "dealer",
-      "distanceMiles": 30,
-      "url": "https://rvs.autotrader.com/rvs/2021/winnebago/solis/59px/300665140",
-      "status": "active",
-      "ageEligible": true,
-      "withinRadius": true,
-      "notes": "Syndicated at $89,900; likely stale \u2014 not on Johnson searchable inventory.",
-      "preferredAge": true,
-      "projectedOct": {
-        "mild": 87200,
-        "expected": 83600,
-        "aggressive": 79100
-      },
-      "score": 125
     },
     {
       "id": "pottstown-2022-59px",
@@ -342,6 +187,99 @@
       "score": 146
     },
     {
+      "id": "smyrna-2021-59px-6149b",
+      "model": "Solis",
+      "tier": "fly",
+      "rank": 5,
+      "year": 2021,
+      "trim": "59PX",
+      "price": 69900,
+      "previousPrice": 69900,
+      "priceChange": 0,
+      "miles": null,
+      "vin": "3C6MRVJGXME546051",
+      "stock": "6149B",
+      "city": "Smyrna",
+      "state": "DE",
+      "seller": "Parkview RV Center",
+      "sellerType": "dealer",
+      "distanceMiles": 2850,
+      "url": "https://www.parkviewrv.com/product/used-2021-winnebago-solis-59px-3711796-13",
+      "status": "active",
+      "ageEligible": true,
+      "withinRadius": false,
+      "notes": "Verified Aug 2 at $69,900 after $10k discount \u2014 best priced Solis in tracker, ~$10k over budget. Fly tier but strongest Winnebago Class B deal nationally.",
+      "preferredAge": true,
+      "projectedOct": {
+        "mild": 67800,
+        "expected": 65000,
+        "aggressive": 61500
+      },
+      "score": 145
+    },
+    {
+      "id": "kent-2022-59px-indie",
+      "model": "Solis",
+      "tier": "primary",
+      "rank": 6,
+      "year": 2022,
+      "trim": "59PX",
+      "price": 77899,
+      "previousPrice": null,
+      "priceChange": null,
+      "miles": 62600,
+      "vin": "3C6MRVJG9NE103889",
+      "stock": null,
+      "city": "Kent",
+      "state": "WA",
+      "seller": "Indie Campers (ex-rental resale)",
+      "sellerType": "dealer",
+      "distanceMiles": 25,
+      "url": "https://www.craigslist.org/view/d/seattle-2022-winnebago-solis-59px-ram/nfZ8rNMXgcTqvcmdQGGTUG",
+      "status": "active",
+      "ageEligible": false,
+      "withinRadius": true,
+      "notes": "In-radius Solis still live Aug 2 at $77,899. Verify odometer (listing vs ad copy) and rental history; BECU may disqualify if true miles exceed 75k.",
+      "preferredAge": false,
+      "projectedOct": {
+        "mild": 75600,
+        "expected": 72400,
+        "aggressive": 68600
+      },
+      "score": 144
+    },
+    {
+      "id": "seattle-2021-59p-private",
+      "model": "Solis",
+      "tier": "watchlist",
+      "rank": 7,
+      "year": 2021,
+      "trim": "59P",
+      "price": 82000,
+      "previousPrice": null,
+      "priceChange": null,
+      "miles": 14700,
+      "vin": null,
+      "stock": null,
+      "city": "Seattle",
+      "state": "WA",
+      "seller": "Private seller",
+      "sellerType": "private",
+      "distanceMiles": 10,
+      "url": "https://www.craigslist.org/view/d/seattle-2021-winnebago-solis-59p/ihTMynGEFTxWSxi2q8d54a",
+      "status": "active",
+      "ageEligible": true,
+      "withinRadius": true,
+      "notes": "Craigslist live Aug 2: 14,700 mi, Victron/solar upgrades, no pets/smoke. Ultra-low miles but ~$22k over budget \u2014 negotiate if condition is priority.",
+      "preferredAge": true,
+      "projectedOct": {
+        "mild": 79500,
+        "expected": 76300,
+        "aggressive": 72200
+      },
+      "score": 144
+    },
+    {
       "id": "golden-2021-59p",
       "model": "Solis",
       "tier": "fly",
@@ -373,100 +311,211 @@
       "score": 136
     },
     {
-      "id": "renton-2022-59p",
-      "model": "Solis",
+      "id": "liberty-lake-2021-59g",
+      "model": "Travato",
       "tier": "primary",
-      "rank": 99,
-      "year": 2022,
-      "trim": "59P",
-      "price": 68000,
-      "previousPrice": 68000,
-      "priceChange": 0,
-      "miles": 43000,
-      "vin": null,
-      "stock": null,
-      "city": "Renton",
-      "state": "WA",
-      "seller": "Private seller",
-      "sellerType": "private",
-      "distanceMiles": 15,
-      "url": "https://www.craigslist.org/view/d/renton-winnebago-solis-59p/w9JqGCLnhVeNpdSdhnpuxc",
-      "status": "sold",
-      "ageEligible": false,
-      "withinRadius": true,
-      "notes": "Craigslist 404 Aug 2 \u2014 listing removed. Was $68k / 43k mi.",
-      "preferredAge": false,
-      "projectedOct": {
-        "mild": 66000,
-        "expected": 63200,
-        "aggressive": 59800
-      },
-      "score": 0
-    },
-    {
-      "id": "fife-2021-59p",
-      "model": "Solis",
-      "tier": "primary",
-      "rank": 99,
+      "rank": 9,
       "year": 2021,
-      "trim": "59P",
-      "price": 80100,
-      "previousPrice": 80100,
-      "priceChange": 0,
-      "miles": 20997,
-      "vin": "3C6LRVDG1ME523264",
-      "stock": "26556R",
-      "city": "Fife",
+      "trim": "59G",
+      "price": 84990,
+      "previousPrice": null,
+      "priceChange": null,
+      "miles": 30421,
+      "vin": "3C6FRVJG4ME509814",
+      "stock": "90694",
+      "city": "Liberty Lake",
       "state": "WA",
-      "seller": "Johnson RV Fife",
+      "seller": "RnR RV Center",
       "sellerType": "dealer",
-      "distanceMiles": 30,
-      "url": "https://johnsonrv.com/inventory/Used-2021-Winnebago-Solis-59P-3C6LRVDG1ME523264",
-      "status": "sold",
+      "distanceMiles": 280,
+      "url": "https://www.rvingplanet.com/product/used-2021-winnebago-travato-59g-3701231-13",
+      "status": "active",
       "ageEligible": true,
       "withinRadius": true,
-      "notes": "Johnson detail page missing Aug 2 \u2014 treated as sold. Was $80,100 / 20,997 mi.",
+      "notes": "Best verified NW Travato Aug 2: 2021 59G at $84,990 ($5k off MSRP), 30,421 mi, full-size rear bed + wet bath, 215W solar. ~$25k over budget.",
       "preferredAge": true,
       "projectedOct": {
-        "mild": 77700,
-        "expected": 74500,
-        "aggressive": 70500
+        "mild": 82400,
+        "expected": 79000,
+        "aggressive": 74800
       },
-      "score": 0
+      "score": 135
     },
     {
-      "id": "medford-2021-59px",
+      "id": "fife-2021-59px-25185b",
       "model": "Solis",
-      "tier": "primary",
-      "rank": 99,
+      "tier": "watchlist",
+      "rank": 10,
       "year": 2021,
       "trim": "59PX",
-      "price": 77800,
-      "previousPrice": 77800,
+      "price": 89900,
+      "previousPrice": 89900,
       "priceChange": 0,
-      "miles": 28620,
-      "vin": "3C6MRVJG3ME504756",
-      "stock": "25254G",
-      "city": "Medford",
-      "state": "OR",
-      "seller": "Johnson RV Medford",
+      "miles": null,
+      "vin": "3C6MRVJG2ME511231",
+      "stock": "25185B",
+      "city": "Fife",
+      "state": "WA",
+      "seller": "Johnson RV Fife via Autotrader",
       "sellerType": "dealer",
-      "distanceMiles": 430,
-      "url": "https://johnsonrv.com/inventory/Used-2021-Winnebago-Solis-59PX-3C6MRVJG3ME504756",
-      "status": "sold",
+      "distanceMiles": 30,
+      "url": "https://rvs.autotrader.com/rvs/2021/winnebago/solis/59px/300665140",
+      "status": "active",
       "ageEligible": true,
       "withinRadius": true,
-      "notes": "Sold (confirmed Jul 27). Johnson page may linger in search indexes.",
+      "notes": "Syndicated at $89,900; likely stale \u2014 not on Johnson searchable inventory.",
       "preferredAge": true,
       "projectedOct": {
-        "mild": 75500,
-        "expected": 72400,
-        "aggressive": 68500
+        "mild": 87200,
+        "expected": 83600,
+        "aggressive": 79100
       },
-      "score": 0
+      "score": 125
     }
   ],
   "alternatives": [],
+  "runAnalysis": {
+    "runCount": 5,
+    "latestRun": "2026-08-02",
+    "summary": "NW in-radius floor rose $68,000 \u2192 $77,899 after cheaper locals sold. 4 listings removed across 5 runs.",
+    "runs": [
+      {
+        "date": "2026-07-22",
+        "activeCount": 6,
+        "nwDealFloor": null,
+        "nationalFloor": 69599,
+        "notes": "Initial baseline snapshot for Solis Watch.",
+        "delta": null
+      },
+      {
+        "date": "2026-07-24",
+        "activeCount": 9,
+        "nwDealFloor": null,
+        "nationalFloor": 73000,
+        "notes": "Added two distinct Medford records, verified Fife stock details and price cut, added Renton private and three age-eligible fly leads, and removed the sold Tampa listing. Yakima is at one missing run.",
+        "delta": {
+          "activeCount": {
+            "from": null,
+            "to": 9
+          },
+          "nationalFloor": {
+            "from": 69599,
+            "to": 73000
+          }
+        }
+      },
+      {
+        "date": "2026-07-25",
+        "activeCount": 10,
+        "nwDealFloor": 68000,
+        "nationalFloor": 73000,
+        "notes": "All verified NW asks were unchanged. Removed Yakima after its second consecutive missing run, added the verified Smyrna 2021 59PX at $69,900, and moved two uncertain syndicated Johnson listings to the watchlist.",
+        "delta": {
+          "activeCount": {
+            "from": 9,
+            "to": 10
+          },
+          "nwDealFloor": {
+            "from": null,
+            "to": 68000
+          }
+        }
+      },
+      {
+        "date": "2026-07-27",
+        "activeCount": 12,
+        "nwDealFloor": 68000,
+        "nationalFloor": 69599,
+        "notes": "Verified Johnson and Renton unchanged. Added Seattle private 2021 and Kent Indie Campers 2022 watchlist entries. Autotrader national floor ticked to $69,599. Later: BECU financing terms ($0 down under $100k, \u226410 yrs/75k mi) and CUDL network search (zero Solis). Evening: Medford 59PX reported sold.",
+        "delta": {
+          "activeCount": {
+            "from": 10,
+            "to": 12
+          },
+          "nationalFloor": {
+            "from": 73000,
+            "to": 69599
+          }
+        }
+      },
+      {
+        "date": "2026-08-02",
+        "activeCount": 10,
+        "nwDealFloor": 77899,
+        "nationalFloor": 68000,
+        "notes": "Winnebago Solis and Travato only. Renton Craigslist 404 and Johnson Fife 59P sold. Added Liberty Lake 2021 Travato 59G. Autotrader Solis floor ~$73k.",
+        "delta": {
+          "activeCount": {
+            "from": 12,
+            "to": 10
+          },
+          "nwDealFloor": {
+            "from": 68000,
+            "to": 77899
+          },
+          "nationalFloor": {
+            "from": 69599,
+            "to": 68000
+          }
+        }
+      }
+    ],
+    "removed": [
+      {
+        "id": "yakima-2022-59p",
+        "removedOn": "2026-07-25",
+        "reason": "removed_after_second_missing_run",
+        "lastPrice": 72500
+      },
+      {
+        "id": "medford-2021-59px",
+        "removedOn": "2026-07-27",
+        "reason": "sold",
+        "lastPrice": 77800
+      },
+      {
+        "id": "fife-2021-59p",
+        "removedOn": "2026-08-02",
+        "reason": "sold",
+        "lastPrice": 80100
+      },
+      {
+        "id": "renton-2022-59p",
+        "removedOn": "2026-08-02",
+        "reason": "sold",
+        "lastPrice": 68000
+      }
+    ],
+    "droppedThisRun": [
+      {
+        "id": "renton-2022-59p",
+        "year": 2022,
+        "model": "Solis",
+        "trim": "59P",
+        "price": 68000,
+        "city": "Renton",
+        "notes": "Craigslist 404 Aug 2 \u2014 listing removed. Was $68k / 43k mi."
+      },
+      {
+        "id": "fife-2021-59p",
+        "year": 2021,
+        "model": "Solis",
+        "trim": "59P",
+        "price": 80100,
+        "city": "Fife",
+        "notes": "Johnson detail page missing Aug 2 \u2014 treated as sold. Was $80,100 / 20,997 mi."
+      },
+      {
+        "id": "medford-2021-59px",
+        "year": 2021,
+        "model": "Solis",
+        "trim": "59PX",
+        "price": 77800,
+        "city": "Medford",
+        "notes": "Sold (confirmed Jul 27). Johnson page may linger in search indexes."
+      }
+    ]
+  },
   "alerts": [
     {
       "level": "info",

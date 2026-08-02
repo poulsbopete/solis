@@ -3,6 +3,78 @@
 import json
 from pathlib import Path
 
+
+def analyze_runs(history_path="data/history.json"):
+    """Summarize snapshot runs and listing removals from price series."""
+    if not Path(history_path).exists():
+        return None
+    history = json.loads(Path(history_path).read_text())
+    snapshots = history.get("snapshots", [])
+    series = history.get("priceSeries", [])
+
+    removed = []
+    for s in series:
+        pts = s.get("points", [])
+        if not pts:
+            continue
+        last = pts[-1]
+        for p in reversed(pts):
+            if p.get("status") in ("sold", "removed_after_second_missing_run"):
+                last = p
+                break
+        if last.get("status") not in ("sold", "removed_after_second_missing_run"):
+            continue
+        prev_price = next(
+            (p["price"] for p in reversed(pts) if isinstance(p.get("price"), (int, float))),
+            None,
+        )
+        removed.append(
+            {
+                "id": s["id"],
+                "removedOn": last.get("date"),
+                "reason": last.get("status"),
+                "lastPrice": prev_price,
+            }
+        )
+
+    runs = []
+    for i, snap in enumerate(snapshots):
+        prev = snapshots[i - 1] if i else None
+        delta = {}
+        if prev:
+            for key in ("activeCount", "nwDealFloor", "nationalFloor"):
+                if key in snap and snap.get(key) != prev.get(key):
+                    delta[key] = {"from": prev.get(key), "to": snap.get(key)}
+        runs.append(
+            {
+                "date": snap["date"],
+                "activeCount": snap.get("activeCount", snap.get("candidateCount")),
+                "nwDealFloor": snap.get("nwDealFloor"),
+                "nationalFloor": snap.get("nationalFloor"),
+                "notes": snap.get("notes", ""),
+                "delta": delta or None,
+            }
+        )
+
+    latest = snapshots[-1] if snapshots else {}
+    prev_snap = snapshots[-2] if len(snapshots) > 1 else None
+    summary_parts = []
+    if prev_snap and latest.get("nwDealFloor") and prev_snap.get("nwDealFloor"):
+        if latest["nwDealFloor"] > prev_snap["nwDealFloor"]:
+            summary_parts.append(
+                f"NW in-radius floor rose ${prev_snap['nwDealFloor']:,} → ${latest['nwDealFloor']:,} after cheaper locals sold."
+            )
+    summary_parts.append(f"{len(removed)} listings removed across {len(snapshots)} runs.")
+
+    return {
+        "runCount": len(snapshots),
+        "latestRun": latest.get("date"),
+        "summary": " ".join(summary_parts),
+        "runs": runs,
+        "removed": sorted(removed, key=lambda x: x.get("removedOn") or ""),
+    }
+
+
 def proj(p):
     return {
         "mild": round(round(p * 0.97) / 100) * 100,
@@ -127,6 +199,7 @@ report = {
     },
     "candidates": [],
     "alternatives": [],
+    "runAnalysis": None,
     "alerts": [],
     "financing": {},
 }
@@ -417,15 +490,21 @@ for x in candidates:
         s += 3
     x["score"] = int(s)
 
-active = [x for x in candidates if x["status"] != "sold"]
+active = [x for x in candidates if x["status"] == "active"]
+sold = [x for x in candidates if x["status"] != "active"]
 active.sort(key=lambda x: (-x["score"], x["price"]))
 for i, x in enumerate(active, 1):
     x["rank"] = i
-for x in candidates:
-    if x["status"] == "sold":
-        x["rank"] = 99
 
-report["candidates"] = candidates
+# Only live listings go in the public report — sold/missing stay in history.json
+report["candidates"] = active
+report["runAnalysis"] = analyze_runs()
+if sold:
+    report["runAnalysis"] = report["runAnalysis"] or {}
+    report["runAnalysis"]["droppedThisRun"] = [
+        {"id": x["id"], "year": x["year"], "model": x["model"], "trim": x["trim"], "price": x["price"], "city": x["city"], "notes": x["notes"]}
+        for x in sold
+    ]
 
 report["alternatives"] = []
 
