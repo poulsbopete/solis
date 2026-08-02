@@ -1,12 +1,13 @@
 # Solis Watch — agent instructions
 
-Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search.
+Keep the GitHub Pages buyer report current for used **Winnebago Solis and Travato** searches (same ProMaster Class B platform).
 
 **Source of truth:** `data/report.json` in git. Push to `main` and GitHub Pages updates.
 
 ## Buyer criteria
 
-- Model: Winnebago Solis (59P, 59PX, Pocket OK to note)
+- Models: Winnebago **Solis** (59P, 59PX, Pocket OK to note) and **Travato** (59G, 59K, 59KL, 59GL)
+- Each candidate must include `"model": "Solis"` or `"model": "Travato"`
 - Target budget: about **$60,000** (track up to ~$70k as stretch / negotiation)
 - Age: **soft preference only** for model year ≤ 2021 — there is **no “too new” cutoff**. If it looks like a good deal on price/miles/condition, **list it**
 - Geography: prefer **≤ 500 miles of Washington State** (Seattle as anchor for distance)
@@ -24,7 +25,7 @@ Keep the GitHub Pages buyer report current for a used **Winnebago Solis** search
    - Optional: Facebook Marketplace / Craigslist Seattle + Portland (summarize if scrapable)
 2. Update `data/report.json`:
    - Refresh `generatedAt` (ISO UTC)
-   - Update `marketSummary` floors/averages when available
+   - Update `marketSummary` floors/averages when available (`solisNationalUsedFloor`, `travatoNationalUsedFloor`, and combined `nationalUsedFloor`)
    - Upsert candidates (stable `id`s when same VIN/stock/URL)
    - Set `previousPrice` / `priceChange` when an ask moves
    - Recompute `projectedOct` using scenarios in `projections.scenarios`

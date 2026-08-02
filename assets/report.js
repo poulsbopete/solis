@@ -38,6 +38,15 @@ function render(report) {
   document.getElementById("statGap").textContent = money(m.gapToBudget);
   document.getElementById("statGapHint").textContent = `vs ${money(c.maxBudget)} target`;
   document.getElementById("statNational").textContent = money(m.nationalUsedFloor);
+  const nationalHint = document.getElementById("statNationalHint");
+  if (nationalHint) {
+    const solis = m.solisNationalUsedFloor;
+    const travato = m.travatoNationalUsedFloor;
+    nationalHint.textContent =
+      solis != null && travato != null
+        ? `Solis ${money(solis)} · Travato ${money(travato)}`
+        : "Solis & Travato combined";
+  }
   document.getElementById("statCut").textContent = `${Math.round((expected?.changePct || 0) * 100)}%`;
 
   document.getElementById("verdict").textContent = m.verdict;
@@ -59,13 +68,14 @@ function render(report) {
     .map((a) => `<div class="alert ${a.level}">${a.text}</div>`)
     .join("");
 
-  const primary = report.candidates.filter((x) => x.tier === "primary").slice(0, 4);
+  const active = report.candidates.filter((x) => x.status !== "sold");
+  const primary = active.filter((x) => x.tier === "primary").slice(0, 4);
   document.getElementById("cards").innerHTML = primary
     .map(
       (x) => `
       <article class="card">
-        <div><span class="tier ${x.tier}">${x.tier}</span></div>
-        <h3>${x.year} Solis ${x.trim}</h3>
+        <div><span class="tier ${x.tier}">${x.tier}</span> <span class="proj">${x.model || "Solis"}</span></div>
+        <h3>${x.year} ${x.model || "Solis"} ${x.trim}</h3>
         <div class="sub">${x.city}, ${x.state} · ${x.distanceMiles} mi · ${x.seller}</div>
         <div class="big-price">${money(x.price)}</div>
         <div class="proj-grid">
@@ -79,7 +89,7 @@ function render(report) {
     )
     .join("");
 
-  const rows = report.candidates
+  const rows = active
     .slice()
     .sort((a, b) => a.rank - b.rank)
     .map((x) => {
@@ -91,7 +101,7 @@ function render(report) {
         <tr>
           <td>
             <div><span class="tier ${x.tier}">${x.tier}</span></div>
-            <div><strong>${x.year} ${x.trim}</strong></div>
+            <div><strong>${x.year} ${x.model || "Solis"} ${x.trim}</strong></div>
             <div class="proj">${
               x.preferredAge || x.ageEligible ? "Preferred age" : "Newer · listed for deal"
             }</div>
