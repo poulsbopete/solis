@@ -64,3 +64,5 @@ chmod +x scripts/install-local-watch.sh
 **State/logs (gitignored):** `.local/watch-state.json`, `.local/watch-log.jsonl`
 
 Edit `scripts/watch_config.json` to change `maxDriveMiles` (default 200), zip code, or disable sources.
+
+**Live site banner:** when the watcher finds something new, it updates `data/watch-pulse.json`. Commit and push that file (or run `git add data/watch-pulse.json && git commit -m "Watch pulse: new local listing" && git push`) to show a sticky alert on https://poulsbopete.github.io/solis/. The page also polls hourly while open and can send browser notifications if you click **Enable browser alerts**.

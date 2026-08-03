@@ -7,6 +7,13 @@ const money = (n) =>
       })
     : "—";
 
+const WATCH_STORAGE_KEY = "solis-watch-seen-v1";
+const PULSE_DISMISS_KEY = "solis-watch-pulse-dismissed";
+const POLL_MS = 60 * 60 * 1000;
+const DRIVE_ALERT_MILES = 200;
+
+let activeNewIds = new Set();
+
 const fmtDate = (iso) => {
   try {
     return new Date(iso).toLocaleString("en-US", {
@@ -23,6 +30,7 @@ function render(report) {
   const c = report.criteria;
   const m = report.marketSummary;
   const expected = report.projections.scenarios.find((s) => s.id === "expected");
+  const newIds = activeNewIds;
 
   document.getElementById("generatedAt").textContent = fmtDate(report.generatedAt);
   document.getElementById("budgetPill").innerHTML = `Budget <strong>${money(c.maxBudget)}</strong>`;
@@ -73,8 +81,8 @@ function render(report) {
   document.getElementById("cards").innerHTML = top
     .map(
       (x) => `
-      <article class="card">
-        <div><span class="tier ${x.tier}">${x.tier}</span> <span class="proj">${x.model || "Solis"}</span></div>
+      <article class="card${newIds.has(x.id) ? " is-new" : ""}">
+        <div><span class="tier ${x.tier}">${x.tier}</span> <span class="proj">${x.model || "Solis"}</span>${newIds.has(x.id) ? '<span class="badge-new">new</span>' : ""}</div>
         <h3>${x.year} ${x.model || "Solis"} ${x.trim}</h3>
         <div class="sub">${x.city}, ${x.state} · ${x.distanceMiles} mi · ${x.seller}</div>
         <div class="big-price">${money(x.price)}</div>
@@ -101,7 +109,7 @@ function render(report) {
         <tr>
           <td>
             <div><span class="tier ${x.tier}">${x.tier}</span></div>
-            <div><strong>${x.year} ${x.model || "Solis"} ${x.trim}</strong></div>
+            <div><strong>${x.year} ${x.model || "Solis"} ${x.trim}</strong>${newIds.has(x.id) ? ' <span class="badge-new">new</span>' : ""}</div>
             <div class="proj">${
               x.preferredAge || x.ageEligible ? "Preferred age" : "Newer · listed for deal"
             }</div>
@@ -324,17 +332,183 @@ function renderCudlNotes(cudl, dealerData) {
   if (link && cudl.sourceUrl) link.href = cudl.sourceUrl;
 }
 
-async function boot() {
-  const [reportRes, cudlRes] = await Promise.all([
+function loadSeenState() {
+  try {
+    return JSON.parse(localStorage.getItem(WATCH_STORAGE_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function saveSeenState(report) {
+  const active = (report.candidates || []).filter((x) => x.status === "active");
+  localStorage.setItem(
+    WATCH_STORAGE_KEY,
+    JSON.stringify({
+      generatedAt: report.generatedAt,
+      ids: Object.fromEntries(
+        active.map((x) => [x.id, { price: x.price, url: x.url, distanceMiles: x.distanceMiles }])
+      ),
+    })
+  );
+}
+
+function driveableCandidates(report, maxMiles = DRIVE_ALERT_MILES) {
+  return (report.candidates || []).filter(
+    (x) =>
+      x.status === "active" &&
+      (x.withinRadius || (x.distanceMiles != null && x.distanceMiles <= maxMiles)) &&
+      (x.distanceMiles == null || x.distanceMiles <= maxMiles)
+  );
+}
+
+function newSinceLastVisit(report) {
+  const seen = loadSeenState();
+  if (!seen.ids) return [];
+  const prevIds = seen.ids || {};
+  return driveableCandidates(report).filter((x) => !(x.id in prevIds));
+}
+
+function pulseListings(pulse) {
+  if (!pulse) return [];
+  return (pulse.newListings || []).length ? pulse.newListings : [];
+}
+
+function listingLine(x) {
+  const dist =
+    x.distanceMiles != null ? `${x.distanceMiles} mi` : x.city ? `${x.city}` : "";
+  const price = typeof x.price === "number" ? money(x.price) : "price TBD";
+  const title = x.title || `${x.year || ""} ${x.model || "Solis"} ${x.trim || ""}`.trim();
+  const url = x.url || "#";
+  return `<li><a href="${url}" target="_blank" rel="noopener"><strong>${title}</strong></a> · ${price}${dist ? ` · ${dist}` : ""}</li>`;
+}
+
+function renderSiteAlertBar(report, pulse, { persistSeen = false } = {}) {
+  const bar = document.getElementById("siteAlertBar");
+  if (!bar) return;
+
+  const dismissed = localStorage.getItem(PULSE_DISMISS_KEY);
+  const pulseNew = pulseListings(pulse);
+  const visitNew = newSinceLastVisit(report);
+  const showPulse = pulseNew.length && pulse?.updatedAt !== dismissed;
+  const items = showPulse ? pulseNew : visitNew;
+
+  activeNewIds = new Set([
+    ...pulseNew.map((x) => x.id),
+    ...visitNew.map((x) => x.id),
+  ]);
+
+  if (!items.length) {
+    bar.hidden = true;
+    bar.innerHTML = "";
+    if (persistSeen) saveSeenState(report);
+    return;
+  }
+
+  const headline = showPulse
+    ? `${items.length} new driveable listing${items.length > 1 ? "s" : ""} found`
+    : `${items.length} new since your last visit`;
+
+  bar.hidden = false;
+  bar.classList.toggle("has-new", true);
+  bar.innerHTML = `
+    <div class="site-alert-inner">
+      <div>
+        <strong>${headline}</strong> (within ${DRIVE_ALERT_MILES} mi)
+        <ul>${items.map(listingLine).join("")}</ul>
+      </div>
+      <button type="button" class="site-alert-dismiss" id="dismissSiteAlert">Dismiss</button>
+    </div>`;
+
+  document.getElementById("dismissSiteAlert")?.addEventListener("click", () => {
+    if (pulse?.updatedAt) localStorage.setItem(PULSE_DISMISS_KEY, pulse.updatedAt);
+    saveSeenState(report);
+    bar.hidden = true;
+    activeNewIds = new Set();
+    render(report);
+  });
+
+  if (persistSeen && !showPulse) saveSeenState(report);
+}
+
+function maybeBrowserNotify(report, pulse) {
+  if (!("Notification" in window) || Notification.permission !== "granted") return;
+  const pulseNew = pulseListings(pulse);
+  const visitNew = newSinceLastVisit(report);
+  const items = pulseNew.length ? pulseNew : visitNew;
+  if (!items.length) return;
+  const x = items[0];
+  const title = x.title || `${x.model || "Solis"} listing`;
+  const body =
+    items.length > 1
+      ? `${title} (+${items.length - 1} more within ${DRIVE_ALERT_MILES} mi)`
+      : `${money(x.price)} · ${x.city || "nearby"}`;
+  new Notification("Solis Watch — new listing", { body, tag: "solis-watch-new" });
+}
+
+function setupBrowserAlerts() {
+  const btn = document.getElementById("enableNotifyBtn");
+  if (!btn || !("Notification" in window)) return;
+  if (Notification.permission === "granted") {
+    btn.hidden = true;
+    return;
+  }
+  btn.hidden = false;
+  btn.addEventListener("click", async () => {
+    const perm = await Notification.requestPermission();
+    btn.hidden = perm === "granted" || perm === "denied";
+  });
+}
+
+async function fetchWatchPulse() {
+  try {
+    const res = await fetch("./data/watch-pulse.json", { cache: "no-store" });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+async function refreshReport({ notify = false, persistSeen = false } = {}) {
+  const [reportRes, pulse] = await Promise.all([
     fetch("./data/report.json", { cache: "no-store" }),
-    fetch("./data/cudl-dealers.json", { cache: "no-store" }).catch(() => null),
+    fetchWatchPulse(),
   ]);
   if (!reportRes.ok) throw new Error(`report.json HTTP ${reportRes.status}`);
   const report = await reportRes.json();
-  let dealerData = null;
-  if (cudlRes?.ok) dealerData = await cudlRes.json();
+  renderSiteAlertBar(report, pulse, { persistSeen });
   render(report);
-  renderCudlNotes(report.financing?.cudlNotes, dealerData);
+  const cudlRes = await fetch("./data/cudl-dealers.json", { cache: "no-store" }).catch(() => null);
+  if (cudlRes?.ok) renderCudlNotes(report.financing?.cudlNotes, await cudlRes.json());
+  if (notify) maybeBrowserNotify(report, pulse);
+  return report;
+}
+
+function startWatchPolling() {
+  setInterval(() => {
+    if (document.hidden) return;
+    refreshReport({ notify: true }).catch(() => {});
+  }, POLL_MS);
+}
+
+async function boot() {
+  const pulse = await fetchWatchPulse();
+  const reportRes = await fetch("./data/report.json", { cache: "no-store" });
+  if (!reportRes.ok) throw new Error(`report.json HTTP ${reportRes.status}`);
+  const report = await reportRes.json();
+
+  renderSiteAlertBar(report, pulse);
+  render(report);
+
+  const cudlRes = await fetch("./data/cudl-dealers.json", { cache: "no-store" }).catch(() => null);
+  if (cudlRes?.ok) renderCudlNotes(report.financing?.cudlNotes, await cudlRes.json());
+
+  setupBrowserAlerts();
+  maybeBrowserNotify(report, pulse);
+  startWatchPolling();
+
+  window.addEventListener("beforeunload", () => saveSeenState(report));
 }
 
 boot().catch((err) => {

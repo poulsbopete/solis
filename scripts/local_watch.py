@@ -299,6 +299,23 @@ def append_log(path: Path, entry: dict):
         f.write(json.dumps(entry) + "\n")
 
 
+PULSE_PATH = ROOT / "data" / "watch-pulse.json"
+
+
+def write_site_pulse(cfg: dict, now: str, listings: list[Listing], new_items: list[Listing]):
+    """Update data/watch-pulse.json for the GitHub Pages alert banner."""
+    pulse = {
+        "updatedAt": now,
+        "source": "local_watch",
+        "maxDriveMiles": cfg["maxDriveMiles"],
+        "localActive": [x.to_public() for x in listings],
+        "newListings": [x.to_public() for x in new_items],
+    }
+    PULSE_PATH.write_text(json.dumps(pulse, indent=2) + "\n")
+    if new_items:
+        print("\nSite alert: commit and push data/watch-pulse.json to update poulsbopete.github.io/solis/")
+
+
 def diff_listings(previous: dict, current: list[Listing]) -> tuple[list[Listing], list[str]]:
     current_keys = {x.key(): x for x in current}
     new_items = [x for k, x in current_keys.items() if k not in previous]
@@ -367,6 +384,7 @@ def main():
         "new": [x.to_public() for x in new_items],
     }
     append_log(log_path, log_entry)
+    write_site_pulse(cfg, now, listings, new_items)
 
     print(f"[{now}] Local driveable ({cfg['maxDriveMiles']} mi): {len(listings)} active, {len(new_items)} new")
 

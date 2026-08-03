@@ -1,0 +1,34 @@
+{
+  "updatedAt": "2026-08-02T23:57:30Z",
+  "source": "local_watch",
+  "maxDriveMiles": 200,
+  "localActive": [
+    {
+      "id": "seattle-2021-59p-private",
+      "source": "report",
+      "model": "Solis",
+      "title": "2021 Solis 59P",
+      "year": 2021,
+      "price": 82000,
+      "miles": 14700,
+      "city": "Seattle",
+      "distanceMiles": 10,
+      "url": "https://www.craigslist.org/view/d/seattle-2021-winnebago-solis-59p/ihTMynGEFTxWSxi2q8d54a",
+      "seller": "Private seller"
+    },
+    {
+      "id": "kent-2022-59px-indie",
+      "source": "report",
+      "model": "Solis",
+      "title": "2022 Solis 59PX",
+      "year": 2022,
+      "price": 77899,
+      "miles": 62600,
+      "city": "Kent",
+      "distanceMiles": 25,
+      "url": "https://www.craigslist.org/view/d/seattle-2022-winnebago-solis-59px-ram/nfZ8rNMXgcTqvcmdQGGTUG",
+      "seller": "Indie Campers (ex-rental resale)"
+    }
+  ],
+  "newListings": []
+}

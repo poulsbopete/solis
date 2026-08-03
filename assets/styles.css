@@ -343,6 +343,87 @@ a:hover {
   color: var(--good);
 }
 
+.site-alert-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 2px solid #b7d8c3;
+  background: linear-gradient(180deg, #e6f4ea 0%, #dff0e5 100%);
+  color: var(--good);
+  box-shadow: 0 2px 12px rgba(21, 32, 24, 0.08);
+}
+
+.site-alert-bar.has-new {
+  border-bottom-color: #e0a030;
+  background: linear-gradient(180deg, #fff6e6 0%, #f3e8d8 100%);
+  color: var(--warn);
+}
+
+.site-alert-inner {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-alert-bar ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.site-alert-bar li {
+  margin: 0.2rem 0;
+}
+
+.site-alert-bar a {
+  color: inherit;
+  font-weight: 600;
+}
+
+.site-alert-dismiss {
+  flex-shrink: 0;
+  border: 1px solid currentColor;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+
+.pill-btn {
+  cursor: pointer;
+  font: inherit;
+  color: var(--muted);
+}
+
+.pill-btn:hover {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+
+.card.is-new {
+  outline: 2px solid #e0a030;
+  outline-offset: 2px;
+}
+
+.badge-new {
+  display: inline-block;
+  margin-left: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border-radius: 999px;
+  background: #f3e8d8;
+  color: var(--warn);
+  vertical-align: middle;
+}
+
 .section-head {
   display: flex;
   justify-content: space-between;
