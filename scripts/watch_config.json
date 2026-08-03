@@ -5,6 +5,7 @@
   "models": ["Solis", "Travato"],
   "makes": ["Winnebago"],
   "notify": true,
+  "cursorNotify": true,
   "sources": {
     "cudlNetwork": true,
     "cudlPriorityDealers": true,

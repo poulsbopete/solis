@@ -65,4 +65,40 @@ chmod +x scripts/install-local-watch.sh
 
 Edit `scripts/watch_config.json` to change `maxDriveMiles` (default 200), zip code, or disable sources.
 
-**Live site banner:** when the watcher finds something new, it updates `data/watch-pulse.json`. Commit and push that file (or run `git add data/watch-pulse.json && git commit -m "Watch pulse: new local listing" && git push`) to show a sticky alert on https://poulsbopete.github.io/solis/. The page also polls hourly while open and can send browser notifications if you click **Enable browser alerts**.
+**Live site banner:** when the watcher finds something new, it updates `data/watch-pulse.json`. Commit and push that file (or run `./scripts/publish-pulse.sh`) to show a sticky alert on https://poulsbopete.github.io/solis/. The page also polls hourly while open and can send browser notifications if you click **Enable browser alerts**.
+
+### Cursor Mobile (iPhone push)
+
+When the local watcher finds a **new** driveable listing, it can ping a **Cursor Automation** webhook. The cloud agent finishes quickly and Cursor Mobile pushes to your iPhone (same alerts you get when an agent completes or needs input).
+
+**One-time setup**
+
+1. Open [cursor.com/automations](https://cursor.com/automations) → **New automation**
+2. **Trigger:** Webhook (save to generate URL + auth header)
+3. **Repository:** None (no code changes needed)
+4. **Instructions** (paste something like):
+
+   ```text
+   Solis Watch buyer alert. The webhook JSON lists new local Winnebago Solis/Travato
+   listings within driving distance. Reply in 2–3 sentences with year, price, city,
+   and link. Do not edit code or open PRs.
+   ```
+
+5. Activate the automation
+6. Copy webhook URL + Bearer token into `.env`:
+
+   ```bash
+   cp .env.example .env
+   # edit .env — CURSOR_AUTOMATION_WEBHOOK_URL and CURSOR_AUTOMATION_TOKEN
+   ```
+
+7. Test from your laptop:
+
+   ```bash
+   python3 scripts/cursor_notify.py          # sends a sample alert
+   python3 scripts/local_watch.py -v         # real scan; pings on new finds
+   ```
+
+The hourly launchd job (`./scripts/install-local-watch.sh`) runs `run-local-watch.sh`, which loads `.env`, scans, pushes the site pulse when needed, and fires the Cursor webhook.
+
+**Alternative:** add a **Push to branch `main`** trigger on the same repo filtered to commits whose message contains `Watch pulse` — then `./scripts/publish-pulse.sh` alone will wake the agent after each push.
