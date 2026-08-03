@@ -14,3 +14,8 @@ git diff --staged --quiet && { echo "No pulse changes to push."; exit 0; }
 git commit -m "$MSG"
 git push origin main
 echo "Published — check https://poulsbopete.github.io/solis/"
+
+# Cursor Mobile alert (optional — needs .env with CURSOR_AUTOMATION_*)
+if [[ "$NEW_COUNT" -gt 0 ]]; then
+  python3 scripts/cursor_notify.py --from-pulse 2>/dev/null || true
+fi

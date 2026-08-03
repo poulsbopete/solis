@@ -9,6 +9,7 @@ Usage:
   python3 scripts/local_watch.py              # check + alert if new
   python3 scripts/local_watch.py --verbose    # print all local matches
   python3 scripts/local_watch.py --no-notify  # skip desktop notification
+  python3 scripts/local_watch.py --publish    # push pulse + Cursor Mobile alert
 """
 from __future__ import annotations
 
@@ -29,6 +30,7 @@ import requests
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from cudl_client import search_vehicles  # noqa: E402
+from cursor_notify import cursor_webhook_config, notify_cursor  # noqa: E402
 
 CONFIG_PATH = ROOT / "scripts" / "watch_config.json"
 REPORT_PATH = ROOT / "data" / "report.json"
@@ -70,6 +72,7 @@ def load_config() -> dict:
     cfg.setdefault("stateFile", ".local/watch-state.json")
     cfg.setdefault("logFile", ".local/watch-log.jsonl")
     cfg.setdefault("notify", True)
+    cfg.setdefault("cursorNotify", True)
     cfg.setdefault("sources", {})
     return cfg
 
@@ -344,6 +347,16 @@ def main():
     parser = argparse.ArgumentParser(description="Local driveable Solis/Travato watcher")
     parser.add_argument("--verbose", "-v", action="store_true", help="Print all local matches")
     parser.add_argument("--no-notify", action="store_true", help="Skip desktop notification")
+    parser.add_argument(
+        "--no-cursor",
+        action="store_true",
+        help="Skip Cursor Mobile webhook (even if .env is configured)",
+    )
+    parser.add_argument(
+        "--publish",
+        action="store_true",
+        help="After new listings, git push watch-pulse.json to GitHub Pages",
+    )
     args = parser.parse_args()
 
     cfg = load_config()
@@ -402,6 +415,24 @@ def main():
             if len(new_items) > 1:
                 summary += f" (+{len(new_items) - 1} more)"
             desktop_notify("Solis Watch — new local listing", summary)
+        if cfg.get("cursorNotify", True) and not args.no_cursor:
+            sent = notify_cursor(
+                [x.to_public() for x in new_items],
+                max_drive_miles=cfg["maxDriveMiles"],
+            )
+            if sent:
+                print("Cursor Mobile: webhook sent — check your phone.")
+            elif cursor_webhook_config()[0]:
+                print("Cursor Mobile: webhook configured but send failed.", file=sys.stderr)
+            else:
+                print(
+                    "Cursor Mobile: add CURSOR_AUTOMATION_* to .env "
+                    "(see .env.example) for iPhone alerts."
+                )
+        if args.publish:
+            publish_script = ROOT / "scripts" / "publish-pulse.sh"
+            if publish_script.exists():
+                subprocess.run(["bash", str(publish_script)], cwd=ROOT, check=False)
     elif not args.verbose:
         print("  No new local listings since last run.")
 

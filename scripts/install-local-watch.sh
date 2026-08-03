@@ -20,9 +20,14 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   <string>${PLIST_LABEL}</string>
   <key>ProgramArguments</key>
   <array>
-    <string>${PYTHON}</string>
-    <string>${REPO_ROOT}/scripts/local_watch.py</string>
+    <string>/bin/bash</string>
+    <string>${REPO_ROOT}/scripts/run-local-watch.sh</string>
   </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+  </dict>
   <key>WorkingDirectory</key>
   <string>${REPO_ROOT}</string>
   <key>StartInterval</key>
@@ -42,6 +47,9 @@ EOF
   echo "Installed launchd agent: $PLIST_PATH"
   echo "Runs every hour + once at login. Logs: .local/watch-stdout.log"
   echo "Test now: ${PYTHON} ${REPO_ROOT}/scripts/local_watch.py -v"
+  echo ""
+  echo "Cursor Mobile: copy .env.example → .env and add your automation webhook."
+  echo "  ${PYTHON} ${REPO_ROOT}/scripts/cursor_notify.py   # test ping"
 else
   CRON_LINE="0 * * * * cd ${REPO_ROOT} && ${PYTHON} scripts/local_watch.py >> .local/watch-stdout.log 2>&1"
   echo "Add this line to crontab -e:"
